@@ -57,13 +57,13 @@ public class HarmoniousChangeStoveBlockEntity extends SimpleContainerBlockEntity
     private int currentState;
 
     /**
-     * Current lit remain.
+     * Remaining burn time for the current fuel.
      */
     private int litTime;
 
     /**
-     * Max lit time of this fuel.
-     * Was used in Menu, for fuel bar.
+     * Maximum burn time for the current fuel.
+     * Used by the menu to render the fuel bar.
      */
     private int litDuration;
 
