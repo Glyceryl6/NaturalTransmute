@@ -1,40 +1,24 @@
 package com.zg.natural_transmute.common.items.crafting;
 
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 
-import java.util.AbstractList;
+import java.util.ArrayList;
 
 public class HarmoniousChangeSerializer implements RecipeSerializer<HarmoniousChangeRecipe> {
 
     private static final MapCodec<HarmoniousChangeRecipe> CODEC =
             RecordCodecBuilder.mapCodec(instance -> instance.group(
-                    Ingredient.CODEC.listOf(1, 3).fieldOf("ingredients")
-                            .flatXmap(list -> {
-                                Ingredient[] ingredients = list.toArray(Ingredient[]::new);
-                                return DataResult.success(NonNullList.of(Ingredient.EMPTY, ingredients));
-                                }, DataResult::success)
-                            .forGetter(HarmoniousChangeRecipe::getIngredients),
-                    ItemStack.STRICT_CODEC.listOf().fieldOf("excepts")
-                            .flatXmap(list -> {
-                                ItemStack[] itemStacks = list.toArray(ItemStack[]::new);
-                                return DataResult.success(NonNullList.of(ItemStack.EMPTY, itemStacks));
-                                }, DataResult::success)
-                            .forGetter(HarmoniousChangeRecipe::getExcepts),
-                    ItemStack.STRICT_CODEC.listOf(1, 3).fieldOf("results")
-                            .flatXmap(list -> {
-                                ItemStack[] itemStacks = list.toArray(ItemStack[]::new);
-                                return DataResult.success(NonNullList.of(ItemStack.EMPTY, itemStacks));
-                            }, DataResult::success)
-                            .forGetter(HarmoniousChangeRecipe::getResults),
+                    SizedIngredient.FLAT_CODEC.listOf(1, 3).fieldOf("ingredients").forGetter(HarmoniousChangeRecipe::getIngredients),
+                    Ingredient.CODEC.listOf().fieldOf("excepts").forGetter(HarmoniousChangeRecipe::getExcepts),
+                    ItemStack.STRICT_CODEC.listOf(1, 3).fieldOf("results").forGetter(HarmoniousChangeRecipe::getResults),
                     Ingredient.CODEC_NONEMPTY.fieldOf("biome_catalysts").forGetter(HarmoniousChangeRecipe::getBiomeCatalysts),
                     Codec.INT.fieldOf("time").forGetter(HarmoniousChangeRecipe::getTime),
                     Codec.BOOL.fieldOf("consume").forGetter(HarmoniousChangeRecipe::isConsume)
@@ -55,35 +39,23 @@ public class HarmoniousChangeSerializer implements RecipeSerializer<HarmoniousCh
         int exceptsSize = buffer.readVarInt();
         int resultsSize = buffer.readVarInt();
 
-        NonNullList<Ingredient> ingredients = NonNullList.withSize(ingredientsSize, Ingredient.EMPTY);
-        NonNullList<ItemStack> excepts = NonNullList.withSize(exceptsSize, ItemStack.EMPTY);
-        NonNullList<ItemStack> results = NonNullList.withSize(resultsSize, ItemStack.EMPTY);
+        var ingredients = new ArrayList<SizedIngredient>();
+        var excepts = new ArrayList<Ingredient>();
+        var results = new ArrayList<ItemStack>();
 
-        for (int i = 0; i < ingredientsSize; i++) {
-            try {
-                Ingredient decoded = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
-                ingredients.set(i, decoded.isEmpty() ? Ingredient.EMPTY : decoded);
-            } catch (Exception e) {
-                ingredients.set(i, Ingredient.EMPTY);
-            }
+        for (var i = 0; i < ingredientsSize; i++) {
+            var decoded = SizedIngredient.STREAM_CODEC.decode(buffer);
+            ingredients.add(decoded);
         }
 
-        for (int i = 0; i < exceptsSize; i++) {
-            try {
-                ItemStack decoded = ItemStack.STREAM_CODEC.decode(buffer);
-                excepts.set(i, decoded.isEmpty() ? ItemStack.EMPTY : decoded);
-            } catch (Exception e) {
-                excepts.set(i, ItemStack.EMPTY);
-            }
+        for (var i = 0; i < exceptsSize; i++) {
+            var decoded = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
+            excepts.add(decoded);
         }
 
-        for (int i = 0; i < resultsSize; i++) {
-            try {
-                ItemStack decoded = ItemStack.STREAM_CODEC.decode(buffer);
-                results.set(i, decoded.isEmpty() ? ItemStack.EMPTY : decoded);
-            } catch (Exception e) {
-                results.set(i, ItemStack.EMPTY);
-            }
+        for (var i = 0; i < resultsSize; i++) {
+            var decoded = ItemStack.STREAM_CODEC.decode(buffer);
+            results.add(decoded);
         }
 
         Ingredient biome_catalyst = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
@@ -100,12 +72,12 @@ public class HarmoniousChangeSerializer implements RecipeSerializer<HarmoniousCh
         buffer.writeVarInt(recipe.getIngredients().size());
         buffer.writeVarInt(recipe.getExcepts().size());
         buffer.writeVarInt(recipe.getResults().size());
-        for (Ingredient ingredient : recipe.getIngredients()) {
-            Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, ingredient);
+        for (SizedIngredient ingredient : recipe.getIngredients()) {
+            SizedIngredient.STREAM_CODEC.encode(buffer, ingredient);
         }
 
-        for (ItemStack stack : recipe.getExcepts()) {
-            ItemStack.STREAM_CODEC.encode(buffer, stack);
+        for (Ingredient ingredient : recipe.getExcepts()) {
+            Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, ingredient);
         }
 
         for (ItemStack stack : recipe.getResults()) {

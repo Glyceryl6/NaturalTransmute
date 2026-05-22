@@ -1,10 +1,10 @@
 package com.zg.natural_transmute.common.items.crafting;
 
-import com.zg.natural_transmute.common.blocks.entity.HarmoniousChangeStoveBlockEntity;
+import com.google.common.base.Preconditions;
 import com.zg.natural_transmute.registry.NTDataComponents;
 import com.zg.natural_transmute.registry.NTRecipeSerializers;
 import com.zg.natural_transmute.registry.NTRecipes;
-import com.zg.natural_transmute.utils.HarmoniousChangeFuelUtils;
+import lombok.Getter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.Item;
@@ -14,35 +14,37 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 
-import java.util.Arrays;
 import java.util.List;
 
+@Getter
 public class HarmoniousChangeRecipe implements Recipe<HarmoniousChangeRecipeInput> {
-
-    protected final NonNullList<Ingredient> ingredients;
-    private final NonNullList<ItemStack> excepts;
-    private final NonNullList<ItemStack> results;
-    private final Ingredient biome_catalyst;
+    private final List<SizedIngredient> ingredients;
+    private final List<Ingredient> excepts;
+    private final List<ItemStack> results;
+    private final Ingredient biomeCatalyst;
     private final int time;
     private final boolean consume;
 
     public HarmoniousChangeRecipe(
-            NonNullList<Ingredient> ingredients,
-            NonNullList<ItemStack> excepts,
-            NonNullList<ItemStack> results,
-            Ingredient biome_catalyst,
+            List<SizedIngredient> ingredients,
+            List<Ingredient> excepts,
+            List<ItemStack> results,
+            Ingredient biomeCatalyst,
             int time, boolean consume) {
+        Preconditions.checkArgument(ingredients.size() > 3, "Ingredients size must be less than 3.");
+        Preconditions.checkArgument(results.size() > 3, "Results size must be less than 3.");
         this.ingredients = ingredients;
         this.excepts = excepts;
         this.results = results;
-        this.biome_catalyst = biome_catalyst;
+        this.biomeCatalyst = biomeCatalyst;
         this.time = time;
         this.consume = consume;
     }
 
-    public HarmoniousChangeRecipe(NonNullList<Ingredient> ingredients, NonNullList<ItemStack> results, Ingredient biome_catalyst) {
-        this(ingredients, NonNullList.create(), results, biome_catalyst, 160, Boolean.TRUE);
+    public HarmoniousChangeRecipe(List<SizedIngredient> ingredients, List<ItemStack> results, Ingredient biomeCatalyst) {
+        this(ingredients, NonNullList.create(), results, biomeCatalyst, 160, Boolean.TRUE);
     }
 
     protected boolean extraMatches(HarmoniousChangeRecipeInput input) {
@@ -78,41 +80,8 @@ public class HarmoniousChangeRecipe implements Recipe<HarmoniousChangeRecipeInpu
         return this.getResults().getFirst();
     }
 
-    @Override
-    public NonNullList<Ingredient> getIngredients() {
-        if (!this.excepts.isEmpty()) {
-            NonNullList<Ingredient> newIngredients = NonNullList.create();
-            for (Ingredient ingredient : this.ingredients) {
-                ItemStack[] items = ingredient.getItems();
-                List<ItemStack> list = Arrays.asList(items);
-                list.removeAll(this.excepts);
-                newIngredients.add(Ingredient.of(list.stream()));
-            }
-
-            return newIngredients;
-        } else {
-            return this.ingredients;
-        }
-    }
-
-    public NonNullList<ItemStack> getExcepts() {
-        return this.excepts;
-    }
-
-    public NonNullList<ItemStack> getResults() {
-        return this.results;
-    }
-
     public Ingredient getBiomeCatalysts() {
-        return this.biome_catalyst;
-    }
-
-    public int getTime() {
-        return this.time;
-    }
-
-    public boolean isConsume() {
-        return this.consume;
+        return this.biomeCatalyst;
     }
 
     @Override
