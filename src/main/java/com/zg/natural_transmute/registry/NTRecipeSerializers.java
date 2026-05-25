@@ -32,17 +32,7 @@ public class NTRecipeSerializers {
             RECIPE_SERIALIZERS.register("hc_leader_banner", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCLeaderBannerRecipe()));
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCSuspiciousStewRecipe>> HC_SUSPICIOUS_STEW_SERIALIZER =
             RECIPE_SERIALIZERS.register("hc_suspicious_stew", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCSuspiciousStewRecipe()));
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCCopperOxidationRecipe>> HC_COPPER_OXIDATION_SERIALIZER =
-            RECIPE_SERIALIZERS.register("hc_copper_oxidation", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCCopperOxidationRecipe()));
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCCopperDerustingRecipe>> HC_COPPER_DERUSTING_SERIALIZER =
-            RECIPE_SERIALIZERS.register("hc_copper_derusting", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCCopperDerustingRecipe()));
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCPlantToWheatRecipe>> HC_PLANT_TO_WHEAT_SERIALIZER =
-            RECIPE_SERIALIZERS.register("hc_plant_to_wheat", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCPlantToWheatRecipe()));
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCPlantToGlowLichenRecipe>> HC_PLANT_TO_GLOW_LICHEN_SERIALIZER =
-            RECIPE_SERIALIZERS.register("hc_plant_to_glow_lichen", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCPlantToGlowLichenRecipe()));
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCHeroicEnchantedBookRecipe>> HC_HEROIC_ENCHANTED_BOOK_SERIALIZER =
             RECIPE_SERIALIZERS.register("hc_heroic_enchanted_book", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCHeroicEnchantedBookRecipe()));
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCSculkCatalystRecipe>> HC_SCULK_CATALYST_SERIALIZER =
-            RECIPE_SERIALIZERS.register("hc_sculk_catalyst", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCSculkCatalystRecipe()));
 
 }

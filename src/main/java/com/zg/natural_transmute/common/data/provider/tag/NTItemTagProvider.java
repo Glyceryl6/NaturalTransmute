@@ -13,6 +13,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -29,18 +30,18 @@ public class NTItemTagProvider extends ItemTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
         this.copy(NTBlockTags.END_ALSOPHILA_LOGS, NTItemTags.END_ALSOPHILA_LOGS);
         this.copy(NTBlockTags.END_ALSOPHILA_SAPLING_PLACEABLE,
-                NTItemTags.END_ALSOPHILA_SAPLING_PLACEABLE);
+            NTItemTags.END_ALSOPHILA_SAPLING_PLACEABLE);
         this.tag(Tags.Items.TOOLS_BOW).add(NTItems.WHALE_BONE_BOW.get());
         this.tag(Tags.Items.FOODS_COOKED_MEAT).add(NTItems.COOKED_DUCK.get());
         this.tag(ItemTags.DURABILITY_ENCHANTABLE).add(NTItems.WHALE_BONE_BOW.get());
         this.tag(ItemTags.BOW_ENCHANTABLE).add(NTItems.WHALE_BONE_BOW.get());
         this.tag(ItemTags.ARROWS).add(NTItems.BREEZE_ARROW.get());
         this.tag(NTItemTags.GRASS).add(Items.SHORT_GRASS,
-                Items.TALL_GRASS, Items.FERN, Items.LARGE_FERN);
+            Items.TALL_GRASS, Items.FERN, Items.LARGE_FERN);
         this.tag(NTItemTags.FRUIT).add(Items.APPLE, Items.MELON_SLICE, Items.SUGAR_CANE,
-                Items.CHORUS_FRUIT, Items.SWEET_BERRIES, Items.GLOW_BERRIES);
+            Items.CHORUS_FRUIT, Items.SWEET_BERRIES, Items.GLOW_BERRIES);
         this.tag(NTItemTags.VEGETABLE).add(Items.CARROT, Items.POTATO, Items.POISONOUS_POTATO,
-                Items.BEETROOT, Items.PUMPKIN, Items.BROWN_MUSHROOM, Items.BROWN_MUSHROOM);
+            Items.BEETROOT, Items.PUMPKIN, Items.BROWN_MUSHROOM, Items.BROWN_MUSHROOM);
         NTCommonUtils.getKnownItems().forEach(item -> {
             ItemStack stack = item.getDefaultInstance();
             if (stack.has(NTDataComponents.ASSOCIATED_BIOMES)) {
@@ -57,12 +58,46 @@ public class NTItemTagProvider extends ItemTagsProvider {
         });
 
         tag(NTItemTags.HARMONIOUS_CHANGE_FUEL)
-                .addTag(NTItemTags.HARMONIOUS_CHANGE_FUEL_BUCKET)
-                .addTag(NTItemTags.HARMONIOUS_CHANGE_FUEL_COAL)
-                .addTag(NTItemTags.HARMONIOUS_CHANGE_ETERNAL_FUEL);
+            .addTag(NTItemTags.HARMONIOUS_CHANGE_FUEL_BUCKET)
+            .addTag(NTItemTags.HARMONIOUS_CHANGE_FUEL_COAL)
+            .addTag(NTItemTags.HARMONIOUS_CHANGE_ETERNAL_FUEL);
         tag(NTItemTags.HARMONIOUS_CHANGE_FUEL_BUCKET).add(NTItems.HARMONIOUS_CHANGE_LAVA_BUCKET.get(), NTItems.ETERNAL_HARMONIOUS_CHANGE_LAVA_BUCKET.get());
         tag(NTItemTags.HARMONIOUS_CHANGE_FUEL_COAL).add(NTItems.HARMONIOUS_CHANGE_FUEL.get());
         tag(NTItemTags.HARMONIOUS_CHANGE_ETERNAL_FUEL).add(NTItems.ETERNAL_HARMONIOUS_CHANGE_LAVA_BUCKET.get());
-    }
 
+        tag(NTItemTags.PLANTS)
+            .addTag(Tags.Items.SEEDS)
+            .addTag(Tags.Items.CROPS)
+            .addTag(ItemTags.FLOWERS)
+            .addTag(ItemTags.LEAVES)
+            .addTag(ItemTags.SAPLINGS)
+            .add(Items.SEAGRASS, Items.SEA_PICKLE)
+            .add(Items.SHORT_GRASS, Items.TALL_GRASS, Items.FERN, Items.LARGE_FERN, Items.PINK_PETALS,
+                Items.DEAD_BUSH, Items.VINE, Items.GLOW_LICHEN, Items.HANGING_ROOTS, Items.PITCHER_PLANT,
+                Items.AZALEA, Items.AZALEA_LEAVES, Items.FLOWERING_AZALEA, Items.FLOWERING_AZALEA_LEAVES)
+            .add(Items.NETHER_WART, Items.NETHER_SPROUTS,
+                Items.WARPED_FUNGUS, Items.WARPED_ROOTS,
+                Items.CRIMSON_ROOTS, Items.CRIMSON_FUNGUS,
+                Items.WEEPING_VINES, Items.TWISTING_VINES);
+
+        tag(NTItemTags.CORALS)
+            .add(Items.TUBE_CORAL_BLOCK,
+                Items.BRAIN_CORAL_BLOCK,
+                Items.BUBBLE_CORAL_BLOCK,
+                Items.FIRE_CORAL_BLOCK,
+                Items.HORN_CORAL_BLOCK,
+
+                Items.BRAIN_CORAL,
+                Items.BUBBLE_CORAL,
+                Items.FIRE_CORAL,
+                Items.HORN_CORAL,
+                Items.TUBE_CORAL,
+
+                Items.TUBE_CORAL_FAN,
+                Items.BRAIN_CORAL_FAN,
+                Items.BUBBLE_CORAL_FAN,
+                Items.FIRE_CORAL_FAN,
+                Items.HORN_CORAL_FAN
+            );
+    }
 }
