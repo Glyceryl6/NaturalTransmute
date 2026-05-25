@@ -13,13 +13,13 @@ public class HarmoniousChangeRecipeInput implements RecipeInput {
     public static final int BIOME_CATALYST_SLOT = 4;
 
     private final List<ItemStack> items;
-    private final ItemStack biome_catalyst;
+    private final ItemStack biomeCatalyst;
     private final StackedContents stackedContents = new StackedContents();
     private final int ingredientCount;
 
-    public HarmoniousChangeRecipeInput(List<ItemStack> items, ItemStack biome_catalyst) {
+    public HarmoniousChangeRecipeInput(List<ItemStack> items, ItemStack biomeCatalyst) {
         this.items = items;
-        this.biome_catalyst = biome_catalyst;
+        this.biomeCatalyst = biomeCatalyst;
         int i = 0;
         for (ItemStack itemStack : items) {
             if (!itemStack.isEmpty()) {
@@ -36,7 +36,7 @@ public class HarmoniousChangeRecipeInput implements RecipeInput {
         if (index < 3) {
             return this.items.get(index);
         } else if (index == 4) {
-            return this.biome_catalyst;
+            return this.biomeCatalyst;
         } else {
             throw new IllegalArgumentException("No item for index " + index);
         }
@@ -63,5 +63,4 @@ public class HarmoniousChangeRecipeInput implements RecipeInput {
     public int ingredientCount() {
         return this.ingredientCount;
     }
-
 }

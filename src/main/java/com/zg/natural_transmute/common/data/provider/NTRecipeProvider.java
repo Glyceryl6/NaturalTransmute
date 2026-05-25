@@ -9,6 +9,7 @@ import com.zg.natural_transmute.common.data.recipes.HCBlockFamilyTransferRecipeB
 import com.zg.natural_transmute.common.data.recipes.HarmoniousChangeRecipeBuilder;
 import com.zg.natural_transmute.common.data.tags.NTItemTags;
 import com.zg.natural_transmute.common.items.WaterWax;
+import com.zg.natural_transmute.common.items.crafting.HarmoniousChangeRecipe;
 import com.zg.natural_transmute.common.items.crafting.special.*;
 import com.zg.natural_transmute.registry.NTBlocks;
 import com.zg.natural_transmute.registry.NTItems;
@@ -1186,7 +1187,7 @@ public class NTRecipeProvider extends RecipeProvider {
                 .requires(Ingredient.of(Items.COPPER_BLOCK, Items.CUT_COPPER))
                 .requires(Items.DIAMOND), Items.BOLT_ARMOR_TRIM_SMITHING_TEMPLATE);
         harmoniousChangeOfCopyIngredient(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(
-                NTItems.H_OCEAN.get(), NTItems.H_FROZEN_OCEAN.get(), NTItems.H_BEACH.get(),
+                        NTItems.H_OCEAN.get(), NTItems.H_FROZEN_OCEAN.get(), NTItems.H_BEACH.get(),
                         NTItems.H_STONE_SHORE.get(), NTItems.H_WARM_OCEAN.get())
                 .requires(Items.DIAMOND).requires(Items.STONE), Items.COAST_ARMOR_TRIM_SMITHING_TEMPLATE);
         harmoniousChangeOfCopyIngredient(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_DEEP_DARK.get())
@@ -1212,7 +1213,7 @@ public class NTRecipeProvider extends RecipeProvider {
         harmoniousChangeOfCopyIngredient(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_WARM_OCEAN.get()).requires(Items.BRICK), Items.SHELTER_POTTERY_SHERD);
         harmoniousChangeOfCopyIngredient(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_WARM_OCEAN.get()).requires(Items.BRICK), Items.ANGLER_POTTERY_SHERD);
 
-        ItemLike[] forestBiomeCatalyst = new ItemLike[] {NTItems.H_BIRCH_FOREST.get(), NTItems.H_JUNGLE.get(), NTItems.H_TAIGA.get(), NTItems.H_OLD_GROWTH_TAIGA.get()};
+        ItemLike[] forestBiomeCatalyst = new ItemLike[]{NTItems.H_BIRCH_FOREST.get(), NTItems.H_JUNGLE.get(), NTItems.H_TAIGA.get(), NTItems.H_OLD_GROWTH_TAIGA.get()};
         harmoniousChangeOfCopyIngredient(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(forestBiomeCatalyst).requires(Items.BRICK), Items.BURN_POTTERY_SHERD);
         harmoniousChangeOfCopyIngredient(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(forestBiomeCatalyst).requires(Items.BRICK), Items.SHEAF_POTTERY_SHERD);
         harmoniousChangeOfCopyIngredient(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(forestBiomeCatalyst).requires(Items.BRICK), Items.HOWL_POTTERY_SHERD);
@@ -1221,7 +1222,7 @@ public class NTRecipeProvider extends RecipeProvider {
         harmoniousChangeOfCopyIngredient(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(forestBiomeCatalyst).requires(Items.BRICK), Items.DANGER_POTTERY_SHERD);
         harmoniousChangeOfCopyIngredient(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(forestBiomeCatalyst).requires(Items.BRICK), Items.FRIEND_POTTERY_SHERD);
 
-        ItemLike[] netherBiomeCatalyst = new ItemLike[] {NTItems.H_NETHER.get(), NTItems.H_CRIMSON_FOREST.get(),
+        ItemLike[] netherBiomeCatalyst = new ItemLike[]{NTItems.H_NETHER.get(), NTItems.H_CRIMSON_FOREST.get(),
                 NTItems.H_WARPED_FOREST.get(), NTItems.H_SOUL_SAND_VALLEY.get(), NTItems.H_BASALT_DELTAS.get()};
         harmoniousChangeWithCustomName(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(netherBiomeCatalyst)
                 .requires(Items.SKELETON_SKULL).requires(NTItems.WITHER_BONE.get()).results(Items.WITHER_SKELETON_SKULL));
@@ -1311,9 +1312,10 @@ public class NTRecipeProvider extends RecipeProvider {
         harmoniousChange(recipeOutput, BlockFamilies.CRIMSON_PLANKS, NTItems.H_CRIMSON_FOREST.get());
         harmoniousChange(recipeOutput, BlockFamilies.WARPED_PLANKS, NTItems.H_WARPED_FOREST.get());
 
+        addCoralRevivingRecipes(recipeOutput);
+
         harmoniousChangeSpecial(recipeOutput, new HCUnglazedTerracottaRecipe());
         harmoniousChangeSpecial(recipeOutput, new HCInactivateCoralRecipe());
-        harmoniousChangeSpecial(recipeOutput, new HCActivateCoralRecipe());
         harmoniousChangeSpecial(recipeOutput, new HCCreateInfestedBlockRecipe());
         harmoniousChangeSpecial(recipeOutput, new HCRecycleInfestedBlockRecipe());
         harmoniousChangeSpecial(recipeOutput, new HCRefrigeratedRocketRecipe());
@@ -1456,7 +1458,7 @@ public class NTRecipeProvider extends RecipeProvider {
     }
 
     private void buildBaseToolRecipes(
-            RecipeOutput recipeOutput, ItemLike sword, ItemLike pickaxe, ItemLike shovel, 
+            RecipeOutput recipeOutput, ItemLike sword, ItemLike pickaxe, ItemLike shovel,
             ItemLike axe, ItemLike hoe, ItemLike material, ItemLike stick) {
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, sword)
                 .define('#', stick).define('X', material)
@@ -1511,5 +1513,52 @@ public class NTRecipeProvider extends RecipeProvider {
         }
 
     }
+
+    // region Common recipe schemas
+
+    protected static void addCoralRevivingRecipes(RecipeOutput output) {
+        coralReviving(output, Items.DEAD_TUBE_CORAL_BLOCK, Items.TUBE_CORAL_BLOCK);
+        coralReviving(output, Items.DEAD_BRAIN_CORAL_BLOCK, Items.BRAIN_CORAL_BLOCK);
+        coralReviving(output, Items.DEAD_BUBBLE_CORAL_BLOCK, Items.BUBBLE_CORAL_BLOCK);
+        coralReviving(output, Items.DEAD_FIRE_CORAL_BLOCK, Items.FIRE_CORAL_BLOCK);
+        coralReviving(output, Items.DEAD_HORN_CORAL_BLOCK, Items.HORN_CORAL_BLOCK);
+        coralReviving(output, Items.DEAD_BRAIN_CORAL, Items.BRAIN_CORAL);
+        coralReviving(output, Items.DEAD_BUBBLE_CORAL, Items.BUBBLE_CORAL);
+        coralReviving(output, Items.DEAD_FIRE_CORAL, Items.FIRE_CORAL);
+        coralReviving(output, Items.DEAD_HORN_CORAL, Items.HORN_CORAL);
+        coralReviving(output, Items.DEAD_TUBE_CORAL, Items.TUBE_CORAL);
+        coralReviving(output, Items.DEAD_TUBE_CORAL_FAN, Items.TUBE_CORAL_FAN);
+        coralReviving(output, Items.DEAD_BRAIN_CORAL_FAN, Items.BRAIN_CORAL_FAN);
+        coralReviving(output, Items.DEAD_BUBBLE_CORAL_FAN, Items.BUBBLE_CORAL_FAN);
+        coralReviving(output, Items.DEAD_FIRE_CORAL_FAN, Items.FIRE_CORAL_FAN);
+        coralReviving(output, Items.DEAD_HORN_CORAL_FAN, Items.HORN_CORAL_FAN);
+    }
+
+    protected static void coralReviving(RecipeOutput output, ItemLike deadCoral, ItemLike coral) {
+        HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_WARM_OCEAN.get())
+                .requires(deadCoral)
+                .results(coral)
+                .unlockedBy(getHasId(deadCoral), has(deadCoral))
+                .save(output, modLoc("hc_revive_" + getItemId(deadCoral)));
+    }
+
+    // endregion
+
+    // region Common helpers
+
+    protected static String getHasId(ItemLike item) {
+        return "has_" + getItemId(item);
+    }
+
+    protected static String getItemId(ItemLike item) {
+        var id = BuiltInRegistries.ITEM.getKey(item.asItem());
+        return id.getNamespace() + "_" + id.getPath();
+    }
+
+    protected static ResourceLocation modLoc(String path) {
+        return ResourceLocation.fromNamespaceAndPath(NaturalTransmute.MOD_ID, path);
+    }
+
+    // endregion
 
 }

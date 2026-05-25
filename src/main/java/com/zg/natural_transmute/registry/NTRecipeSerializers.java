@@ -22,8 +22,6 @@ public class NTRecipeSerializers {
             RECIPE_SERIALIZERS.register("hc_unglazed_terracotta", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCUnglazedTerracottaRecipe()));
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCInactivateCoralRecipe>> HC_INACTIVATE_CORAL_SERIALIZER =
             RECIPE_SERIALIZERS.register("hc_inactivate_coral", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCInactivateCoralRecipe()));
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCActivateCoralRecipe>> HC_ACTIVATE_CORAL_SERIALIZER =
-            RECIPE_SERIALIZERS.register("hc_activate_coral", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCActivateCoralRecipe()));
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCCreateInfestedBlockRecipe>> HC_CREATE_INFESTED_BLOCK_SERIALIZER =
             RECIPE_SERIALIZERS.register("hc_create_infested_block", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCCreateInfestedBlockRecipe()));
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCRecycleInfestedBlockRecipe>> HC_RECYCLE_INFESTED_BLOCK_SERIALIZER =
