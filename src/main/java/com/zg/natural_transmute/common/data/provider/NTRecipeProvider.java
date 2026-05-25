@@ -1357,7 +1357,7 @@ public class NTRecipeProvider extends RecipeProvider {
     }
 
     private static void harmoniousChange(RecipeOutput recipeOutput, HarmoniousChangeRecipeBuilder builder, int index) {
-        String path = BuiltInRegistries.ITEM.getKey(builder.biome_catalyst.getItems()[0].getItem()).getPath();
+        String path = BuiltInRegistries.ITEM.getKey(builder.biomeCatalyst.getItems()[0].getItem()).getPath();
         path = path.replaceFirst("h_", StringUtils.EMPTY).replaceFirst("_biome_catalyst", StringUtils.EMPTY);
         ResourceLocation id = NaturalTransmute.prefix(String.format("hc_%s_%d", path, index));
         builder.unlockedBy("has_biome_catalyst", has(NTItemTags.BIOME_CATALYST))

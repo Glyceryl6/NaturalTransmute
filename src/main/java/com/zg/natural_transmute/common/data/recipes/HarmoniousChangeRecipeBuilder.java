@@ -15,33 +15,31 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class HarmoniousChangeRecipeBuilder implements RecipeBuilder {
 
-    public final NonNullList<Ingredient> ingredients = NonNullList.create();
-    public final NonNullList<ItemStack> excepts = NonNullList.create();
-    public final NonNullList<ItemStack> results = NonNullList.create();
+    public final List<SizedIngredient> ingredients = NonNullList.create();
+    public final List<Ingredient> excepts = NonNullList.create();
+    public final List<ItemStack> results = NonNullList.create();
     public final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
-    public final Ingredient biome_catalyst;
+    public final Ingredient biomeCatalyst;
     public int time = 160;
     public boolean consume = true;
     public String name = StringUtils.EMPTY;
 
-    private HarmoniousChangeRecipeBuilder(ItemLike... biome_catalyst) {
-        this.biome_catalyst = Ingredient.of(biome_catalyst);
+    private HarmoniousChangeRecipeBuilder(ItemLike... biomeCatalyst) {
+        this.biomeCatalyst = Ingredient.of(biomeCatalyst);
     }
 
-    public static HarmoniousChangeRecipeBuilder addRecipe(ItemLike... biome_catalyst) {
-        return new HarmoniousChangeRecipeBuilder(biome_catalyst);
-    }
-
-    public HarmoniousChangeRecipeBuilder requires(TagKey<Item> tag) {
-        return this.requires(Ingredient.of(tag));
+    public static HarmoniousChangeRecipeBuilder addRecipe(ItemLike... biomeCatalyst) {
+        return new HarmoniousChangeRecipeBuilder(biomeCatalyst);
     }
 
     public HarmoniousChangeRecipeBuilder requires(ItemLike item) {
@@ -49,11 +47,15 @@ public class HarmoniousChangeRecipeBuilder implements RecipeBuilder {
     }
 
     public HarmoniousChangeRecipeBuilder requires(ItemLike item, int quantity) {
-        for (int i = 0; i < quantity; i++) {
-            this.requires(Ingredient.of(item));
-        }
+        return this.requires(SizedIngredient.of(item, quantity));
+    }
 
-        return this;
+    public HarmoniousChangeRecipeBuilder requires(TagKey<Item> tag) {
+        return this.requires(tag, 1);
+    }
+
+    public HarmoniousChangeRecipeBuilder requires(TagKey<Item> tag, int quantity) {
+        return this.requires(SizedIngredient.of(tag, quantity));
     }
 
     public HarmoniousChangeRecipeBuilder requires(Ingredient ingredient) {
@@ -61,27 +63,16 @@ public class HarmoniousChangeRecipeBuilder implements RecipeBuilder {
     }
 
     public HarmoniousChangeRecipeBuilder requires(Ingredient ingredient, int quantity) {
-        for (int i = 0; i < quantity; i++) {
-            this.ingredients.add(ingredient);
-        }
+        return this.requires(new SizedIngredient(ingredient, quantity));
+    }
 
+    public HarmoniousChangeRecipeBuilder requires(SizedIngredient ingredient) {
+        this.ingredients.add(ingredient);
         return this;
     }
 
     public HarmoniousChangeRecipeBuilder excepts(ItemLike itemLike) {
-        ItemStack itemStack = new ItemStack(itemLike);
-        if (!itemStack.isEmpty()) {
-            this.excepts.add(itemStack);
-        }
-
-        return this;
-    }
-
-    public HarmoniousChangeRecipeBuilder results(ItemStack itemStack) {
-        if (!itemStack.isEmpty()) {
-            this.results.add(itemStack);
-        }
-
+        this.excepts.add(Ingredient.of(itemLike));
         return this;
     }
 
@@ -90,12 +81,11 @@ public class HarmoniousChangeRecipeBuilder implements RecipeBuilder {
     }
 
     public HarmoniousChangeRecipeBuilder results(ItemLike itemLike, int count) {
-        ItemStack itemStack = new ItemStack(itemLike);
-        if (!itemStack.isEmpty()) {
-            itemStack.setCount(count);
-            this.results.add(itemStack);
-        }
+        return this.results(new ItemStack(itemLike, count));
+    }
 
+    public HarmoniousChangeRecipeBuilder results(ItemStack itemStack) {
+        this.results.add(itemStack);
         return this;
     }
 
@@ -138,8 +128,7 @@ public class HarmoniousChangeRecipeBuilder implements RecipeBuilder {
                 .rewards(AdvancementRewards.Builder.recipe(id))
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(builder::addCriterion);
-        HarmoniousChangeRecipe recipe = new HarmoniousChangeRecipe(this.ingredients, this.excepts, this.results, this.biome_catalyst, this.time, this.consume);
+        HarmoniousChangeRecipe recipe = new HarmoniousChangeRecipe(this.ingredients, this.excepts, this.results, this.biomeCatalyst, this.time, this.consume);
         recipeOutput.accept(id.withPrefix("harmonious_change/"), recipe, builder.build(id.withPrefix("recipes/harmonious_change/")));
     }
-
 }
