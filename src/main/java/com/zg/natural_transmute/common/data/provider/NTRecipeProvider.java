@@ -9,7 +9,6 @@ import com.zg.natural_transmute.common.data.recipes.HCBlockFamilyTransferRecipeB
 import com.zg.natural_transmute.common.data.recipes.HarmoniousChangeRecipeBuilder;
 import com.zg.natural_transmute.common.data.tags.NTItemTags;
 import com.zg.natural_transmute.common.items.WaterWax;
-import com.zg.natural_transmute.common.items.crafting.HarmoniousChangeRecipe;
 import com.zg.natural_transmute.common.items.crafting.special.*;
 import com.zg.natural_transmute.registry.NTBlocks;
 import com.zg.natural_transmute.registry.NTItems;
@@ -1312,10 +1311,9 @@ public class NTRecipeProvider extends RecipeProvider {
         harmoniousChange(recipeOutput, BlockFamilies.CRIMSON_PLANKS, NTItems.H_CRIMSON_FOREST.get());
         harmoniousChange(recipeOutput, BlockFamilies.WARPED_PLANKS, NTItems.H_WARPED_FOREST.get());
 
-        addCoralRevivingRecipes(recipeOutput);
+        addCoralRecipes(recipeOutput);
 
         harmoniousChangeSpecial(recipeOutput, new HCUnglazedTerracottaRecipe());
-        harmoniousChangeSpecial(recipeOutput, new HCInactivateCoralRecipe());
         harmoniousChangeSpecial(recipeOutput, new HCCreateInfestedBlockRecipe());
         harmoniousChangeSpecial(recipeOutput, new HCRecycleInfestedBlockRecipe());
         harmoniousChangeSpecial(recipeOutput, new HCRefrigeratedRocketRecipe());
@@ -1514,9 +1512,9 @@ public class NTRecipeProvider extends RecipeProvider {
 
     }
 
-    // region Common recipe schemas
+    // region Categories
 
-    protected static void addCoralRevivingRecipes(RecipeOutput output) {
+    protected static void addCoralRecipes(RecipeOutput output) {
         coralReviving(output, Items.DEAD_TUBE_CORAL_BLOCK, Items.TUBE_CORAL_BLOCK);
         coralReviving(output, Items.DEAD_BRAIN_CORAL_BLOCK, Items.BRAIN_CORAL_BLOCK);
         coralReviving(output, Items.DEAD_BUBBLE_CORAL_BLOCK, Items.BUBBLE_CORAL_BLOCK);
@@ -1532,7 +1530,28 @@ public class NTRecipeProvider extends RecipeProvider {
         coralReviving(output, Items.DEAD_BUBBLE_CORAL_FAN, Items.BUBBLE_CORAL_FAN);
         coralReviving(output, Items.DEAD_FIRE_CORAL_FAN, Items.FIRE_CORAL_FAN);
         coralReviving(output, Items.DEAD_HORN_CORAL_FAN, Items.HORN_CORAL_FAN);
+
+        coralDrying(output, Items.TUBE_CORAL_BLOCK, Items.DEAD_TUBE_CORAL_BLOCK);
+        coralDrying(output, Items.BRAIN_CORAL_BLOCK, Items.DEAD_BRAIN_CORAL_BLOCK);
+        coralDrying(output, Items.BUBBLE_CORAL_BLOCK, Items.DEAD_BUBBLE_CORAL_BLOCK);
+        coralDrying(output, Items.FIRE_CORAL_BLOCK, Items.DEAD_FIRE_CORAL_BLOCK);
+        coralDrying(output, Items.HORN_CORAL_BLOCK, Items.DEAD_HORN_CORAL_BLOCK);
+        coralDrying(output, Items.BRAIN_CORAL, Items.DEAD_BRAIN_CORAL);
+        coralDrying(output, Items.BUBBLE_CORAL, Items.DEAD_BUBBLE_CORAL);
+        coralDrying(output, Items.FIRE_CORAL, Items.DEAD_FIRE_CORAL);
+        coralDrying(output, Items.HORN_CORAL, Items.DEAD_HORN_CORAL);
+        coralDrying(output, Items.TUBE_CORAL, Items.DEAD_TUBE_CORAL);
+        coralDrying(output, Items.TUBE_CORAL_FAN, Items.DEAD_TUBE_CORAL_FAN);
+        coralDrying(output, Items.BRAIN_CORAL_FAN, Items.DEAD_BRAIN_CORAL_FAN);
+        coralDrying(output, Items.BUBBLE_CORAL_FAN, Items.DEAD_BUBBLE_CORAL_FAN);
+        coralDrying(output, Items.FIRE_CORAL_FAN, Items.DEAD_FIRE_CORAL_FAN);
+        coralDrying(output, Items.HORN_CORAL_FAN, Items.DEAD_HORN_CORAL_FAN);
     }
+
+    // endregion
+
+
+    // region Common recipe schemas
 
     protected static void coralReviving(RecipeOutput output, ItemLike deadCoral, ItemLike coral) {
         HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_WARM_OCEAN.get())
@@ -1542,7 +1561,16 @@ public class NTRecipeProvider extends RecipeProvider {
                 .save(output, modLoc("hc_revive_" + getItemId(deadCoral)));
     }
 
+    protected static void coralDrying(RecipeOutput output, ItemLike coral, ItemLike deadCoral) {
+        HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_DESERT.get(), NTItems.H_BADLANDS.get())
+                .requires(coral)
+                .results(deadCoral)
+                .unlockedBy(getHasId(coral), has(coral))
+                .save(output, modLoc("hc_drying_" + getItemId(coral)));
+    }
+
     // endregion
+
 
     // region Common helpers
 
