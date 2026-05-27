@@ -1570,11 +1570,13 @@ public class NTRecipeProvider extends RecipeProvider {
             .requires(NTItemTags.BUSH)
             .results(Items.WHEAT)
             .unlockedBy("has_bush", has(NTItemTags.BUSH))
+            .group("bush_to_wheat")
             .save(output, modLoc("hc_bush_to_wheat"));
         HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_DEEPSLATE.get())
             .requires(NTItemTags.BUSH)
             .results(Items.GLOW_LICHEN)
             .unlockedBy("has_bush", has(NTItemTags.BUSH))
+            .group("bush_to_glow_lichen")
             .save(output, modLoc("hc_bush_to_glow_lichen"));
     }
 
@@ -1583,6 +1585,7 @@ public class NTRecipeProvider extends RecipeProvider {
             .requires(NTItemTags.CORALS)
             .results(Items.SCULK_CATALYST)
             .unlockedBy("has_corals", has(NTItemTags.CORALS))
+            .group("sculk_catalyst_converting")
             .save(output, modLoc("hc_corals_to_sculk_catalyst"));
     }
 
@@ -1598,12 +1601,14 @@ public class NTRecipeProvider extends RecipeProvider {
                 .requires(Items.SPIDER_EYE)
                 .results(infested)
                 .unlockedBy(getHasId(host), has(host))
+                .group("infested_block_creating")
                 .save(output, modLoc("hc_create_infest_" + getItemId(host) + "_to_" + getItemId(infested)));
             HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_MOUNTAINS.get(), NTItems.H_SNOWY_SLOPES.get(), NTItems.H_MEADOW.get(), NTItems.H_CHERRY_GROVE.get())
                 .requires(infested)
                 .results(Items.GRAVEL)
                 .results(NTItems.SILVERFISH_PUPA.get())
                 .unlockedBy(getHasId(infested), has(infested))
+                .group("infested_block_recycling")
                 .save(output, modLoc("hc_recycle_infest_" + getItemId(infested)));
         }
     }
@@ -1637,6 +1642,7 @@ public class NTRecipeProvider extends RecipeProvider {
             .requires(deadCoral)
             .results(coral)
             .unlockedBy(getHasId(deadCoral), has(deadCoral))
+            .group("coral_reviving")
             .save(output, modLoc("hc_revive_" + getItemId(deadCoral)));
     }
 
@@ -1645,6 +1651,7 @@ public class NTRecipeProvider extends RecipeProvider {
             .requires(coral)
             .results(deadCoral)
             .unlockedBy(getHasId(coral), has(coral))
+            .group("coral_drying")
             .save(output, modLoc("hc_drying_" + getItemId(coral)));
     }
 
@@ -1661,12 +1668,14 @@ public class NTRecipeProvider extends RecipeProvider {
                 .requires(current)
                 .results(next)
                 .unlockedBy(getHasId(current), has(current))
+                .group("copper_weathering")
                 .save(output, modLoc("hc_copper_weathering_" + getItemId(current) + "_to_" + getItemId(next)));
 
             HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_WINDSWEPT.get())
                 .requires(next)
                 .results(current)
                 .unlockedBy(getHasId(next), has(next))
+                .group("copper_weathering_inverted")
                 .save(output, modLoc("hc_copper_weathering_" + getItemId(next) + "_to_" + getItemId(current)));
 
             current = optionalNext.get();
@@ -1679,6 +1688,7 @@ public class NTRecipeProvider extends RecipeProvider {
             .requires(glazed)
             .results(terracotta)
             .unlockedBy(getHasId(glazed), has(glazed))
+            .group("terracotta_recovering")
             .save(output, modLoc("hc_recovering_" + getItemId(glazed)));
     }
 
