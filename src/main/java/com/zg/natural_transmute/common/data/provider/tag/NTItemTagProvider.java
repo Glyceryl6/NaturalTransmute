@@ -13,7 +13,6 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -65,21 +64,6 @@ public class NTItemTagProvider extends ItemTagsProvider {
         tag(NTItemTags.HARMONIOUS_CHANGE_FUEL_COAL).add(NTItems.HARMONIOUS_CHANGE_FUEL.get());
         tag(NTItemTags.HARMONIOUS_CHANGE_ETERNAL_FUEL).add(NTItems.ETERNAL_HARMONIOUS_CHANGE_LAVA_BUCKET.get());
 
-        tag(NTItemTags.PLANTS)
-            .addTag(Tags.Items.SEEDS)
-            .addTag(Tags.Items.CROPS)
-            .addTag(ItemTags.FLOWERS)
-            .addTag(ItemTags.LEAVES)
-            .addTag(ItemTags.SAPLINGS)
-            .add(Items.SEAGRASS, Items.SEA_PICKLE)
-            .add(Items.SHORT_GRASS, Items.TALL_GRASS, Items.FERN, Items.LARGE_FERN, Items.PINK_PETALS,
-                Items.DEAD_BUSH, Items.VINE, Items.GLOW_LICHEN, Items.HANGING_ROOTS, Items.PITCHER_PLANT,
-                Items.AZALEA, Items.AZALEA_LEAVES, Items.FLOWERING_AZALEA, Items.FLOWERING_AZALEA_LEAVES)
-            .add(Items.NETHER_WART, Items.NETHER_SPROUTS,
-                Items.WARPED_FUNGUS, Items.WARPED_ROOTS,
-                Items.CRIMSON_ROOTS, Items.CRIMSON_FUNGUS,
-                Items.WEEPING_VINES, Items.TWISTING_VINES);
-
         tag(NTItemTags.CORALS)
             .add(Items.TUBE_CORAL_BLOCK,
                 Items.BRAIN_CORAL_BLOCK,
@@ -99,5 +83,7 @@ public class NTItemTagProvider extends ItemTagsProvider {
                 Items.FIRE_CORAL_FAN,
                 Items.HORN_CORAL_FAN
             );
+
+        copy(NTBlockTags.BUSH, NTItemTags.BUSH);
     }
 }

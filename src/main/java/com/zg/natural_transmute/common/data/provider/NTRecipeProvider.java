@@ -1313,7 +1313,7 @@ public class NTRecipeProvider extends RecipeProvider {
 
         addCoralRecipes(output);
         addCopperWeathering(output);
-        addPlants(output);
+        addBush(output);
         addSculkCatalyst(output);
 
         harmoniousChangeSpecial(output, new HCUnglazedTerracottaRecipe());
@@ -1564,17 +1564,17 @@ public class NTRecipeProvider extends RecipeProvider {
         copperWeathering(output, Blocks.CUT_COPPER_SLAB);
     }
 
-    private static void addPlants(RecipeOutput output) {
+    private static void addBush(RecipeOutput output) {
         HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_SAVANNA.get())
-            .requires(NTItemTags.PLANTS)
+            .requires(NTItemTags.BUSH)
             .results(Items.WHEAT)
-            .unlockedBy("has_plants", has(NTItemTags.PLANTS))
-            .save(output, modLoc("hc_plants_to_wheat"));
+            .unlockedBy("has_bush", has(NTItemTags.BUSH))
+            .save(output, modLoc("hc_bush_to_wheat"));
         HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_DEEPSLATE.get())
-            .requires(NTItemTags.PLANTS)
+            .requires(NTItemTags.BUSH)
             .results(Items.GLOW_LICHEN)
-            .unlockedBy("has_plants", has(NTItemTags.PLANTS))
-            .save(output, modLoc("hc_plants_to_glow_lichen"));
+            .unlockedBy("has_bush", has(NTItemTags.BUSH))
+            .save(output, modLoc("hc_bush_to_glow_lichen"));
     }
 
     private static void addSculkCatalyst(RecipeOutput output) {
@@ -1583,6 +1583,10 @@ public class NTRecipeProvider extends RecipeProvider {
             .results(Items.SCULK_CATALYST)
             .unlockedBy("has_corals", has(NTItemTags.CORALS))
             .save(output, modLoc("hc_corals_to_sculk_catalyst"));
+    }
+
+    private static void addInfestedBlock(RecipeOutput output) {
+
     }
 
     // endregion

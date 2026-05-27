@@ -1,17 +1,30 @@
 package com.zg.natural_transmute.common.data.provider.tag;
 
+import com.google.common.collect.Lists;
 import com.zg.natural_transmute.NaturalTransmute;
 import com.zg.natural_transmute.common.data.tags.NTBlockTags;
 import com.zg.natural_transmute.registry.NTBlocks;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class NTBlockTagsProvider extends BlockTagsProvider {
@@ -23,29 +36,29 @@ public class NTBlockTagsProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
-                NTBlocks.GATHERING_PLATFORM.get(),
-                NTBlocks.HARMONIOUS_CHANGE_STOVE.get(),
-                NTBlocks.PAPYRUS.get(), NTBlocks.CORUNDUM.get(),
-                NTBlocks.HETEROGENEOUS_STONE_ORE.get(),
-                NTBlocks.DEEPSLATE_HETEROGENEOUS_STONE_ORE.get(),
-                NTBlocks.BLUE_NETHER_BRICKS.get(),
-                NTBlocks.ALGAL_END_STONE.get());
+            NTBlocks.GATHERING_PLATFORM.get(),
+            NTBlocks.HARMONIOUS_CHANGE_STOVE.get(),
+            NTBlocks.PAPYRUS.get(), NTBlocks.CORUNDUM.get(),
+            NTBlocks.HETEROGENEOUS_STONE_ORE.get(),
+            NTBlocks.DEEPSLATE_HETEROGENEOUS_STONE_ORE.get(),
+            NTBlocks.BLUE_NETHER_BRICKS.get(),
+            NTBlocks.ALGAL_END_STONE.get());
         this.tag(BlockTags.MINEABLE_WITH_AXE).add(NTBlocks.BLUE_TARO_VINE.get(),
-                NTBlocks.SIMULATED_RAMBLER.get());
+            NTBlocks.SIMULATED_RAMBLER.get());
         this.tag(BlockTags.NEEDS_STONE_TOOL).add(NTBlocks.TURQUOISE.get(),
-                NTBlocks.HETEROGENEOUS_STONE_ORE.get(),
-                NTBlocks.DEEPSLATE_HETEROGENEOUS_STONE_ORE.get());
+            NTBlocks.HETEROGENEOUS_STONE_ORE.get(),
+            NTBlocks.DEEPSLATE_HETEROGENEOUS_STONE_ORE.get());
         this.tag(BlockTags.NEEDS_IRON_TOOL).add(NTBlocks.CORUNDUM.get(),
-                NTBlocks.HARMONIOUS_CHANGE_STOVE.get());
+            NTBlocks.HARMONIOUS_CHANGE_STOVE.get());
         this.tag(BlockTags.DIRT).add(NTBlocks.CAVE_EARTH.get(),
-                NTBlocks.GRASSLAND_EARTH.get(), NTBlocks.OCEAN_EARTH.get());
+            NTBlocks.GRASSLAND_EARTH.get(), NTBlocks.OCEAN_EARTH.get());
         this.tag(BlockTags.CLIMBABLE).add(NTBlocks.BLUE_TARO_VINE.get());
         this.tag(BlockTags.LOGS).add(NTBlocks.PLANTAIN_STEM.get()).addTag(NTBlockTags.END_ALSOPHILA_LOGS);
         this.tag(BlockTags.PLANKS).add(NTBlocks.END_ALSOPHILA_PLANKS.get());
         this.tag(BlockTags.LEAVES).add(NTBlocks.END_ALSOPHILA_LEAVES.get(), NTBlocks.PLANTAIN_LEAVES.get());
         this.tag(BlockTags.SAPLINGS).add(NTBlocks.PLANTAIN_SAPLING.value(), NTBlocks.END_ALSOPHILA_SAPLING.get());
         this.tag(BlockTags.SWORD_EFFICIENT).add(NTBlocks.BLUEBERRY_BUSH.get(),
-                NTBlocks.BLUE_TARO_VINE.get(), NTBlocks.SIMULATED_RAMBLER.get());
+            NTBlocks.BLUE_TARO_VINE.get(), NTBlocks.SIMULATED_RAMBLER.get());
         this.tag(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH).add(NTBlocks.BLUE_TARO_VINE.get());
         this.tag(BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH).add(NTBlocks.BLUE_TARO_VINE.get());
         this.tag(BlockTags.REPLACEABLE_BY_TREES).add(NTBlocks.BLUE_TARO_VINE.get(), NTBlocks.SIMULATED_RAMBLER.get());
@@ -64,11 +77,22 @@ public class NTBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.WALLS).add(NTBlocks.BLUE_NETHER_BRICK_WALL.get());
         this.tag(NTBlockTags.PEAT_MOSS_PLACEABLE).add(Blocks.STONE, Blocks.DIRT, Blocks.MUD, Blocks.CLAY);
         this.tag(NTBlockTags.END_ALSOPHILA_LOGS).add(NTBlocks.STRIPPED_END_ALSOPHILA_WOOD.get(),
-                NTBlocks.STRIPPED_END_ALSOPHILA_LOG.get(), NTBlocks.END_ALSOPHILA_WOOD.get(), NTBlocks.END_ALSOPHILA_LOG.get());
+            NTBlocks.STRIPPED_END_ALSOPHILA_LOG.get(), NTBlocks.END_ALSOPHILA_WOOD.get(), NTBlocks.END_ALSOPHILA_LOG.get());
         this.tag(NTBlockTags.END_ALSOPHILA_SAPLING_PLACEABLE).add(Blocks.END_STONE, NTBlocks.ALGAL_END_STONE.get());
         NTBlocks.BLOCKS.getEntries().stream().map(DeferredHolder::get)
-                .filter(block -> block instanceof BaseCoralPlantTypeBlock).toList()
-                .forEach(block -> this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block));
+            .filter(block -> block instanceof BaseCoralPlantTypeBlock).toList()
+            .forEach(block -> this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block));
+
+        {
+            var bushes = BuiltInRegistries.BLOCK.entrySet().stream()
+                .filter(entry -> {
+                    var block = entry.getValue();
+                    return block instanceof BushBlock && block.asItem() != Items.AIR;
+                })
+                .map(Map.Entry::getKey)
+                .toList();
+            tag(NTBlockTags.BUSH).addAll(bushes);
+        }
     }
 
 }
