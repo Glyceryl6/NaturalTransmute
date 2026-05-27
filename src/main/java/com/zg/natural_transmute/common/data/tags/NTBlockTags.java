@@ -11,6 +11,8 @@ public class NTBlockTags {
     public static final TagKey<Block> END_ALSOPHILA_LOGS = create("end_alsophila_logs");
     public static final TagKey<Block> END_ALSOPHILA_SAPLING_PLACEABLE = create("end_alsophila_sapling_placeable");
     public static final TagKey<Block> BUSH = create("bush");
+    public static final TagKey<Block> INFESTED_HOST = create("infested_host");
+    public static final TagKey<Block> INFESTED_BLOCK = create("infested_block");
 
     private static TagKey<Block> create(String name) {
         return BlockTags.create(NaturalTransmute.prefix(name));

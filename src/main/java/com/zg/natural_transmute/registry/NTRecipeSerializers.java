@@ -20,10 +20,6 @@ public class NTRecipeSerializers {
             RECIPE_SERIALIZERS.register("hc_block_family_transfer", HCBlockFamilyTransferSerializer::new);
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCUnglazedTerracottaRecipe>> HC_UNGLAZED_TERRACOTTA_SERIALIZER =
             RECIPE_SERIALIZERS.register("hc_unglazed_terracotta", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCUnglazedTerracottaRecipe()));
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCCreateInfestedBlockRecipe>> HC_CREATE_INFESTED_BLOCK_SERIALIZER =
-            RECIPE_SERIALIZERS.register("hc_create_infested_block", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCCreateInfestedBlockRecipe()));
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCRecycleInfestedBlockRecipe>> HC_RECYCLE_INFESTED_BLOCK_SERIALIZER =
-            RECIPE_SERIALIZERS.register("hc_recycle_infested_block", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCRecycleInfestedBlockRecipe()));
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCRefrigeratedRocketRecipe>> HC_REFRIGERATED_ROCKET_SERIALIZER =
             RECIPE_SERIALIZERS.register("hc_refrigerated_rocket", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCRefrigeratedRocketRecipe()));
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCMelodiousDiscRecipe>> HC_MELODIOUS_DISC_SERIALIZER =

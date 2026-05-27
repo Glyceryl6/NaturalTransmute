@@ -7,6 +7,7 @@ import com.zg.natural_transmute.common.data.NTBlockFamilies;
 import com.zg.natural_transmute.common.data.recipes.GatheringRecipeBuilder;
 import com.zg.natural_transmute.common.data.recipes.HCBlockFamilyTransferRecipeBuilder;
 import com.zg.natural_transmute.common.data.recipes.HarmoniousChangeRecipeBuilder;
+import com.zg.natural_transmute.common.data.tags.NTBlockTags;
 import com.zg.natural_transmute.common.data.tags.NTItemTags;
 import com.zg.natural_transmute.common.items.WaterWax;
 import com.zg.natural_transmute.common.items.crafting.special.*;
@@ -14,6 +15,7 @@ import com.zg.natural_transmute.registry.NTBlocks;
 import com.zg.natural_transmute.registry.NTItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -1315,10 +1317,9 @@ public class NTRecipeProvider extends RecipeProvider {
         addCopperWeathering(output);
         addBush(output);
         addSculkCatalyst(output);
+        addInfestedBlock(output);
 
         harmoniousChangeSpecial(output, new HCUnglazedTerracottaRecipe());
-        harmoniousChangeSpecial(output, new HCCreateInfestedBlockRecipe());
-        harmoniousChangeSpecial(output, new HCRecycleInfestedBlockRecipe());
         harmoniousChangeSpecial(output, new HCRefrigeratedRocketRecipe());
         harmoniousChangeSpecial(output, new HCMelodiousDiscRecipe());
         harmoniousChangeSpecial(output, new HCLeaderBannerRecipe());
@@ -1586,7 +1587,25 @@ public class NTRecipeProvider extends RecipeProvider {
     }
 
     private static void addInfestedBlock(RecipeOutput output) {
-
+        var infestedHost = BuiltInRegistries.BLOCK.holders()
+            .filter(i -> i.is(NTBlockTags.INFESTED_HOST))
+            .map(Holder.Reference::value)
+            .toList();
+        for (var host : infestedHost) {
+            var infested = InfestedBlock.BLOCK_BY_HOST_BLOCK.get(host);
+            HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_MOUNTAINS.get(), NTItems.H_SNOWY_SLOPES.get(), NTItems.H_MEADOW.get(), NTItems.H_CHERRY_GROVE.get())
+                .requires(host)
+                .requires(Items.SPIDER_EYE)
+                .results(infested)
+                .unlockedBy(getHasId(host), has(host))
+                .save(output, modLoc("hc_create_infest_" + getItemId(host) + "_to_" + getItemId(infested)));
+            HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_MOUNTAINS.get(), NTItems.H_SNOWY_SLOPES.get(), NTItems.H_MEADOW.get(), NTItems.H_CHERRY_GROVE.get())
+                .requires(infested)
+                .results(Items.GRAVEL)
+                .results(NTItems.SILVERFISH_PUPA.get())
+                .unlockedBy(getHasId(infested), has(infested))
+                .save(output, modLoc("hc_recycle_infest_" + getItemId(infested)));
+        }
     }
 
     // endregion

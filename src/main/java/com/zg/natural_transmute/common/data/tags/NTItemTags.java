@@ -19,6 +19,8 @@ public class NTItemTags {
     public static final TagKey<Item> HARMONIOUS_CHANGE_FUEL_COAL = create("harmonious_change_fuel_coal");
     public static final TagKey<Item> CORALS = create("corals");
     public static final TagKey<Item> BUSH = create("bush");
+    public static final TagKey<Item> INFESTED_HOST = create("infested_host");
+    public static final TagKey<Item> INFESTED_BLOCK = create("infested_block");
 
     private static TagKey<Item> create(String name) {
         return ItemTags.create(NaturalTransmute.prefix(name));

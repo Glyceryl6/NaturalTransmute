@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.zg.natural_transmute.NaturalTransmute;
 import com.zg.natural_transmute.common.data.tags.NTBlockTags;
 import com.zg.natural_transmute.registry.NTBlocks;
+import com.zg.natural_transmute.utils.BlockPredicates;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
@@ -85,13 +86,24 @@ public class NTBlockTagsProvider extends BlockTagsProvider {
 
         {
             var bushes = BuiltInRegistries.BLOCK.entrySet().stream()
-                .filter(entry -> {
-                    var block = entry.getValue();
-                    return block instanceof BushBlock && block.asItem() != Items.AIR;
-                })
+                .filter(entry -> BlockPredicates.IS_BUSH_BLOCK.test(entry.getValue()))
                 .map(Map.Entry::getKey)
                 .toList();
             tag(NTBlockTags.BUSH).addAll(bushes);
+        }
+
+        {
+            var infestedHost = BuiltInRegistries.BLOCK.entrySet().stream()
+                .filter(entry -> BlockPredicates.IS_INFESTED_HOST.test(entry.getValue()))
+                .map(Map.Entry::getKey)
+                .toList();
+            tag(NTBlockTags.INFESTED_HOST).addAll(infestedHost);
+
+            var infestedBlock = BuiltInRegistries.BLOCK.entrySet().stream()
+                .filter(entry -> BlockPredicates.IS_INFESTED_BLOCK.test(entry.getValue()))
+                .map(Map.Entry::getKey)
+                .toList();
+            tag(NTBlockTags.INFESTED_BLOCK).addAll(infestedBlock);
         }
     }
 

@@ -85,5 +85,7 @@ public class NTItemTagProvider extends ItemTagsProvider {
             );
 
         copy(NTBlockTags.BUSH, NTItemTags.BUSH);
+        copy(NTBlockTags.INFESTED_HOST, NTItemTags.INFESTED_HOST);
+        copy(NTBlockTags.INFESTED_BLOCK, NTItemTags.INFESTED_BLOCK);
     }
 }
