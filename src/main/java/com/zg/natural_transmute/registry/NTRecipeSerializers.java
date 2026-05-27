@@ -18,8 +18,6 @@ public class NTRecipeSerializers {
             RECIPE_SERIALIZERS.register("harmonious_change", HarmoniousChangeSerializer::new);
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCBlockFamilyTransferRecipe>> HC_BLOCK_FAMILY_TRANSFER_SERIALIZER =
             RECIPE_SERIALIZERS.register("hc_block_family_transfer", HCBlockFamilyTransferSerializer::new);
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCUnglazedTerracottaRecipe>> HC_UNGLAZED_TERRACOTTA_SERIALIZER =
-            RECIPE_SERIALIZERS.register("hc_unglazed_terracotta", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCUnglazedTerracottaRecipe()));
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCRefrigeratedRocketRecipe>> HC_REFRIGERATED_ROCKET_SERIALIZER =
             RECIPE_SERIALIZERS.register("hc_refrigerated_rocket", () -> new HCBiomeCatalystOnlySerializer<>(ingredient -> new HCRefrigeratedRocketRecipe()));
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<HCMelodiousDiscRecipe>> HC_MELODIOUS_DISC_SERIALIZER =

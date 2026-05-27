@@ -1318,8 +1318,8 @@ public class NTRecipeProvider extends RecipeProvider {
         addBush(output);
         addSculkCatalyst(output);
         addInfestedBlock(output);
+        addTerracottaRecovering(output);
 
-        harmoniousChangeSpecial(output, new HCUnglazedTerracottaRecipe());
         harmoniousChangeSpecial(output, new HCRefrigeratedRocketRecipe());
         harmoniousChangeSpecial(output, new HCMelodiousDiscRecipe());
         harmoniousChangeSpecial(output, new HCLeaderBannerRecipe());
@@ -1608,6 +1608,25 @@ public class NTRecipeProvider extends RecipeProvider {
         }
     }
 
+    private static void addTerracottaRecovering(RecipeOutput output) {
+        terracottaRecovering(output, Blocks.BLACK_TERRACOTTA, Blocks.BLACK_GLAZED_TERRACOTTA);
+        terracottaRecovering(output, Blocks.BLUE_TERRACOTTA, Blocks.BLUE_GLAZED_TERRACOTTA);
+        terracottaRecovering(output, Blocks.BROWN_TERRACOTTA, Blocks.BROWN_GLAZED_TERRACOTTA);
+        terracottaRecovering(output, Blocks.CYAN_TERRACOTTA, Blocks.CYAN_GLAZED_TERRACOTTA);
+        terracottaRecovering(output, Blocks.GRAY_TERRACOTTA, Blocks.GRAY_GLAZED_TERRACOTTA);
+        terracottaRecovering(output, Blocks.GREEN_TERRACOTTA, Blocks.GREEN_GLAZED_TERRACOTTA);
+        terracottaRecovering(output, Blocks.LIGHT_BLUE_TERRACOTTA, Blocks.LIGHT_BLUE_GLAZED_TERRACOTTA);
+        terracottaRecovering(output, Blocks.LIGHT_GRAY_TERRACOTTA, Blocks.LIGHT_GRAY_GLAZED_TERRACOTTA);
+        terracottaRecovering(output, Blocks.LIME_TERRACOTTA, Blocks.LIME_GLAZED_TERRACOTTA);
+        terracottaRecovering(output, Blocks.MAGENTA_TERRACOTTA, Blocks.MAGENTA_GLAZED_TERRACOTTA);
+        terracottaRecovering(output, Blocks.ORANGE_TERRACOTTA, Blocks.ORANGE_GLAZED_TERRACOTTA);
+        terracottaRecovering(output, Blocks.PINK_TERRACOTTA, Blocks.PINK_GLAZED_TERRACOTTA);
+        terracottaRecovering(output, Blocks.PURPLE_TERRACOTTA, Blocks.PURPLE_GLAZED_TERRACOTTA);
+        terracottaRecovering(output, Blocks.RED_TERRACOTTA, Blocks.RED_GLAZED_TERRACOTTA);
+        terracottaRecovering(output, Blocks.WHITE_TERRACOTTA, Blocks.WHITE_GLAZED_TERRACOTTA);
+        terracottaRecovering(output, Blocks.YELLOW_TERRACOTTA, Blocks.YELLOW_GLAZED_TERRACOTTA);
+    }
+
     // endregion
 
 
@@ -1653,7 +1672,14 @@ public class NTRecipeProvider extends RecipeProvider {
             current = optionalNext.get();
             optionalNext = WeatheringCopper.getNext(current);
         }
+    }
 
+    protected static void terracottaRecovering(RecipeOutput output, ItemLike glazed, ItemLike terracotta) {
+        HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_DESERT.get(), NTItems.H_BADLANDS.get())
+            .requires(glazed)
+            .results(terracotta)
+            .unlockedBy(getHasId(glazed), has(glazed))
+            .save(output, modLoc("hc_recovering_" + getItemId(glazed)));
     }
 
     // endregion
