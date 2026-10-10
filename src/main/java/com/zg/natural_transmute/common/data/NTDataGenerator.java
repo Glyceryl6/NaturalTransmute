@@ -41,7 +41,7 @@ public class NTDataGenerator {
         generator.addProvider(event.includeServer(), new NTLanguageProvider(output, "zh_cn"));
         generator.addProvider(event.includeServer(), new NTLootTableProvider(output, provider));
         generator.addProvider(event.includeServer(), new NTDataMapProvider(output, provider));
-        generator.addProvider(event.includeServer(), new NTRecipeProvider(output, provider));
+        generator.addProvider(event.includeServer(), new NTRecipeProvider(output, registryProvider));
         generator.getVanillaPack(event.includeServer()).addProvider(NTModelProvider::new);
     }
 

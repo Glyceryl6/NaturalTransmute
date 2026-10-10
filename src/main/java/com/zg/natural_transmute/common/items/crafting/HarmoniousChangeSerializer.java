@@ -4,117 +4,95 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
+import net.neoforged.neoforge.common.util.NeoForgeExtraCodecs;
 
-import java.util.AbstractList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public class HarmoniousChangeSerializer implements RecipeSerializer<HarmoniousChangeRecipe> {
+public class HarmoniousChangeSerializer<T extends HarmoniousChangeRecipe> implements RecipeSerializer<T> {
 
-    private static final MapCodec<HarmoniousChangeRecipe> CODEC =
-            RecordCodecBuilder.mapCodec(instance -> instance.group(
-                    Ingredient.CODEC.listOf(1, 3).fieldOf("ingredients")
-                            .flatXmap(list -> {
-                                Ingredient[] ingredients = list.toArray(Ingredient[]::new);
-                                return DataResult.success(NonNullList.of(Ingredient.EMPTY, ingredients));
-                                }, DataResult::success)
-                            .forGetter(HarmoniousChangeRecipe::getIngredients),
-                    ItemStack.STRICT_CODEC.listOf().fieldOf("excepts")
-                            .flatXmap(list -> {
-                                ItemStack[] itemStacks = list.toArray(ItemStack[]::new);
-                                return DataResult.success(NonNullList.of(ItemStack.EMPTY, itemStacks));
-                                }, DataResult::success)
-                            .forGetter(HarmoniousChangeRecipe::getExcepts),
-                    ItemStack.STRICT_CODEC.listOf(1, 3).fieldOf("results")
-                            .flatXmap(list -> {
-                                ItemStack[] itemStacks = list.toArray(ItemStack[]::new);
-                                return DataResult.success(NonNullList.of(ItemStack.EMPTY, itemStacks));
-                            }, DataResult::success)
-                            .forGetter(HarmoniousChangeRecipe::getResults),
-                    Ingredient.CODEC_NONEMPTY.fieldOf("biome_catalysts").forGetter(HarmoniousChangeRecipe::getBiomeCatalysts),
-                    Codec.INT.fieldOf("time").forGetter(HarmoniousChangeRecipe::getTime),
-                    Codec.BOOL.fieldOf("consume").forGetter(HarmoniousChangeRecipe::isConsume)
-            ).apply(instance, HarmoniousChangeRecipe::new));
+    private static final Codec<List<Optional<SizedIngredient>>> INPUTS_CODEC = slotsCodec(
+        ExtraCodecs.optionalEmptyMap(SizedIngredient.FLAT_CODEC),
+        HarmoniousChangeRecipe.INPUT_SLOTS, Optional.empty(), Optional::isEmpty);
+    private static final Codec<List<ItemStack>> OUTPUTS_CODEC = slotsCodec(
+        ExtraCodecs.optionalEmptyMap(ItemStack.STRICT_CODEC).xmap(
+            stack -> stack.orElse(ItemStack.EMPTY),
+            stack -> stack.isEmpty() ? Optional.empty() : Optional.of(stack)),
+        HarmoniousChangeRecipe.OUTPUT_SLOTS, ItemStack.EMPTY, ItemStack::isEmpty);
+    private static final StreamCodec<RegistryFriendlyByteBuf, List<Optional<SizedIngredient>>> INPUTS_STREAM_CODEC =
+        ByteBufCodecs.optional(SizedIngredient.STREAM_CODEC).apply(ByteBufCodecs.list(HarmoniousChangeRecipe.INPUT_SLOTS));
+    private static final StreamCodec<RegistryFriendlyByteBuf, List<ItemStack>> OUTPUTS_STREAM_CODEC =
+        ItemStack.OPTIONAL_STREAM_CODEC.apply(ByteBufCodecs.list(HarmoniousChangeRecipe.OUTPUT_SLOTS));
+
+    private final MapCodec<T> codec;
+    private final StreamCodec<RegistryFriendlyByteBuf, T> streamCodec;
+
+    public HarmoniousChangeSerializer(Factory<T> factory) {
+        this.codec = RecordCodecBuilder.mapCodec(instance -> instance.group(
+            INPUTS_CODEC.fieldOf("inputs").forGetter(HarmoniousChangeRecipe::getInputs),
+            Ingredient.CODEC_NONEMPTY.fieldOf("biome_catalyst").forGetter(HarmoniousChangeRecipe::getBiomeCatalyst),
+            OUTPUTS_CODEC.fieldOf("outputs").forGetter(HarmoniousChangeRecipe::getOutputs),
+            NeoForgeExtraCodecs.optionalFieldAlwaysWrite(ExtraCodecs.POSITIVE_INT, "time",
+                HarmoniousChangeRecipe.DEFAULT_TIME).forGetter(HarmoniousChangeRecipe::getTime),
+            NeoForgeExtraCodecs.optionalFieldAlwaysWrite(Codec.BOOL, "consume",
+                Boolean.TRUE).forGetter(HarmoniousChangeRecipe::isConsume)
+        ).apply(instance, factory::create));
+        this.streamCodec = StreamCodec.composite(
+            INPUTS_STREAM_CODEC, HarmoniousChangeRecipe::getInputs,
+            Ingredient.CONTENTS_STREAM_CODEC, HarmoniousChangeRecipe::getBiomeCatalyst,
+            OUTPUTS_STREAM_CODEC, HarmoniousChangeRecipe::getOutputs,
+            ByteBufCodecs.VAR_INT, HarmoniousChangeRecipe::getTime,
+            ByteBufCodecs.BOOL, HarmoniousChangeRecipe::isConsume,
+            factory::create);
+    }
+
+    /**
+     * Ordered slots serialized as a list in which {@code {}} marks an empty slot.
+     * Trailing empty slots are omitted when encoding and padded back when decoding.
+     */
+    private static <E> Codec<List<E>> slotsCodec(Codec<E> slotCodec, int size, E empty, Predicate<E> isEmpty) {
+        return slotCodec.listOf(1, size).validate(slots -> slots.stream().allMatch(isEmpty)
+            ? DataResult.error(() -> "At least one slot must not be empty")
+            : DataResult.success(slots)).xmap(slots -> {
+            List<E> padded = new ArrayList<>(slots);
+            while (padded.size() < size) {
+                padded.add(empty);
+            }
+
+            return List.copyOf(padded);
+        }, slots -> {
+            int end = slots.size();
+            while (end > 0 && isEmpty.test(slots.get(end - 1))) {
+                end--;
+            }
+
+            return slots.subList(0, end);
+        });
+    }
 
     @Override
-    public MapCodec<HarmoniousChangeRecipe> codec() {
-        return CODEC;
+    public MapCodec<T> codec() {
+        return this.codec;
     }
 
     @Override
-    public StreamCodec<RegistryFriendlyByteBuf, HarmoniousChangeRecipe> streamCodec() {
-        return StreamCodec.of(this::toNetwork, this::fromNetwork);
+    public StreamCodec<RegistryFriendlyByteBuf, T> streamCodec() {
+        return this.streamCodec;
     }
 
-    private HarmoniousChangeRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
-        int ingredientsSize = buffer.readVarInt();
-        int exceptsSize = buffer.readVarInt();
-        int resultsSize = buffer.readVarInt();
+    public interface Factory<T extends HarmoniousChangeRecipe> {
+        T create(List<Optional<SizedIngredient>> inputs, Ingredient biomeCatalyst,
+                 List<ItemStack> outputs, int time, boolean consume);
 
-        NonNullList<Ingredient> ingredients = NonNullList.withSize(ingredientsSize, Ingredient.EMPTY);
-        NonNullList<ItemStack> excepts = NonNullList.withSize(exceptsSize, ItemStack.EMPTY);
-        NonNullList<ItemStack> results = NonNullList.withSize(resultsSize, ItemStack.EMPTY);
-
-        for (int i = 0; i < ingredientsSize; i++) {
-            try {
-                Ingredient decoded = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
-                ingredients.set(i, decoded.isEmpty() ? Ingredient.EMPTY : decoded);
-            } catch (Exception e) {
-                ingredients.set(i, Ingredient.EMPTY);
-            }
-        }
-
-        for (int i = 0; i < exceptsSize; i++) {
-            try {
-                ItemStack decoded = ItemStack.STREAM_CODEC.decode(buffer);
-                excepts.set(i, decoded.isEmpty() ? ItemStack.EMPTY : decoded);
-            } catch (Exception e) {
-                excepts.set(i, ItemStack.EMPTY);
-            }
-        }
-
-        for (int i = 0; i < resultsSize; i++) {
-            try {
-                ItemStack decoded = ItemStack.STREAM_CODEC.decode(buffer);
-                results.set(i, decoded.isEmpty() ? ItemStack.EMPTY : decoded);
-            } catch (Exception e) {
-                results.set(i, ItemStack.EMPTY);
-            }
-        }
-
-        Ingredient biome_catalyst = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
-        if (biome_catalyst.isEmpty()) {
-            biome_catalyst = Ingredient.EMPTY;
-        }
-
-        return new HarmoniousChangeRecipe(ingredients, excepts, results,
-                biome_catalyst, buffer.readVarInt(), buffer.readBoolean());
     }
-
-
-    private void toNetwork(RegistryFriendlyByteBuf buffer, HarmoniousChangeRecipe recipe) {
-        buffer.writeVarInt(recipe.getIngredients().size());
-        buffer.writeVarInt(recipe.getExcepts().size());
-        buffer.writeVarInt(recipe.getResults().size());
-        for (Ingredient ingredient : recipe.getIngredients()) {
-            Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, ingredient);
-        }
-
-        for (ItemStack stack : recipe.getExcepts()) {
-            ItemStack.STREAM_CODEC.encode(buffer, stack);
-        }
-
-        for (ItemStack stack : recipe.getResults()) {
-            ItemStack.STREAM_CODEC.encode(buffer, stack);
-        }
-
-        Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.getBiomeCatalysts());
-        buffer.writeVarInt(recipe.getTime());
-        buffer.writeBoolean(recipe.isConsume());
-    }
-
 }

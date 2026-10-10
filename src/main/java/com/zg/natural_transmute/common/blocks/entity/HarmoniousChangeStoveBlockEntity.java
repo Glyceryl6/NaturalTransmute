@@ -6,7 +6,6 @@ import com.zg.natural_transmute.common.items.crafting.HarmoniousChangeRecipeInpu
 import com.zg.natural_transmute.registry.NTBlockEntityTypes;
 import com.zg.natural_transmute.registry.NTRecipes;
 import com.zg.natural_transmute.utils.HarmoniousChangeFuelUtils;
-import com.zg.natural_transmute.utils.NTCommonUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -16,6 +15,7 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
+import net.minecraft.world.Containers;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
@@ -70,20 +70,26 @@ public class HarmoniousChangeStoveBlockEntity extends SimpleContainerBlockEntity
         changed |= blockEntity.tryConsumeFuel();
 
         if (blockEntity.hasInput()) {
-            HarmoniousChangeRecipe recipe = blockEntity.checkHarmoniousChangeRecipe();
-            if (recipe != null && blockEntity.canWork(recipe)) {    // Tick working
-                if (!blockEntity.hasFuelRemain()) {
+            HarmoniousChangeRecipeInput input = blockEntity.getRecipeInput();
+            HarmoniousChangeRecipe recipe = blockEntity.checkHarmoniousChangeRecipe(input);
+            if (recipe != null) {
+                List<ItemStack> results = recipe.assembleOutputs(input, level.registryAccess());
+                if (blockEntity.canAcceptResult(results)) {
+                    if (!blockEntity.hasFuelRemain()) {
+                        shouldReset = true;
+                    }
+
+                    var isRecipeDone = blockEntity.processRecipe(recipe, results);
+                    if (isRecipeDone) {
+                        blockEntity.currentState = IDLING_STATE;
+                        blockEntity.fuelRemain -= 1;
+                    } else {
+                        blockEntity.currentState = WORKING_STATE;
+                    }
+                    changed = true;
+                } else {
                     shouldReset = true;
                 }
-
-                var isRecipeDone = blockEntity.processRecipe(recipe);
-                if (isRecipeDone) {
-                    blockEntity.currentState = IDLING_STATE;
-                    blockEntity.fuelRemain -= 1;
-                } else {
-                    blockEntity.currentState = WORKING_STATE;
-                }
-                changed = true;
             } else {
                 shouldReset = true;
             }
@@ -121,7 +127,8 @@ public class HarmoniousChangeStoveBlockEntity extends SimpleContainerBlockEntity
                 var fuelToConsume = MAX_FUEL_DURATION - fuelRemain;
                 var bucketDurabilityRemain = fuel.getMaxDamage() - fuel.getDamageValue();
                 var actualConsume = Math.min(fuelToConsume, bucketDurabilityRemain);
-                fuel.hurtAndBreak(actualConsume, (ServerLevel) level, null, item -> {});
+                fuel.hurtAndBreak(actualConsume, (ServerLevel) level, null, item -> {
+                });
                 if (fuel.isEmpty()) {
                     ItemStack newItem = fuel.transmuteCopyIgnoreEmpty(Items.BUCKET, 1);
                     if (newItem.isDamageableItem()) {
@@ -143,14 +150,11 @@ public class HarmoniousChangeStoveBlockEntity extends SimpleContainerBlockEntity
     /**
      * Tick process recipe.
      *
-     * @param recipe Recipe.
+     * @param recipe  Recipe.
+     * @param results Stacks assembled by the recipe for the three output slots.
      * @return true for the recipe process was done, false for still processing.
      */
-    private boolean processRecipe(HarmoniousChangeRecipe recipe) {
-        if (this.level == null) {
-            return false;
-        }
-
+    private boolean processRecipe(HarmoniousChangeRecipe recipe, List<ItemStack> results) {
         ++this.time;
         this.totalTime = recipe.getTime();
         if (this.time < this.totalTime) {
@@ -158,53 +162,66 @@ public class HarmoniousChangeStoveBlockEntity extends SimpleContainerBlockEntity
         }
 
         this.time = 0;
-        ItemStack resultStack = recipe.assemble(this.getRecipeInput(), this.level.registryAccess());
-        ItemStack outStack = this.handler.getStackInSlot(5);
-        ItemStack extraStack = this.handler.getStackInSlot(6);
-        ItemStack resultExtraStack = recipe.getResults().size() > 1 ?
-                recipe.getResults().get(1) : ItemStack.EMPTY;
-        if (outStack.isEmpty()) {
-            this.handler.setStackInSlot(5, resultStack.copy());
-        } else if (ItemStack.isSameItemSameComponents(outStack, resultStack)) {
-            outStack.grow(resultStack.getCount());
-        }
+        for (int i = 0; i < HarmoniousChangeRecipe.OUTPUT_SLOTS; i++) {
+            ItemStack resultStack = results.get(i);
+            if (resultStack.isEmpty()) {
+                continue;
+            }
 
-        if (!resultExtraStack.isEmpty()) {
-            if (extraStack.isEmpty()) {
-                this.handler.setStackInSlot(6, resultExtraStack.copy());
-            } else if (ItemStack.isSameItemSameComponents(extraStack, resultExtraStack)) {
-                extraStack.grow(resultExtraStack.getCount());
+            ItemStack outStack = this.handler.getStackInSlot(OUTPUT_A_SLOT + i);
+            if (outStack.isEmpty()) {
+                this.handler.setStackInSlot(OUTPUT_A_SLOT + i, resultStack);
+            } else {
+                outStack.grow(resultStack.getCount());
             }
         }
 
         if (recipe.isConsume()) {
-            NTCommonUtils.consumeIngredients(this);
+            this.consumeInputs(recipe);
         }
 
         return true;
     }
 
+    private void consumeInputs(HarmoniousChangeRecipe recipe) {
+        for (int i = 0; i < HarmoniousChangeRecipe.INPUT_SLOTS; i++) {
+            int slot = INPUT_A_SLOT + i;
+            recipe.getInputs().get(i).ifPresent(ingredient -> {
+                ItemStack stack = this.getItem(slot);
+                ItemStack remainingItem = stack.hasCraftingRemainingItem() ? stack.getCraftingRemainingItem() : ItemStack.EMPTY;
+                stack.shrink(ingredient.count());
+                if (!remainingItem.isEmpty()) {
+                    remainingItem = remainingItem.copyWithCount(remainingItem.getCount() * ingredient.count());
+                    if (stack.isEmpty()) {
+                        this.handler.setStackInSlot(slot, remainingItem);
+                    } else if (this.level != null) {
+                        float x = this.worldPosition.getX() + 0.5F;
+                        float y = this.worldPosition.getY() + 1.2F;
+                        float z = this.worldPosition.getZ() + 0.5F;
+                        Containers.dropItemStack(this.level, x, y, z, remainingItem);
+                    }
+                }
+            });
+        }
+    }
+
     @Nullable
-    private HarmoniousChangeRecipe checkHarmoniousChangeRecipe() {
-        if (this.level != null) {
-            RecipeHolder<? extends HarmoniousChangeRecipe> holder = this.quickCheck.getRecipeFor(this.getRecipeInput(), this.level).orElse(null);
-            return holder != null ? holder.value() : null;
+    private HarmoniousChangeRecipe checkHarmoniousChangeRecipe(HarmoniousChangeRecipeInput input) {
+        if (this.level == null) {
+            return null;
         }
 
-        return null;
+        if (input.biomeCatalyst().isEmpty() || input.inputs().stream().allMatch(ItemStack::isEmpty)) {
+            return null;
+        }
+
+        RecipeHolder<? extends HarmoniousChangeRecipe> holder = this.quickCheck.getRecipeFor(input, this.level).orElse(null);
+        return holder != null ? holder.value() : null;
     }
 
     private HarmoniousChangeRecipeInput getRecipeInput() {
-        ItemStack input1 = this.getItem(INPUT_A_SLOT);
-        ItemStack input2 = this.getItem(INPUT_B_SLOT);
-        ItemStack input3 = this.getItem(INPUT_C_SLOT);
-        ItemStack biome_catalyst = this.getItem(BIOME_CATALYST_SLOT);
-
-        List<ItemStack> ingredients = java.util.stream.Stream.of(input1, input2, input3)
-                .filter(stack -> !stack.isEmpty())
-                .collect(java.util.stream.Collectors.toList());
-
-        return new HarmoniousChangeRecipeInput(ingredients, biome_catalyst);
+        List<ItemStack> inputs = List.of(this.getItem(INPUT_A_SLOT), this.getItem(INPUT_B_SLOT), this.getItem(INPUT_C_SLOT));
+        return new HarmoniousChangeRecipeInput(inputs, this.getItem(BIOME_CATALYST_SLOT));
     }
 
     private boolean hasFuelRemain() {
@@ -212,7 +229,7 @@ public class HarmoniousChangeStoveBlockEntity extends SimpleContainerBlockEntity
     }
 
     private boolean hasInput() {
-        for (int i = 0; i < 4; ++i) {
+        for (int i = INPUT_A_SLOT; i <= INPUT_C_SLOT; ++i) {
             if (!this.handler.getStackInSlot(i).isEmpty()) {
                 return true;
             }
@@ -221,55 +238,36 @@ public class HarmoniousChangeStoveBlockEntity extends SimpleContainerBlockEntity
         return false;
     }
 
-    protected boolean canWork(HarmoniousChangeRecipe recipe) {
-        if (this.level != null && recipe.matches(this.getRecipeInput(), this.level)) {
-            boolean checkExtra;
-            ItemStack resultStack = recipe.getResults().getFirst();
+    /**
+     * Will all results be put into output slots?
+     *
+     * @param results Stacks assembled by the recipe, each one only goes into its own output slot.
+     */
+    private boolean canAcceptResult(List<ItemStack> results) {
+        for (int i = 0; i < HarmoniousChangeRecipe.OUTPUT_SLOTS; i++) {
+            ItemStack resultStack = results.get(i);
             if (resultStack.isEmpty()) {
-                return false;
-            } else {
-                ItemStack outStack = this.handler.getStackInSlot(5);
-                if (outStack.isEmpty()) {
-                    checkExtra = true;
-                } else if (!ItemStack.isSameItemSameComponents(outStack, resultStack)) {
-                    return false;
-                } else {
-                    checkExtra = outStack.getCount() + resultStack.getCount() <= resultStack.getMaxStackSize();
-                }
-
-                ItemStack resultExtraStack1 = recipe.getResults().size() > 1 ? recipe.getResults().get(1) : ItemStack.EMPTY;
-                if (resultExtraStack1.isEmpty()) {
-                    return checkExtra;
-                } else {
-                    ItemStack extraStack1 = this.handler.getStackInSlot(6);
-                    if (extraStack1.isEmpty()) {
-                        checkExtra = true;
-                    } else if (!ItemStack.isSameItemSameComponents(extraStack1, resultExtraStack1)) {
-                        return false;
-                    } else {
-                        checkExtra = extraStack1.getCount() + resultExtraStack1.getCount() <= resultExtraStack1.getMaxStackSize();
-                    }
-
-                    ItemStack resultExtraStack2 = recipe.getResults().size() > 2 ? recipe.getResults().get(2) : ItemStack.EMPTY;
-                    if (resultExtraStack2.isEmpty()) {
-                        return checkExtra;
-                    } else if (checkExtra) {
-                        ItemStack extraStack2 = this.handler.getStackInSlot(7);
-                        if (extraStack2.isEmpty()) {
-                            return true;
-                        } else if (!ItemStack.isSameItemSameComponents(extraStack2, resultExtraStack2)) {
-                            return false;
-                        } else {
-                            return extraStack2.getCount() + resultExtraStack2.getCount() <= resultExtraStack2.getMaxStackSize();
-                        }
-                    } else {
-                        return false;
-                    }
-                }
+                continue;
             }
-        } else {
-            return false;
+
+            int slot = OUTPUT_A_SLOT + i;
+            ItemStack outStack = this.handler.getStackInSlot(slot);
+            if (!outStack.isEmpty()
+                &&
+                (
+                    !ItemStack.isSameItemSameComponents(outStack, resultStack)
+                        ||
+                        (
+                            (outStack.getCount() + resultStack.getCount())
+                                > Math.min(this.handler.getSlotLimit(slot), resultStack.getMaxStackSize())
+                        )
+                )
+            ) {
+                return false;
+            }
         }
+
+        return true;
     }
 
     @Override

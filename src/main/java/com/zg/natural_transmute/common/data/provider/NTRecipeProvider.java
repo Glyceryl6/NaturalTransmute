@@ -1,29 +1,33 @@
 package com.zg.natural_transmute.common.data.provider;
 
 import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
 import com.zg.natural_transmute.NaturalTransmute;
 import com.zg.natural_transmute.common.blocks.ActivatedCoralWallFan;
 import com.zg.natural_transmute.common.data.NTBlockFamilies;
 import com.zg.natural_transmute.common.data.recipes.GatheringRecipeBuilder;
-import com.zg.natural_transmute.common.data.recipes.HCBlockFamilyTransferRecipeBuilder;
 import com.zg.natural_transmute.common.data.recipes.HarmoniousChangeRecipeBuilder;
 import com.zg.natural_transmute.common.data.tags.NTItemTags;
 import com.zg.natural_transmute.common.items.WaterWax;
-import com.zg.natural_transmute.common.items.crafting.special.*;
+import com.zg.natural_transmute.common.items.crafting.special.HCRefrigeratedRocketRecipe;
 import com.zg.natural_transmute.registry.NTBlocks;
+import com.zg.natural_transmute.registry.NTEnchantments;
 import com.zg.natural_transmute.registry.NTItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.*;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
+import net.minecraft.world.entity.raid.Raid;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.*;
@@ -39,8 +43,10 @@ import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.conditions.WithConditions;
 import net.neoforged.neoforge.common.crafting.BlockTagIngredient;
 import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
+import net.neoforged.neoforge.common.crafting.DifferenceIngredient;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -53,6 +59,7 @@ import java.util.stream.Stream;
 @ParametersAreNonnullByDefault
 public class NTRecipeProvider extends RecipeProvider {
 
+    private static final Logger LOGGER = LogUtils.getLogger();
     private static final List<BlockFamily> WOOD_BLOCK_FAMILIES = List.of(
             BlockFamilies.ACACIA_PLANKS, BlockFamilies.CHERRY_PLANKS,
             BlockFamilies.BIRCH_PLANKS, BlockFamilies.CRIMSON_PLANKS,
@@ -60,12 +67,14 @@ public class NTRecipeProvider extends RecipeProvider {
             BlockFamilies.DARK_OAK_PLANKS, BlockFamilies.SPRUCE_PLANKS,
             BlockFamilies.WARPED_PLANKS, BlockFamilies.MANGROVE_PLANKS);
 
+    private final Set<String> blockFamilyRecipes = new HashSet<>();
+
     public NTRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries);
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput recipeOutput) {
+    protected void buildRecipes(RecipeOutput recipeOutput, HolderLookup.Provider registries) {
         this.buildArmorRecipes(recipeOutput, NTItems.DRAGONCAST_HELMET.get(), NTItems.DRAGONCAST_CHESTPLATE.get(),
                 NTItems.DRAGONCAST_LEGGINGS.get(), NTItems.DRAGONCAST_BOOTS.get(), NTItems.DRAGONCAST_STEEL_INGOT.get());
         this.buildBaseToolRecipes(recipeOutput, NTItems.SCULK_BONE_SWORD.get(), NTItems.SCULK_BONE_PICKAXE.get(), NTItems.SCULK_BONE_SHOVEL.get(),
@@ -415,13 +424,12 @@ public class NTRecipeProvider extends RecipeProvider {
 
         AtomicInteger hForestIndex = new AtomicInteger(0);
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_FOREST.get())
-                .requires(Ingredient.fromValues(Stream.of(new Ingredient.ItemValue(new ItemStack(Items.DEAD_BUSH)),
-                        new Ingredient.TagValue(ItemTags.SAPLINGS)))).excepts(Items.OAK_SAPLING)
+                .requires(except(saplingsOrDeadBush(), Items.OAK_SAPLING))
                 .results(Items.OAK_SAPLING), hForestIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_FOREST.get())
                 .requires(Items.OAK_SAPLING, 3).results(Items.BIRCH_SAPLING, 3), hForestIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_FOREST.get())
-                .requires(ItemTags.LEAVES).excepts(Items.OAK_LEAVES)
+                .requires(except(ItemTags.LEAVES, Items.OAK_LEAVES))
                 .results(Items.OAK_LEAVES), hForestIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_FOREST.get())
                 .requires(Items.OAK_LEAVES).requires(Items.BIRCH_SAPLING)
@@ -443,8 +451,7 @@ public class NTRecipeProvider extends RecipeProvider {
 
         AtomicInteger hFlowerForestIndex = new AtomicInteger(0);
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_FLOWER_FOREST.get())
-                .requires(Ingredient.fromValues(Stream.of(new Ingredient.ItemValue(new ItemStack(Items.DEAD_BUSH)),
-                        new Ingredient.TagValue(ItemTags.SAPLINGS)))).excepts(Items.OAK_SAPLING)
+                .requires(except(saplingsOrDeadBush(), Items.OAK_SAPLING))
                 .results(Items.OAK_SAPLING), hFlowerForestIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_FLOWER_FOREST.get())
                 .requires(Items.OAK_SAPLING).results(Items.BIRCH_SAPLING), hFlowerForestIndex.incrementAndGet());
@@ -453,7 +460,7 @@ public class NTRecipeProvider extends RecipeProvider {
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_FLOWER_FOREST.get())
                 .requires(Items.OAK_LEAVES).results(Items.BIRCH_LEAVES), hFlowerForestIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_FLOWER_FOREST.get())
-                .requires(ItemTags.LEAVES).excepts(Items.OAK_LEAVES)
+                .requires(except(ItemTags.LEAVES, Items.OAK_LEAVES))
                 .results(Items.OAK_LEAVES), hFlowerForestIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_FLOWER_FOREST.get())
                 .requires(Items.DIRT).results(Items.GRASS_BLOCK), hFlowerForestIndex.incrementAndGet());
@@ -515,11 +522,10 @@ public class NTRecipeProvider extends RecipeProvider {
 
         AtomicInteger hDarkForestIndex = new AtomicInteger(0);
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_DARK_FOREST.get())
-                .requires(Ingredient.fromValues(Stream.of(new Ingredient.ItemValue(new ItemStack(Items.DEAD_BUSH)),
-                        new Ingredient.TagValue(ItemTags.SAPLINGS)))).excepts(Items.DARK_OAK_SAPLING)
+                .requires(except(saplingsOrDeadBush(), Items.DARK_OAK_SAPLING))
                 .results(Items.DARK_OAK_SAPLING), hDarkForestIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_DARK_FOREST.get())
-                .requires(ItemTags.LEAVES).excepts(Items.DARK_OAK_LEAVES)
+                .requires(except(ItemTags.LEAVES, Items.DARK_OAK_LEAVES))
                 .results(Items.DARK_OAK_LEAVES), hDarkForestIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_DARK_FOREST.get())
                 .requires(Items.DIRT).results(Items.GRASS_BLOCK), hDarkForestIndex.incrementAndGet());
@@ -548,11 +554,10 @@ public class NTRecipeProvider extends RecipeProvider {
 
         AtomicInteger hBirchForestIndex = new AtomicInteger(0);
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_BIRCH_FOREST.get())
-                .requires(Ingredient.fromValues(Stream.of(new Ingredient.ItemValue(new ItemStack(Items.DEAD_BUSH)),
-                        new Ingredient.TagValue(ItemTags.SAPLINGS)))).excepts(Items.BIRCH_SAPLING)
+                .requires(except(saplingsOrDeadBush(), Items.BIRCH_SAPLING))
                 .results(Items.BIRCH_SAPLING), hBirchForestIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_BIRCH_FOREST.get())
-                .requires(ItemTags.LEAVES).excepts(Items.BIRCH_LEAVES)
+                .requires(except(ItemTags.LEAVES, Items.BIRCH_LEAVES))
                 .results(Items.BIRCH_LEAVES), hDarkForestIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_BIRCH_FOREST.get())
                 .requires(Items.DIRT).results(Items.GRASS_BLOCK), hFlowerForestIndex.incrementAndGet());
@@ -596,11 +601,10 @@ public class NTRecipeProvider extends RecipeProvider {
 
         AtomicInteger hSwampIndex = new AtomicInteger(0);
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_SWAMP.get())
-                .requires(Ingredient.fromValues(Stream.of(new Ingredient.ItemValue(new ItemStack(Items.DEAD_BUSH)),
-                        new Ingredient.TagValue(ItemTags.SAPLINGS)))).excepts(Items.OAK_SAPLING)
+                .requires(except(saplingsOrDeadBush(), Items.OAK_SAPLING))
                 .results(Items.OAK_SAPLING), hSwampIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_SWAMP.get())
-                .requires(ItemTags.LEAVES).excepts(Items.OAK_LEAVES)
+                .requires(except(ItemTags.LEAVES, Items.OAK_LEAVES))
                 .results(Items.OAK_LEAVES), hSwampIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_SWAMP.get())
                 .requires(Items.DIRT).requires(Items.SHORT_GRASS)
@@ -619,11 +623,10 @@ public class NTRecipeProvider extends RecipeProvider {
 
         AtomicInteger hMangroveSwampIndex = new AtomicInteger(0);
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_MANGROVE_SWAMP.get())
-                .requires(Ingredient.fromValues(Stream.of(new Ingredient.ItemValue(new ItemStack(Items.DEAD_BUSH)),
-                        new Ingredient.TagValue(ItemTags.SAPLINGS)))).excepts(Items.MANGROVE_PROPAGULE)
+                .requires(except(saplingsOrDeadBush(), Items.MANGROVE_PROPAGULE))
                 .results(Items.MANGROVE_PROPAGULE), hMangroveSwampIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_MANGROVE_SWAMP.get())
-                .requires(ItemTags.LEAVES).excepts(Items.MANGROVE_LEAVES)
+                .requires(except(ItemTags.LEAVES, Items.MANGROVE_LEAVES))
                 .results(Items.MANGROVE_LEAVES), hMangroveSwampIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_MANGROVE_SWAMP.get())
                 .requires(Items.MAGMA_CREAM).requires(Items.BAMBOO)
@@ -683,17 +686,17 @@ public class NTRecipeProvider extends RecipeProvider {
 
         AtomicInteger hJungleIndex = new AtomicInteger(0);
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_JUNGLE.get())
-                .requires(ItemTags.SAPLINGS).excepts(Items.JUNGLE_SAPLING)
+                .requires(except(ItemTags.SAPLINGS, Items.JUNGLE_SAPLING))
                 .results(Items.JUNGLE_SAPLING), hJungleIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_JUNGLE.get())
-                .requires(ItemTags.LEAVES).excepts(Items.JUNGLE_LEAVES)
+                .requires(except(ItemTags.LEAVES, Items.JUNGLE_LEAVES))
                 .results(Items.JUNGLE_LEAVES), hJungleIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_JUNGLE.get())
                 .requires(Items.DIRT).results(Items.GRASS_BLOCK), hJungleIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_JUNGLE.get())
                 .requires(Items.GRASS_BLOCK).requires(Items.ROTTEN_FLESH)
                 .results(Items.PODZOL), hJungleIndex.incrementAndGet());
-        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_PLAINS.get())
+        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_JUNGLE.get())
                 .requires(Tags.Items.SEEDS).requires(Items.JUNGLE_LOG)
                 .results(Items.COCOA_BEANS), hJungleIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_JUNGLE.get())
@@ -826,8 +829,8 @@ public class NTRecipeProvider extends RecipeProvider {
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_STONE_SHORE.get())
                 .requires(Items.NAUTILUS_SHELL).requires(Items.SPIDER_EYE)
                 .results(NTItems.GOOSE_BARNACLE.get()), hStoneShoreIndex.incrementAndGet());
-        BlockFamilies.getAllFamilies().filter(b -> b.getVariants().containsKey(BlockFamily.Variant.CRACKED)).forEach(blockFamily ->
-                blockFamily.getVariants().forEach((variant, block) -> {
+        getFamiliesWith(BlockFamily.Variant.CRACKED).forEach(blockFamily ->
+                getVariantBlocks(blockFamily).forEach(block -> {
                     Block resultBlock = blockFamily.get(BlockFamily.Variant.CRACKED);
                     harmoniousChange(recipeOutput, NTItems.H_STONE_SHORE.get(), block, resultBlock, hStoneShoreIndex.incrementAndGet());
                 }));
@@ -876,17 +879,16 @@ public class NTRecipeProvider extends RecipeProvider {
                 .results(Items.PLAYER_HEAD), hDeepslateIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_DEEPSLATE.get())
                 .requires(ItemTags.COALS).results(NTItems.AMBER.get()), hDeepslateIndex.incrementAndGet());
-        BlockFamilies.getAllFamilies().filter(b -> b.getVariants().containsKey(BlockFamily.Variant.POLISHED))
-                .forEach(blockFamily -> blockFamily.getVariants().forEach((variant, block) -> harmoniousChange(recipeOutput,
+        getFamiliesWith(BlockFamily.Variant.POLISHED)
+                .forEach(blockFamily -> getVariantBlocks(blockFamily).forEach(block -> harmoniousChange(recipeOutput,
                         NTItems.H_DEEPSLATE.get(), block, blockFamily.getBaseBlock(), hDeepslateIndex.incrementAndGet())));
 
         AtomicInteger hLushCaveIndex = new AtomicInteger(0);
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_LUSH_CAVE.get())
-                .requires(Ingredient.fromValues(Stream.of(new Ingredient.ItemValue(new ItemStack(Items.DEAD_BUSH)),
-                        new Ingredient.TagValue(ItemTags.SAPLINGS)))).excepts(Items.AZALEA)
+                .requires(except(saplingsOrDeadBush(), Items.AZALEA))
                 .results(Items.AZALEA), hLushCaveIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_LUSH_CAVE.get())
-                .requires(ItemTags.LEAVES).excepts(Items.AZALEA_LEAVES)
+                .requires(except(ItemTags.LEAVES, Items.AZALEA_LEAVES))
                 .results(Items.AZALEA_LEAVES), hLushCaveIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_LUSH_CAVE.get())
                 .requires(ItemTags.FLOWERS).requires(Items.AZALEA)
@@ -982,11 +984,10 @@ public class NTRecipeProvider extends RecipeProvider {
 
         AtomicInteger hTaigaIndex = new AtomicInteger(0);
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_TAIGA.get())
-                .requires(Ingredient.fromValues(Stream.of(new Ingredient.ItemValue(new ItemStack(Items.DEAD_BUSH)),
-                        new Ingredient.TagValue(ItemTags.SAPLINGS)))).excepts(Items.SPRUCE_SAPLING)
+                .requires(except(saplingsOrDeadBush(), Items.SPRUCE_SAPLING))
                 .results(Items.SPRUCE_SAPLING), hTaigaIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_TAIGA.get())
-                .requires(ItemTags.LEAVES).excepts(Items.SPRUCE_LEAVES)
+                .requires(except(ItemTags.LEAVES, Items.SPRUCE_LEAVES))
                 .results(Items.SPRUCE_LEAVES), hTaigaIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_TAIGA.get())
                 .requires(Items.DIRT).results(Items.GRASS_BLOCK), hTaigaIndex.incrementAndGet());
@@ -997,11 +998,10 @@ public class NTRecipeProvider extends RecipeProvider {
 
         AtomicInteger hOldGrowthTaigaIndex = new AtomicInteger(0);
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_OLD_GROWTH_TAIGA.get())
-                .requires(Ingredient.fromValues(Stream.of(new Ingredient.ItemValue(new ItemStack(Items.DEAD_BUSH)),
-                        new Ingredient.TagValue(ItemTags.SAPLINGS)))).excepts(Items.SPRUCE_SAPLING)
+                .requires(except(saplingsOrDeadBush(), Items.SPRUCE_SAPLING))
                 .results(Items.SPRUCE_SAPLING), hOldGrowthTaigaIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_OLD_GROWTH_TAIGA.get())
-                .requires(ItemTags.LEAVES).excepts(Items.SPRUCE_LEAVES)
+                .requires(except(ItemTags.LEAVES, Items.SPRUCE_LEAVES))
                 .results(Items.SPRUCE_LEAVES), hOldGrowthTaigaIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_OLD_GROWTH_TAIGA.get())
                 .requires(Items.DIRT).results(Items.GRASS_BLOCK), hOldGrowthTaigaIndex.incrementAndGet());
@@ -1015,7 +1015,7 @@ public class NTRecipeProvider extends RecipeProvider {
 
         AtomicInteger hCherryGroveTaigaIndex = new AtomicInteger(0);
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_CHERRY_GROVE.get())
-                .requires(ItemTags.SAPLINGS).excepts(Items.CHERRY_SAPLING)
+                .requires(except(ItemTags.SAPLINGS, Items.CHERRY_SAPLING))
                 .results(Items.CHERRY_SAPLING), hCherryGroveTaigaIndex.incrementAndGet());
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_CHERRY_GROVE.get())
                 .requires(Items.DIRT).results(Items.GRASS_BLOCK), hCherryGroveTaigaIndex.incrementAndGet());
@@ -1117,19 +1117,19 @@ public class NTRecipeProvider extends RecipeProvider {
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_BASALT_DELTAS.get())
                 .requires(Ingredient.of(Items.RAW_COPPER, Items.RAW_IRON))
                 .results(Items.RAW_GOLD), hBasaltDeltasIndex.incrementAndGet());
-        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_SOUL_SAND_VALLEY.get())
+        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_BASALT_DELTAS.get())
                 .requires(Items.SLIME_BALL).requires(Items.MAGMA_BLOCK)
                 .results(Items.MAGMA_CREAM, 10), hBasaltDeltasIndex.incrementAndGet());
-        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_SOUL_SAND_VALLEY.get())
+        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_BASALT_DELTAS.get())
                 .requires(Ingredient.of(Items.COBBLESTONE, Items.COBBLED_DEEPSLATE))
                 .results(Items.MAGMA_BLOCK), hBasaltDeltasIndex.incrementAndGet());
-        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_SOUL_SAND_VALLEY.get())
+        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_BASALT_DELTAS.get())
                 .requires(Ingredient.of(Items.OBSIDIAN, Items.CRYING_OBSIDIAN)).requires(Items.BUCKET)
                 .results(Items.LAVA_BUCKET), hBasaltDeltasIndex.incrementAndGet());
-        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_SOUL_SAND_VALLEY.get())
+        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_BASALT_DELTAS.get())
                 .requires(Items.AXOLOTL_BUCKET).requires(Items.MAGMA_BLOCK)
                 .results(NTItems.LAVA_AXOLOTL_BUCKET.get()), hBasaltDeltasIndex.incrementAndGet());
-        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_SOUL_SAND_VALLEY.get())
+        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_BASALT_DELTAS.get())
                 .requires(Ingredient.of(Items.SOUL_SAND, Items.SOUL_SOIL)).requires(Items.BLUE_ICE)
                 .results(Items.BASALT).consume(false), hBasaltDeltasIndex.incrementAndGet());
 
@@ -1253,33 +1253,31 @@ public class NTRecipeProvider extends RecipeProvider {
                 NTItems.H_DESERT.get(), NTItems.H_BADLANDS.get(), NTItems.H_ICE_SPIKES.get(), NTItems.H_SNOWY_SLOPES.get());
         harmoniousChangeOfBlockFamily(recipeOutput, Blocks.MOSSY_STONE_BRICKS, Blocks.STONE_BRICKS,
                 NTItems.H_DESERT.get(), NTItems.H_BADLANDS.get(), NTItems.H_ICE_SPIKES.get(), NTItems.H_SNOWY_SLOPES.get());
-        harmoniousChangeOfBlockFamily(recipeOutput, Blocks.STONE, Blocks.MOSSY_COBBLESTONE, NTItems.H_WARM_OCEAN.get(), NTItems.H_DRIPSTONE_CAVES.get());
+        harmoniousChangeOfBlockFamily(recipeOutput, Blocks.STONE, Blocks.MOSSY_COBBLESTONE, NTItems.H_WARM_OCEAN.get());
+        // [stone] with H_DRIPSTONE_CAVES already makes dripstone block, so only the variants are transferred.
+        harmoniousChangeOfBlockFamily(recipeOutput, Blocks.STONE, Blocks.MOSSY_COBBLESTONE, false, Ingredient.of(NTItems.H_DRIPSTONE_CAVES.get()));
 
-        AtomicInteger cobblestoneToMossyIndex = new AtomicInteger(0);
         harmoniousChangeOfBlockFamily(recipeOutput, Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE,
                 NTItems.H_MEADOW.get(), NTItems.H_FOREST.get(), NTItems.H_FLOWER_FOREST.get(), NTItems.H_DARK_FOREST.get(),
                 NTItems.H_BIRCH_FOREST.get(), NTItems.H_SWAMP.get(), NTItems.H_MANGROVE_SWAMP.get(), NTItems.H_JUNGLE.get(),
                 NTItems.H_WARM_OCEAN.get(), NTItems.H_LUSH_CAVE.get(), NTItems.H_TAIGA.get(), NTItems.H_CHERRY_GROVE.get());
-        harmoniousChangeOfBlockFamily(recipeOutput, Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE, Ingredient.of(
-                NTItems.H_SAVANNA.get()), cobblestoneToMossyIndex.incrementAndGet(), Ingredient.of(Items.SHORT_GRASS));
-        harmoniousChangeOfBlockFamily(recipeOutput, Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE, Ingredient.of(
-                NTItems.H_RIVER.get()), cobblestoneToMossyIndex.incrementAndGet(), Ingredient.of(Items.SEAGRASS));
         harmoniousChangeOfBlockFamily(recipeOutput, Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE,
-                Ingredient.of(NTItems.H_BEACH.get(), NTItems.H_STONE_SHORE.get()),
-                cobblestoneToMossyIndex.incrementAndGet(), Ingredient.of(Items.KELP, Items.SEAGRASS));
+                Ingredient.of(NTItems.H_SAVANNA.get()), Ingredient.of(Items.SHORT_GRASS));
+        harmoniousChangeOfBlockFamily(recipeOutput, Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE,
+                Ingredient.of(NTItems.H_RIVER.get()), Ingredient.of(Items.SEAGRASS));
+        harmoniousChangeOfBlockFamily(recipeOutput, Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE,
+                Ingredient.of(NTItems.H_BEACH.get(), NTItems.H_STONE_SHORE.get()), Ingredient.of(Items.KELP, Items.SEAGRASS));
 
-        AtomicInteger stoneBrickToMossyIndex = new AtomicInteger(0);
         harmoniousChangeOfBlockFamily(recipeOutput, Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS,
                 NTItems.H_MEADOW.get(), NTItems.H_FOREST.get(), NTItems.H_FLOWER_FOREST.get(), NTItems.H_DARK_FOREST.get(),
                 NTItems.H_BIRCH_FOREST.get(), NTItems.H_SWAMP.get(), NTItems.H_MANGROVE_SWAMP.get(), NTItems.H_JUNGLE.get(),
                 NTItems.H_WARM_OCEAN.get(), NTItems.H_LUSH_CAVE.get(), NTItems.H_TAIGA.get(), NTItems.H_CHERRY_GROVE.get());
-        harmoniousChangeOfBlockFamily(recipeOutput, Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS, Ingredient.of(
-                NTItems.H_SAVANNA.get()), stoneBrickToMossyIndex.incrementAndGet(), Ingredient.of(Items.SHORT_GRASS));
-        harmoniousChangeOfBlockFamily(recipeOutput, Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS, Ingredient.of(
-                NTItems.H_RIVER.get()), stoneBrickToMossyIndex.incrementAndGet(), Ingredient.of(Items.SEAGRASS));
         harmoniousChangeOfBlockFamily(recipeOutput, Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS,
-                Ingredient.of(NTItems.H_BEACH.get(), NTItems.H_STONE_SHORE.get()),
-                stoneBrickToMossyIndex.incrementAndGet(), Ingredient.of(Items.KELP, Items.SEAGRASS));
+                Ingredient.of(NTItems.H_SAVANNA.get()), Ingredient.of(Items.SHORT_GRASS));
+        harmoniousChangeOfBlockFamily(recipeOutput, Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS,
+                Ingredient.of(NTItems.H_RIVER.get()), Ingredient.of(Items.SEAGRASS));
+        harmoniousChangeOfBlockFamily(recipeOutput, Blocks.STONE_BRICKS, Blocks.MOSSY_STONE_BRICKS,
+                Ingredient.of(NTItems.H_BEACH.get(), NTItems.H_STONE_SHORE.get()), Ingredient.of(Items.KELP, Items.SEAGRASS));
 
         harmoniousChangeOfBlockFamily(recipeOutput, Blocks.OAK_PLANKS, Blocks.DARK_OAK_PLANKS, NTItems.H_WOODED_BADLANDS.get());
         harmoniousChangeOfBlockFamily(recipeOutput, Blocks.OAK_PLANKS, Blocks.BIRCH_PLANKS, NTItems.H_FLOWER_FOREST.get());
@@ -1291,15 +1289,17 @@ public class NTRecipeProvider extends RecipeProvider {
         harmoniousChangeOfBlockFamily(recipeOutput, Blocks.RED_NETHER_BRICKS, Blocks.NETHER_BRICKS, NTItems.H_CRIMSON_FOREST.get());
         harmoniousChangeOfBlockFamily(recipeOutput, Blocks.NETHER_BRICKS, NTBlocks.BLUE_NETHER_BRICKS.get(), NTItems.H_WARPED_FOREST.get());
         harmoniousChangeOfBlockFamily(recipeOutput, NTBlocks.BLUE_NETHER_BRICKS.get(), Blocks.NETHER_BRICKS, NTItems.H_WARPED_FOREST.get());
-        harmoniousChangeOfBlockFamily(recipeOutput, Blocks.STONE, Blocks.END_STONE_BRICKS, NTItems.H_END_HIGHLANDS.get(), NTItems.H_END.get());
-        harmoniousChangeOfBlockFamily(recipeOutput, Blocks.DEEPSLATE, Blocks.END_STONE_BRICKS, NTItems.H_END_HIGHLANDS.get(), NTItems.H_END.get());
+        // [stone] and [deepslate] with H_END_HIGHLANDS or H_END already make end stone, so only the variants are transferred.
+        harmoniousChangeOfBlockFamily(recipeOutput, Blocks.STONE, Blocks.END_STONE_BRICKS, false,
+                Ingredient.of(NTItems.H_END_HIGHLANDS.get(), NTItems.H_END.get()));
         harmoniousChangeOfBlockFamily(recipeOutput, Blocks.ANDESITE, Blocks.DIORITE, NTItems.H_MOUNTAINS.get(), NTItems.H_SNOWY_SLOPES.get(), NTItems.H_MEADOW.get());
         harmoniousChangeOfBlockFamily(recipeOutput, Blocks.DIORITE, Blocks.GRANITE, NTItems.H_MOUNTAINS.get(), NTItems.H_SNOWY_SLOPES.get(), NTItems.H_MEADOW.get());
         harmoniousChangeOfBlockFamily(recipeOutput, Blocks.GRANITE, Blocks.ANDESITE, NTItems.H_MOUNTAINS.get(), NTItems.H_SNOWY_SLOPES.get(), NTItems.H_MEADOW.get());
         harmoniousChangeOfBlockFamily(recipeOutput, Blocks.POLISHED_ANDESITE, Blocks.POLISHED_DIORITE, NTItems.H_MOUNTAINS.get(), NTItems.H_SNOWY_SLOPES.get(), NTItems.H_MEADOW.get());
         harmoniousChangeOfBlockFamily(recipeOutput, Blocks.POLISHED_DIORITE, Blocks.POLISHED_GRANITE, NTItems.H_MOUNTAINS.get(), NTItems.H_SNOWY_SLOPES.get(), NTItems.H_MEADOW.get());
         harmoniousChangeOfBlockFamily(recipeOutput, Blocks.POLISHED_GRANITE, Blocks.POLISHED_ANDESITE, NTItems.H_MOUNTAINS.get(), NTItems.H_SNOWY_SLOPES.get(), NTItems.H_MEADOW.get());
-        harmoniousChangeOfBlockFamily(recipeOutput, Blocks.OAK_PLANKS, Blocks.BIRCH_PLANKS, Ingredient.of(NTItems.H_WOODED_BADLANDS.get()), 1, Ingredient.of(Items.BIRCH_SAPLING));
+        harmoniousChangeOfBlockFamily(recipeOutput, Blocks.OAK_PLANKS, Blocks.BIRCH_PLANKS,
+                Ingredient.of(NTItems.H_WOODED_BADLANDS.get()), Ingredient.of(Items.BIRCH_SAPLING));
 
         harmoniousChange(recipeOutput, BlockFamilies.OAK_PLANKS, NTItems.H_FOREST.get(),
                 NTItems.H_FLOWER_FOREST.get(), NTItems.H_SWAMP.get(), NTItems.H_LUSH_CAVE.get());
@@ -1311,21 +1311,27 @@ public class NTRecipeProvider extends RecipeProvider {
         harmoniousChange(recipeOutput, BlockFamilies.CRIMSON_PLANKS, NTItems.H_CRIMSON_FOREST.get());
         harmoniousChange(recipeOutput, BlockFamilies.WARPED_PLANKS, NTItems.H_WARPED_FOREST.get());
 
-        harmoniousChangeSpecial(recipeOutput, new HCUnglazedTerracottaRecipe());
-        harmoniousChangeSpecial(recipeOutput, new HCInactivateCoralRecipe());
-        harmoniousChangeSpecial(recipeOutput, new HCActivateCoralRecipe());
-        harmoniousChangeSpecial(recipeOutput, new HCCreateInfestedBlockRecipe());
-        harmoniousChangeSpecial(recipeOutput, new HCRecycleInfestedBlockRecipe());
-        harmoniousChangeSpecial(recipeOutput, new HCRefrigeratedRocketRecipe());
-        harmoniousChangeSpecial(recipeOutput, new HCMelodiousDiscRecipe());
-        harmoniousChangeSpecial(recipeOutput, new HCLeaderBannerRecipe());
-        harmoniousChangeSpecial(recipeOutput, new HCSuspiciousStewRecipe());
-        harmoniousChangeSpecial(recipeOutput, new HCCopperOxidationRecipe());
-        harmoniousChangeSpecial(recipeOutput, new HCCopperDerustingRecipe());
-        harmoniousChangeSpecial(recipeOutput, new HCPlantToWheatRecipe());
-        harmoniousChangeSpecial(recipeOutput, new HCPlantToGlowLichenRecipe());
-        harmoniousChangeSpecial(recipeOutput, new HCHeroicEnchantedBookRecipe());
-        harmoniousChangeSpecial(recipeOutput, new HCSculkCatalystRecipe());
+        harmoniousChangeOfUnglazedTerracotta(recipeOutput);
+        harmoniousChangeOfCoral(recipeOutput);
+        harmoniousChangeOfInfestedBlock(recipeOutput);
+        harmoniousChangeOfSuspiciousStew(recipeOutput);
+        harmoniousChangeOfCopper(recipeOutput);
+        harmoniousChangeOfPlant(recipeOutput);
+        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_SNOWY_SLOPES.get())
+                .factory(HCRefrigeratedRocketRecipe::new).requires(Items.FIREWORK_ROCKET)
+                .results(NTItems.REFRIGERATED_ROCKET.get()), "hc_refrigerated_rocket");
+        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_MEADOW.get())
+                .requires(except(Tags.Items.MUSIC_DISCS, NTItems.MELODIOUS_DISC.get())).requires(Items.AMETHYST_SHARD)
+                .results(NTItems.MELODIOUS_DISC.get()), "hc_melodious_disc");
+        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_DARK_FOREST.get())
+                .requires(ItemTags.BANNERS).results(Raid.getLeaderBannerInstance(
+                        registries.lookupOrThrow(Registries.BANNER_PATTERN))), "hc_leader_banner");
+        // Only the holder is stored, its value can't be resolved during data generation.
+        ItemStack heroicEnchantedBook = new ItemStack(Items.ENCHANTED_BOOK);
+        heroicEnchantedBook.enchant(registries.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(NTEnchantments.HEROIC), 1);
+        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_FROZEN_OCEAN.get())
+                .requires(Items.BLUE_ICE).requires(NTItems.HONEY_WINE.get()).requires(Items.ENCHANTED_BOOK)
+                .results(heroicEnchantedBook), "hc_heroic_enchanted_book");
         waterWaxRecipes(recipeOutput);
     }
 
@@ -1334,7 +1340,7 @@ public class NTRecipeProvider extends RecipeProvider {
         final Set<ResourceLocation> set = Sets.newHashSet();
         final List<CompletableFuture<?>> list = new ArrayList<>();
         this.buildRecipes(new NTRecipeOutput(this.recipePathProvider,
-                this.advancementPathProvider, output, registries, set, list));
+                this.advancementPathProvider, output, registries, set, list), registries);
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }
 
@@ -1357,23 +1363,24 @@ public class NTRecipeProvider extends RecipeProvider {
     }
 
     private static void harmoniousChange(RecipeOutput recipeOutput, HarmoniousChangeRecipeBuilder builder, int index) {
-        String path = BuiltInRegistries.ITEM.getKey(builder.biome_catalyst.getItems()[0].getItem()).getPath();
-        path = path.replaceFirst("h_", StringUtils.EMPTY).replaceFirst("_biome_catalyst", StringUtils.EMPTY);
-        ResourceLocation id = NaturalTransmute.prefix(String.format("hc_%s_%d", path, index));
+        String path = getBiomeCatalystName(builder.getBiomeCatalyst());
+        harmoniousChange(recipeOutput, builder, String.format("hc_%s_%d", path, index));
+    }
+
+    private static void harmoniousChange(RecipeOutput recipeOutput, HarmoniousChangeRecipeBuilder builder, String name) {
         builder.unlockedBy("has_biome_catalyst", has(NTItemTags.BIOME_CATALYST))
-                .save(recipeOutput, id);
+                .save(recipeOutput, NaturalTransmute.prefix(name));
     }
 
     private static void harmoniousChangeWithCustomName(RecipeOutput recipeOutput, HarmoniousChangeRecipeBuilder builder) {
         StringJoiner inputJoiner = new StringJoiner("_");
         StringJoiner outputJoiner = new StringJoiner("_");
-        List<ItemStack> list = Arrays.stream(builder.ingredients.getFirst().getItems()).toList();
+        List<ItemStack> list = Arrays.stream(builder.getInputs().getFirst().orElseThrow().ingredient().getItems()).toList();
         list.forEach(itemStack -> inputJoiner.add(getItemName(itemStack.getItem())));
-        builder.results.forEach(itemStack -> outputJoiner.add(getItemName(itemStack.getItem())));
-        String input = builder.name.isEmpty() ? inputJoiner.toString() : builder.name;
-        ResourceLocation id = NaturalTransmute.prefix(String.format("hc_%s_to_%s", input, outputJoiner));
-        builder.unlockedBy("has_biome_catalyst", has(NTItemTags.BIOME_CATALYST))
-                .save(recipeOutput, id);
+        builder.getOutputs().stream().filter(itemStack -> !itemStack.isEmpty())
+                .forEach(itemStack -> outputJoiner.add(getItemName(itemStack.getItem())));
+        String input = builder.getName().isEmpty() ? inputJoiner.toString() : builder.getName();
+        harmoniousChange(recipeOutput, builder, String.format("hc_%s_to_%s", input, outputJoiner));
     }
 
     private static void harmoniousChangeOfCopyIngredient(RecipeOutput recipeOutput, HarmoniousChangeRecipeBuilder builder, ItemLike mainStack) {
@@ -1388,33 +1395,190 @@ public class NTRecipeProvider extends RecipeProvider {
         harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(biome_catalyst).requires(require).results(result), index);
     }
 
-    private static void harmoniousChangeOfBlockFamily(RecipeOutput recipeOutput, Block oldBaseBlock, Block newBaseBlock, ItemLike... biome_catalyst) {
-        HCBlockFamilyTransferRecipeBuilder builder = HCBlockFamilyTransferRecipeBuilder.addRecipe(oldBaseBlock, newBaseBlock, Ingredient.of(biome_catalyst));
-        ResourceLocation id = NaturalTransmute.prefix(String.format("hc_%s_to_%s", getItemName(oldBaseBlock), getItemName(newBaseBlock)));
-        builder.unlockedBy("has_biome_catalyst", has(NTItemTags.BIOME_CATALYST))
-                .save(recipeOutput, id);
+    private void harmoniousChangeOfBlockFamily(RecipeOutput recipeOutput, Block oldBaseBlock, Block newBaseBlock, ItemLike... biome_catalyst) {
+        this.harmoniousChangeOfBlockFamily(recipeOutput, oldBaseBlock, newBaseBlock, true, Ingredient.of(biome_catalyst));
     }
 
-    private static void harmoniousChangeOfBlockFamily(RecipeOutput recipeOutput, Block oldBaseBlock, Block newBaseBlock, Ingredient biome_catalyst, int index, Ingredient... extra) {
-        HCBlockFamilyTransferRecipeBuilder builder = HCBlockFamilyTransferRecipeBuilder.addRecipe(oldBaseBlock, newBaseBlock, biome_catalyst);
-        ResourceLocation id = NaturalTransmute.prefix(String.format("hc_%s_to_%s_with_extra_%d", getItemName(oldBaseBlock), getItemName(newBaseBlock), index));
-        Arrays.stream(extra).toList().forEach(builder::requires);
-        builder.unlockedBy("has_biome_catalyst", has(NTItemTags.BIOME_CATALYST))
-                .save(recipeOutput, id);
+    private void harmoniousChangeOfBlockFamily(RecipeOutput recipeOutput, Block oldBaseBlock, Block newBaseBlock, Ingredient biome_catalyst, Ingredient... extra) {
+        this.harmoniousChangeOfBlockFamily(recipeOutput, oldBaseBlock, newBaseBlock, true, biome_catalyst, extra);
     }
 
-    private static void harmoniousChangeSpecial(RecipeOutput recipeOutput, Recipe<?> recipe) {
-        ResourceLocation key = BuiltInRegistries.RECIPE_SERIALIZER.getKey(recipe.getSerializer());
-        if (key != null) {
-            String s = String.format("harmonious_change/%s", key.getPath());
-            ResourceLocation id = NaturalTransmute.prefix(s);
-            recipeOutput.accept(id, recipe, null);
+    /**
+     * Transfers the base block (if included) and every variant both families have, e.g. oak stairs to birch stairs.
+     */
+    private void harmoniousChangeOfBlockFamily(RecipeOutput recipeOutput, Block oldBaseBlock, Block newBaseBlock,
+                                               boolean includeBaseBlock, Ingredient biome_catalyst, Ingredient... extra) {
+        BlockFamily oldFamily = getBlockFamily(oldBaseBlock);
+        BlockFamily newFamily = getBlockFamily(newBaseBlock);
+        Map<Item, Item> transfers = new LinkedHashMap<>();
+        if (includeBaseBlock) {
+            putBlockTransfer(transfers, oldBaseBlock, newBaseBlock);
+        }
+
+        for (BlockFamily.Variant variant : BlockFamily.Variant.values()) {
+            Block oldBlock = oldFamily.get(variant);
+            Block newBlock = newFamily.get(variant);
+            if (oldBlock != null && newBlock != null) {
+                putBlockTransfer(transfers, oldBlock, newBlock);
+            }
+        }
+
+        String path = getBiomeCatalystName(biome_catalyst);
+        transfers.forEach((oldItem, newItem) -> {
+            String name = String.format("hc_block_family/%s/%s_to_%s", path, getItemName(oldItem), getItemName(newItem));
+            // Families may overlap, e.g. the polished variant of andesite is the base block of polished andesite.
+            if (this.blockFamilyRecipes.add(name)) {
+                HarmoniousChangeRecipeBuilder builder = HarmoniousChangeRecipeBuilder.addRecipe(biome_catalyst).requires(oldItem);
+                Arrays.stream(extra).forEach(builder::requires);
+                harmoniousChange(recipeOutput, builder.results(newItem), name);
+            }
+        });
+    }
+
+    private void harmoniousChange(RecipeOutput recipeOutput, BlockFamily targetFamily, ItemLike... biome_catalyst) {
+        WOOD_BLOCK_FAMILIES.stream().filter(blockFamily -> blockFamily != targetFamily).forEach(blockFamily ->
+                this.harmoniousChangeOfBlockFamily(recipeOutput, blockFamily.getBaseBlock(), targetFamily.getBaseBlock(), biome_catalyst));
+    }
+
+    private static void harmoniousChangeOfUnglazedTerracotta(RecipeOutput recipeOutput) {
+        BuiltInRegistries.ITEM.forEach(item -> {
+            if (Block.byItem(item) instanceof GlazedTerracottaBlock) {
+                ResourceLocation key = BuiltInRegistries.ITEM.getKey(item);
+                BuiltInRegistries.ITEM.getOptional(key.withPath(path -> path.replaceFirst("_glazed", StringUtils.EMPTY)))
+                        .ifPresent(result -> harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(
+                                NTItems.H_DESERT.get(), NTItems.H_BADLANDS.get()).requires(item).results(result),
+                                "hc_unglazed_terracotta/" + key.getPath()));
+            }
+        });
+    }
+
+    private static void harmoniousChangeOfCoral(RecipeOutput recipeOutput) {
+        Map<Item, Item> coralToDead = new LinkedHashMap<>();
+        BuiltInRegistries.BLOCK.forEach(block -> {
+            Block deadBlock = switch (block) {
+                case CoralBlock coral -> coral.deadBlock;
+                case CoralPlantBlock coral -> coral.deadBlock;
+                case CoralFanBlock coral -> coral.deadBlock;
+                case CoralWallFanBlock coral -> coral.deadBlock;
+                default -> null;
+            };
+            if (deadBlock != null && block.asItem() != Items.AIR && deadBlock.asItem() != Items.AIR) {
+                coralToDead.putIfAbsent(block.asItem(), deadBlock.asItem());
+            }
+        });
+
+        coralToDead.forEach((coral, deadCoral) -> {
+            harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_DESERT.get(), NTItems.H_BADLANDS.get())
+                    .requires(coral).results(deadCoral), "hc_inactivate_coral/" + getItemName(coral));
+            harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_WARM_OCEAN.get())
+                    .requires(deadCoral).results(coral), "hc_activate_coral/" + getItemName(deadCoral));
+        });
+        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_DEEP_DARK.get())
+                .requires(Ingredient.of(coralToDead.keySet().toArray(ItemLike[]::new)))
+                .results(Items.SCULK_CATALYST), "hc_sculk_catalyst");
+    }
+
+    private static void harmoniousChangeOfInfestedBlock(RecipeOutput recipeOutput) {
+        ItemLike[] biomeCatalysts = {NTItems.H_MOUNTAINS.get(), NTItems.H_SNOWY_SLOPES.get(), NTItems.H_MEADOW.get(), NTItems.H_CHERRY_GROVE.get()};
+        List<ItemLike> infestedBlocks = new ArrayList<>();
+        BuiltInRegistries.BLOCK.forEach(block -> {
+            Item hostItem = block instanceof InfestedBlock infestedBlock ? infestedBlock.getHostBlock().asItem() : Items.AIR;
+            if (hostItem != Items.AIR && block.asItem() != Items.AIR) {
+                infestedBlocks.add(block);
+                harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(biomeCatalysts)
+                        .requires(hostItem).requires(Items.SPIDER_EYE).results(block),
+                        "hc_create_infested_block/" + getItemName(hostItem));
+            }
+        });
+
+        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(biomeCatalysts)
+                .requires(Ingredient.of(infestedBlocks.toArray(ItemLike[]::new)))
+                .results(Items.GRAVEL).results(NTItems.SILVERFISH_PUPA.get()), "hc_recycle_infested_block");
+    }
+
+    private static void harmoniousChangeOfSuspiciousStew(RecipeOutput recipeOutput) {
+        BuiltInRegistries.ITEM.forEach(item -> {
+            SuspiciousEffectHolder holder = SuspiciousEffectHolder.tryGet(item);
+            if (holder != null && !holder.getSuspiciousEffects().effects().isEmpty()) {
+                ItemStack suspiciousStew = new ItemStack(Items.SUSPICIOUS_STEW);
+                suspiciousStew.set(DataComponents.SUSPICIOUS_STEW_EFFECTS, holder.getSuspiciousEffects());
+                harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_MUSHROOM.get())
+                        .requires(item).requires(Items.BOWL).results(suspiciousStew), "hc_suspicious_stew/" + getItemName(item));
+            }
+        });
+    }
+
+    private static void harmoniousChangeOfCopper(RecipeOutput recipeOutput) {
+        ItemLike[] oxidizingCatalysts = {NTItems.H_SWAMP.get(), NTItems.H_MANGROVE_SWAMP.get(), NTItems.H_JUNGLE.get(),
+                NTItems.H_RIVER.get(), NTItems.H_OCEAN.get(), NTItems.H_FROZEN_OCEAN.get(), NTItems.H_BEACH.get(),
+                NTItems.H_STONE_SHORE.get(), NTItems.H_WARM_OCEAN.get(), NTItems.H_LUSH_CAVE.get(), NTItems.H_DRIPSTONE_CAVES.get()};
+        BuiltInRegistries.BLOCK.forEach(block -> {
+            Item item = block.asItem();
+            if (item != Items.AIR) {
+                WeatheringCopper.getNext(block).map(Block::asItem).filter(next -> next != Items.AIR).ifPresent(next ->
+                        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(oxidizingCatalysts)
+                                .requires(item).results(next), "hc_copper_oxidation/" + getItemName(item)));
+                if (WeatheringCopper.getPrevious(block).isPresent()) {
+                    harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_WINDSWEPT.get())
+                            .requires(item).results(WeatheringCopper.getFirst(block)), "hc_copper_derusting/" + getItemName(item));
+                }
+            }
+        });
+    }
+
+    private static void harmoniousChangeOfPlant(RecipeOutput recipeOutput) {
+        Set<Item> plants = new LinkedHashSet<>();
+        BuiltInRegistries.BLOCK.forEach(block -> {
+            if (block instanceof BushBlock && block.asItem() != Items.AIR) {
+                plants.add(block.asItem());
+            }
+        });
+
+        Ingredient ingredient = Ingredient.of(plants.toArray(ItemLike[]::new));
+        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_SAVANNA.get())
+                .requires(ingredient).results(Items.WHEAT), "hc_plant_to_wheat");
+        harmoniousChange(recipeOutput, HarmoniousChangeRecipeBuilder.addRecipe(NTItems.H_DEEPSLATE.get())
+                .requires(ingredient).results(Items.GLOW_LICHEN), "hc_plant_to_glow_lichen");
+    }
+
+    private static void putBlockTransfer(Map<Item, Item> transfers, Block oldBlock, Block newBlock) {
+        Item oldItem = oldBlock.asItem();
+        Item newItem = newBlock.asItem();
+        if (oldItem != Items.AIR && newItem != Items.AIR) {
+            transfers.putIfAbsent(oldItem, newItem);
         }
     }
 
-    private static void harmoniousChange(RecipeOutput recipeOutput, BlockFamily targetFamily, ItemLike... biome_catalyst) {
-        WOOD_BLOCK_FAMILIES.stream().filter(blockFamily -> blockFamily != targetFamily).forEach(blockFamily ->
-                harmoniousChangeOfBlockFamily(recipeOutput, blockFamily.getBaseBlock(), targetFamily.getBaseBlock(), biome_catalyst));
+    private static BlockFamily getBlockFamily(Block baseBlock) {
+        BlockFamily blockFamily = BlockFamilies.MAP.containsKey(baseBlock) ? BlockFamilies.MAP.get(baseBlock) : NTBlockFamilies.MAP.get(baseBlock);
+        return Objects.requireNonNull(blockFamily, () -> "No block family for " + baseBlock);
+    }
+
+    private static Stream<BlockFamily> getFamiliesWith(BlockFamily.Variant variant) {
+        return BlockFamilies.getAllFamilies().filter(blockFamily -> blockFamily.get(variant) != null)
+                .sorted(Comparator.comparing(blockFamily -> BuiltInRegistries.BLOCK.getKey(blockFamily.getBaseBlock())));
+    }
+
+    private static Stream<Block> getVariantBlocks(BlockFamily blockFamily) {
+        return Arrays.stream(BlockFamily.Variant.values()).map(blockFamily::get).filter(Objects::nonNull);
+    }
+
+    private static String getBiomeCatalystName(Ingredient biomeCatalyst) {
+        String path = getItemName(biomeCatalyst.getItems()[0].getItem());
+        return path.replaceFirst("h_", StringUtils.EMPTY).replaceFirst("_biome_catalyst", StringUtils.EMPTY);
+    }
+
+    private static Ingredient except(Ingredient base, ItemLike... excluded) {
+        return DifferenceIngredient.of(base, Ingredient.of(excluded));
+    }
+
+    private static Ingredient except(TagKey<Item> base, ItemLike... excluded) {
+        return except(Ingredient.of(base), excluded);
+    }
+
+    private static Ingredient saplingsOrDeadBush() {
+        return Ingredient.fromValues(Stream.of(new Ingredient.ItemValue(new ItemStack(Items.DEAD_BUSH)),
+                new Ingredient.TagValue(ItemTags.SAPLINGS)));
     }
 
     private static void waterWaxRecipes(RecipeOutput recipeOutput) {
@@ -1493,7 +1657,9 @@ public class NTRecipeProvider extends RecipeProvider {
 
         @Override
         public void accept(ResourceLocation id, Recipe<?> recipe, @Nullable AdvancementHolder advancement, ICondition... conditions) {
-            if (this.set.add(id)) {
+            if (!this.set.add(id)) {
+                LOGGER.warn("Duplicate recipe {} is ignored", id);
+            } else {
                 this.list.add(DataProvider.saveStable(this.output, this.registries, Recipe.CONDITIONAL_CODEC,
                         Optional.of(new WithConditions<>(recipe, conditions)), this.recipePathProvider.json(id)));
                 if (advancement != null) {

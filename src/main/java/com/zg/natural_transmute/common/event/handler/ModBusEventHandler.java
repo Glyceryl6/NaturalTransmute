@@ -13,6 +13,7 @@ import com.zg.natural_transmute.client.renderer.entity.MooBloomRenderer;
 import com.zg.natural_transmute.common.entities.animal.LavaAxolotl;
 import com.zg.natural_transmute.registry.*;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.client.RecipeBookCategories;
 import net.minecraft.client.model.CowModel;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -35,6 +36,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.neoforged.neoforge.client.event.RegisterRecipeBookCategoriesEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 
@@ -73,6 +75,13 @@ public class ModBusEventHandler {
     public static void registerMenuScreens(RegisterMenuScreensEvent event) {
         event.register(NTMenus.GATHERING_PLATFORM.get(), GatheringPlatformScreen::new);
         event.register(NTMenus.HARMONIOUS_CHANGE_STOVE.get(), HarmoniousChangeStoveScreen::new);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @SubscribeEvent
+    public static void registerRecipeBookCategories(RegisterRecipeBookCategoriesEvent event) {
+        // Todo: We have no recipe book category for now.
+        event.registerRecipeCategoryFinder(NTRecipes.HARMONIOUS_CHANGE_RECIPE.get(), recipe -> RecipeBookCategories.UNKNOWN);
     }
 
     @SubscribeEvent
