@@ -42,8 +42,6 @@ public class HarmoniousChangeSerializer<T extends HarmoniousChangeRecipe> implem
             INPUTS_CODEC.fieldOf("inputs").forGetter(HarmoniousChangeRecipe::getInputs),
             Ingredient.CODEC_NONEMPTY.fieldOf("biome_catalyst").forGetter(HarmoniousChangeRecipe::getBiomeCatalyst),
             OUTPUTS_CODEC.fieldOf("outputs").forGetter(HarmoniousChangeRecipe::getOutputs),
-            NeoForgeExtraCodecs.optionalFieldAlwaysWrite(ExtraCodecs.POSITIVE_INT, "time",
-                HarmoniousChangeRecipe.DEFAULT_TIME).forGetter(HarmoniousChangeRecipe::getTime),
             NeoForgeExtraCodecs.optionalFieldAlwaysWrite(Codec.BOOL, "consume",
                 Boolean.TRUE).forGetter(HarmoniousChangeRecipe::isConsume)
         ).apply(instance, factory::create));
@@ -51,7 +49,6 @@ public class HarmoniousChangeSerializer<T extends HarmoniousChangeRecipe> implem
             INPUTS_STREAM_CODEC, HarmoniousChangeRecipe::getInputs,
             Ingredient.CONTENTS_STREAM_CODEC, HarmoniousChangeRecipe::getBiomeCatalyst,
             OUTPUTS_STREAM_CODEC, HarmoniousChangeRecipe::getOutputs,
-            ByteBufCodecs.VAR_INT, HarmoniousChangeRecipe::getTime,
             ByteBufCodecs.BOOL, HarmoniousChangeRecipe::isConsume,
             factory::create);
     }
@@ -92,7 +89,7 @@ public class HarmoniousChangeSerializer<T extends HarmoniousChangeRecipe> implem
 
     public interface Factory<T extends HarmoniousChangeRecipe> {
         T create(List<Optional<SizedIngredient>> inputs, Ingredient biomeCatalyst,
-                 List<ItemStack> outputs, int time, boolean consume);
+                 List<ItemStack> outputs, boolean consume);
 
     }
 }

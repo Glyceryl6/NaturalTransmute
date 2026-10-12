@@ -20,8 +20,8 @@ import java.util.Optional;
 public class HCRefrigeratedRocketRecipe extends HarmoniousChangeRecipe {
     public HCRefrigeratedRocketRecipe(
         List<Optional<SizedIngredient>> inputs, Ingredient biomeCatalyst,
-        List<ItemStack> outputs, int time, boolean consume) {
-        super(inputs, biomeCatalyst, outputs, time, consume);
+        List<ItemStack> outputs, boolean consume) {
+        super(inputs, biomeCatalyst, outputs, consume);
     }
 
     @Override

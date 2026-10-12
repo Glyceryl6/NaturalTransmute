@@ -49,9 +49,8 @@ public class HarmoniousChangeStoveMenu extends AbstractSimpleMenu {
     }
 
     public float getHarmoniousChangeTime() {
-        float i = this.containerData.get(HarmoniousChangeStoveBlockEntity.Data.TIME);
-        float j = this.containerData.get(HarmoniousChangeStoveBlockEntity.Data.TOTAL_TIME);
-        return j != 0 && i != 0 ? Mth.clamp(i / j, 0.0F, 1.0F) : 0.0F;
+        float time = this.containerData.get(HarmoniousChangeStoveBlockEntity.Data.TIME);
+        return Mth.clamp(time / HarmoniousChangeStoveBlockEntity.TOTAL_TIME, 0.0F, 1.0F);
     }
 
     public int getCurrentState() {

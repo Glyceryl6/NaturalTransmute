@@ -35,7 +35,6 @@ public class HarmoniousChangeRecipeBuilder implements RecipeBuilder {
     @Getter
     private final Ingredient biomeCatalyst;
     private HarmoniousChangeSerializer.Factory<?> factory = HarmoniousChangeRecipe::new;
-    private int time = HarmoniousChangeRecipe.DEFAULT_TIME;
     private boolean consume = true;
     @Getter
     private String name = StringUtils.EMPTY;
@@ -136,11 +135,6 @@ public class HarmoniousChangeRecipeBuilder implements RecipeBuilder {
         return this;
     }
 
-    public HarmoniousChangeRecipeBuilder time(int time) {
-        this.time = time;
-        return this;
-    }
-
     public HarmoniousChangeRecipeBuilder consume(boolean consume) {
         this.consume = consume;
         return this;
@@ -198,7 +192,7 @@ public class HarmoniousChangeRecipeBuilder implements RecipeBuilder {
             .rewards(AdvancementRewards.Builder.recipe(recipeId))
             .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(builder::addCriterion);
-        HarmoniousChangeRecipe recipe = this.factory.create(this.inputs, this.biomeCatalyst, this.outputs, this.time, this.consume);
+        HarmoniousChangeRecipe recipe = this.factory.create(this.inputs, this.biomeCatalyst, this.outputs, this.consume);
         recipeOutput.accept(recipeId, recipe, builder.build(id.withPrefix("recipes/harmonious_change/")));
     }
 

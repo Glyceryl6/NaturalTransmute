@@ -30,17 +30,15 @@ public class HarmoniousChangeRecipe implements Recipe<HarmoniousChangeRecipeInpu
 
     public static final int INPUT_SLOTS = 3;
     public static final int OUTPUT_SLOTS = 3;
-    public static final int DEFAULT_TIME = 160;
 
     private final List<Optional<SizedIngredient>> inputs;
     private final Ingredient biomeCatalyst;
     private final List<ItemStack> outputs;
-    private final int time;
     private final boolean consume;
 
     public HarmoniousChangeRecipe(
             List<Optional<SizedIngredient>> inputs, Ingredient biomeCatalyst,
-            List<ItemStack> outputs, int time, boolean consume) {
+            List<ItemStack> outputs, boolean consume) {
         if (inputs.size() != INPUT_SLOTS || inputs.stream().noneMatch(Optional::isPresent)) {
             throw new IllegalArgumentException("Harmonious change recipe needs " + INPUT_SLOTS + " input slots with at least one input");
         } else if (outputs.size() != OUTPUT_SLOTS || outputs.stream().allMatch(ItemStack::isEmpty)) {
@@ -52,7 +50,6 @@ public class HarmoniousChangeRecipe implements Recipe<HarmoniousChangeRecipeInpu
         this.inputs = List.copyOf(inputs);
         this.biomeCatalyst = biomeCatalyst;
         this.outputs = outputs.stream().map(ItemStack::copy).toList();
-        this.time = time;
         this.consume = consume;
     }
 

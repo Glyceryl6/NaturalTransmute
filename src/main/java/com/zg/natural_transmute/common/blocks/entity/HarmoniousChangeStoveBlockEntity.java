@@ -43,11 +43,12 @@ public class HarmoniousChangeStoveBlockEntity extends SimpleContainerBlockEntity
 
     private static final int MAX_FUEL_DURATION = 8;    // Durin_Skeleton assumes max is always 8.
 
+    public static final int TOTAL_TIME = 160;
+
     public static final int IDLING_STATE = 0;
     public static final int WORKING_STATE = 1;
 
     private int time;
-    private int totalTime;
     private int currentState;
 
     private int fuelRemain = 0;
@@ -99,7 +100,6 @@ public class HarmoniousChangeStoveBlockEntity extends SimpleContainerBlockEntity
 
         if (shouldReset) {
             blockEntity.time = 0;
-            // XXX: totalTime is not using here, fill it in processRecipe :(
             blockEntity.currentState = IDLING_STATE;
         }
 
@@ -156,8 +156,7 @@ public class HarmoniousChangeStoveBlockEntity extends SimpleContainerBlockEntity
      */
     private boolean processRecipe(HarmoniousChangeRecipe recipe, List<ItemStack> results) {
         ++this.time;
-        this.totalTime = recipe.getTime();
-        if (this.time < this.totalTime) {
+        if (this.time < TOTAL_TIME) {
             return false;
         }
 
@@ -279,7 +278,6 @@ public class HarmoniousChangeStoveBlockEntity extends SimpleContainerBlockEntity
     public void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
         this.time = tag.getInt("Time");
-        this.totalTime = tag.getInt("TotalTime");
         this.fuelRemain = tag.getInt("FuelRemain");
         this.currentState = tag.getInt("CurrentState");
         this.mainPos = NbtUtils.readBlockPos(tag, "MainPos").orElse(null);
@@ -289,7 +287,6 @@ public class HarmoniousChangeStoveBlockEntity extends SimpleContainerBlockEntity
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
         tag.putInt("Time", this.time);
-        tag.putInt("TotalTime", this.totalTime);
         tag.putInt("FuelRemain", this.fuelRemain);
         tag.putInt("CurrentState", this.currentState);
         if (this.mainPos != null) {
@@ -305,18 +302,15 @@ public class HarmoniousChangeStoveBlockEntity extends SimpleContainerBlockEntity
 
     public class Data implements ContainerData {
         public static final int TIME = 0;
-        public static final int TOTAL_TIME = 1;
-        public static final int CURRENT_STATE = 2;
-        public static final int FUEL_REMAIN = 3;
+        public static final int CURRENT_STATE = 1;
+        public static final int FUEL_REMAIN = 2;
 
-        public static final int COUNT = 4;
+        public static final int COUNT = 3;
 
         @Override
         public int get(int index) {
             if (index == TIME) {
                 return time;
-            } else if (index == TOTAL_TIME) {
-                return totalTime;
             } else if (index == CURRENT_STATE) {
                 return currentState;
             } else if (index == FUEL_REMAIN) {
@@ -330,8 +324,6 @@ public class HarmoniousChangeStoveBlockEntity extends SimpleContainerBlockEntity
         public void set(int index, int value) {
             if (index == TIME) {
                 time = value;
-            } else if (index == TOTAL_TIME) {
-                totalTime = value;
             } else if (index == CURRENT_STATE) {
                 currentState = value;
             } else if (index == FUEL_REMAIN) {
