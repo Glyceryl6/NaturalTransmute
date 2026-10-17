@@ -1,16 +1,16 @@
 {
   "values": [
-    "natural_transmute:cat_food_black",
-    "natural_transmute:cat_food_british_shorthair",
-    "natural_transmute:cat_food_calico",
-    "natural_transmute:cat_food_jellie",
-    "natural_transmute:cat_food_persian",
-    "natural_transmute:cat_food_ragdoll",
-    "natural_transmute:cat_food_red",
-    "natural_transmute:cat_food_siamese",
-    "natural_transmute:cat_food_tabby",
-    "natural_transmute:cat_food_tuxedo",
-    "natural_transmute:cat_food_white",
-    "natural_transmute:cat_food_ocelot"
+    "natural_transmute:catfood_black",
+    "natural_transmute:catfood_british_shorthair",
+    "natural_transmute:catfood_calico",
+    "natural_transmute:catfood_jellie",
+    "natural_transmute:catfood_persian",
+    "natural_transmute:catfood_ragdoll",
+    "natural_transmute:catfood_red",
+    "natural_transmute:catfood_siamese",
+    "natural_transmute:catfood_tabby",
+    "natural_transmute:catfood_tuxedo",
+    "natural_transmute:catfood_white",
+    "natural_transmute:catfood_ocelot"
   ]
 }

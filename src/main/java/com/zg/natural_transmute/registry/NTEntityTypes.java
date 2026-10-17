@@ -3,7 +3,7 @@ package com.zg.natural_transmute.registry;
 import com.zg.natural_transmute.NaturalTransmute;
 import com.zg.natural_transmute.common.entities.animal.Duck;
 import com.zg.natural_transmute.common.entities.animal.LavaAxolotl;
-import com.zg.natural_transmute.common.entities.animal.MooBloom;
+import com.zg.natural_transmute.common.entities.animal.Moobloom;
 import com.zg.natural_transmute.common.entities.projectile.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
@@ -35,9 +35,9 @@ public class NTEntityTypes {
     public static final DeferredHolder<EntityType<?>, EntityType<LavaAxolotl>> LAVA_AXOLOTL = ENTITY_TYPES.register("lava_axolotl",
             () -> EntityType.Builder.of(LavaAxolotl::new, MobCategory.AXOLOTLS).sized(0.75F, 0.42F)
                     .eyeHeight(0.2751F).clientTrackingRange((10)).fireImmune().build("lava_axolotl"));
-    public static final DeferredHolder<EntityType<?>, EntityType<MooBloom>> MOO_BLOOM = ENTITY_TYPES.register("moo_bloom",
-            () -> EntityType.Builder.of(MooBloom::new, MobCategory.CREATURE).sized(0.9F, 1.4F)
-                    .eyeHeight(1.3F).passengerAttachments(1.36875F).clientTrackingRange((10)).build("moo_bloom"));
+    public static final DeferredHolder<EntityType<?>, EntityType<Moobloom>> MOOBLOOM = ENTITY_TYPES.register("moobloom",
+            () -> EntityType.Builder.of(Moobloom::new, MobCategory.CREATURE).sized(0.9F, 1.4F)
+                    .eyeHeight(1.3F).passengerAttachments(1.36875F).clientTrackingRange((10)).build("moobloom"));
     public static final DeferredHolder<EntityType<?>, EntityType<Duck>> DUCK = ENTITY_TYPES.register("duck",
             () -> EntityType.Builder.of(Duck::new, MobCategory.CREATURE).sized(0.4F, 0.7F).eyeHeight(0.644F)
                     .passengerAttachments(new Vec3(0.0D, 0.7D, -0.1D)).clientTrackingRange((10)).build("duck"));

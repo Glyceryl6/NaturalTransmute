@@ -9,7 +9,7 @@ import com.zg.natural_transmute.client.renderer.block.GatheringPlatformRenderer;
 import com.zg.natural_transmute.client.renderer.entity.BreezeArrowRenderer;
 import com.zg.natural_transmute.client.renderer.entity.DuckRenderer;
 import com.zg.natural_transmute.client.renderer.entity.LavaAxolotlRenderer;
-import com.zg.natural_transmute.client.renderer.entity.MooBloomRenderer;
+import com.zg.natural_transmute.client.renderer.entity.MoobloomRenderer;
 import com.zg.natural_transmute.common.entities.animal.LavaAxolotl;
 import com.zg.natural_transmute.registry.*;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -87,7 +87,7 @@ public class ModBusEventHandler {
     @SubscribeEvent
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
         event.put(NTEntityTypes.LAVA_AXOLOTL.get(), LavaAxolotl.createAttributes().build());
-        event.put(NTEntityTypes.MOO_BLOOM.get(), MushroomCow.createAttributes().build());
+        event.put(NTEntityTypes.MOOBLOOM.get(), MushroomCow.createAttributes().build());
         event.put(NTEntityTypes.DUCK.get(), Chicken.createAttributes().build());
     }
 
@@ -100,7 +100,7 @@ public class ModBusEventHandler {
         event.registerEntityRenderer(NTEntityTypes.SILVERFISH_PUPA.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(NTEntityTypes.REFRIGERATED_ROCKET.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(NTEntityTypes.LAVA_AXOLOTL.get(), LavaAxolotlRenderer::new);
-        event.registerEntityRenderer(NTEntityTypes.MOO_BLOOM.get(), MooBloomRenderer::new);
+        event.registerEntityRenderer(NTEntityTypes.MOOBLOOM.get(), MoobloomRenderer::new);
         event.registerEntityRenderer(NTEntityTypes.DUCK.get(), DuckRenderer::new);
         event.registerEntityRenderer(NTEntityTypes.DUCK_EGG.get(), ThrownItemRenderer::new);
     }
@@ -109,7 +109,7 @@ public class ModBusEventHandler {
     @SubscribeEvent
     public static void registerEntityLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(NTModelLayers.GATHERING_PLATFORM, GatheringPlatformRenderer::createBodyLayer);
-        event.registerLayerDefinition(NTModelLayers.MOO_BLOOM, CowModel::createBodyLayer);
+        event.registerLayerDefinition(NTModelLayers.MOOBLOOM, CowModel::createBodyLayer);
         event.registerLayerDefinition(NTModelLayers.DUCK, DuckModel::createBodyLayer);
     }
 

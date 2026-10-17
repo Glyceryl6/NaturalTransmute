@@ -73,7 +73,7 @@ public class GatheringPlatformBlockEntity extends SimpleContainerBlockEntity {
         Level level = blockEntity.getLevel();
         if (level != null) {
             ResourceKey<Level> dimension = level.dimension();
-            map.put(NTItems.H_DEEPSLATE.get(), pos.getY() < 0 && dimension == Level.OVERWORLD);
+            map.put(NTItems.DEEPSLATE.get(), pos.getY() < 0 && dimension == Level.OVERWORLD);
             NTEventFactory.onRegisterSpecialBiomeCatalystCraftingCondition(map, blockEntity);
         }
 
