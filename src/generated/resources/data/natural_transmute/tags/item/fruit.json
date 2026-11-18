@@ -1,9 +1,9 @@
 {
   "values": [
     "minecraft:apple",
-    "natural_transmute:plantain",
-    "natural_transmute:pitaya",
+    "minecraft:melon_slice",
     "natural_transmute:pineapple",
-    "minecraft:melon_slice"
+    "natural_transmute:pitaya",
+    "natural_transmute:plantain"
   ]
 }

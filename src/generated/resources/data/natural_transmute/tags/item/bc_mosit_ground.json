@@ -1,8 +1,8 @@
 {
   "values": [
-    "natural_transmute:river_biome_catalyst",
-    "natural_transmute:swamp_biome_catalyst",
+    "natural_transmute:jungle_biome_catalyst",
     "natural_transmute:mangrove_swamp_biome_catalyst",
-    "natural_transmute:jungle_biome_catalyst"
+    "natural_transmute:river_biome_catalyst",
+    "natural_transmute:swamp_biome_catalyst"
   ]
 }

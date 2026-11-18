@@ -1,12 +1,12 @@
 {
   "values": [
     "minecraft:andesite",
+    "minecraft:blackstone",
+    "minecraft:deepslate",
+    "minecraft:diorite",
+    "minecraft:end_stone",
     "minecraft:granite",
     "minecraft:stone",
-    "minecraft:tuff",
-    "minecraft:deepslate",
-    "minecraft:end_stone",
-    "minecraft:blackstone",
-    "minecraft:diorite"
+    "minecraft:tuff"
   ]
 }

@@ -1,8 +1,8 @@
 {
   "values": [
-    "minecraft:stone",
-    "minecraft:tuff",
+    "minecraft:blackstone",
     "minecraft:deepslate",
-    "minecraft:blackstone"
+    "minecraft:stone",
+    "minecraft:tuff"
   ]
 }

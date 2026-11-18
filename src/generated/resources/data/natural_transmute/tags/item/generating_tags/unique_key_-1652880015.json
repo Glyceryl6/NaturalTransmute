@@ -1,9 +1,9 @@
 {
   "values": [
-    "minecraft:stone",
     "minecraft:cobbled_deepslate",
-    "minecraft:deepslate",
     "minecraft:cobblestone",
-    "minecraft:red_sandstone"
+    "minecraft:deepslate",
+    "minecraft:red_sandstone",
+    "minecraft:stone"
   ]
 }

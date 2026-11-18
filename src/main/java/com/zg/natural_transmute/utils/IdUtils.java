@@ -6,6 +6,10 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+
+import java.util.Comparator;
+import java.util.Objects;
 
 public class IdUtils {
     public static ResourceLocation modLoc(String path) {
@@ -76,5 +80,11 @@ public class IdUtils {
 
     public static <T> String normalized(Either<ResourceKey<T>, TagKey<T>> idOrTag) {
         return normalized(string(idOrTag));
+    }
+
+    public static int compare(Either<ResourceKey<Item>, TagKey<Item>> a, Either<ResourceKey<Item>, TagKey<Item>> b) {
+        Objects.requireNonNull(a);
+        Objects.requireNonNull(b);
+        return string(a).compareTo(string(b));
     }
 }

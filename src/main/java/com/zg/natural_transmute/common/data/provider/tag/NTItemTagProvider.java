@@ -37,10 +37,6 @@ public class NTItemTagProvider extends ItemTagsProvider {
         this.tag(ItemTags.ARROWS).add(NTItems.BREEZE_ARROW.get());
         this.tag(NTItemTags.GRASS).add(Items.SHORT_GRASS,
                 Items.TALL_GRASS, Items.FERN, Items.LARGE_FERN);
-        this.tag(NTItemTags.FRUIT).add(Items.APPLE, Items.MELON_SLICE, Items.SUGAR_CANE,
-                Items.CHORUS_FRUIT, Items.SWEET_BERRIES, Items.GLOW_BERRIES);
-        this.tag(NTItemTags.VEGETABLE).add(Items.CARROT, Items.POTATO, Items.POISONOUS_POTATO,
-                Items.BEETROOT, Items.PUMPKIN, Items.BROWN_MUSHROOM, Items.BROWN_MUSHROOM);
         NTCommonUtils.getKnownItems().forEach(item -> {
             ItemStack stack = item.getDefaultInstance();
             if (stack.has(NTDataComponents.ASSOCIATED_BIOMES)) {

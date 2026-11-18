@@ -1,7 +1,7 @@
 {
   "values": [
+    "minecraft:blackstone_slab",
     "minecraft:stone_slab",
-    "minecraft:tuff_slab",
-    "minecraft:blackstone_slab"
+    "minecraft:tuff_slab"
   ]
 }

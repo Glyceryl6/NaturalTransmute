@@ -1,9 +1,9 @@
 {
   "values": [
-    "natural_transmute:meadow_biome_catalyst",
     "natural_transmute:cherry_grove_biome_catalyst",
-    "natural_transmute:windswept_biome_catalyst",
+    "natural_transmute:meadow_biome_catalyst",
+    "natural_transmute:mountains_biome_catalyst",
     "natural_transmute:snowy_slopes_biome_catalyst",
-    "natural_transmute:mountains_biome_catalyst"
+    "natural_transmute:windswept_biome_catalyst"
   ]
 }

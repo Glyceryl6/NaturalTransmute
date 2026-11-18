@@ -1,9 +1,9 @@
 {
   "values": [
-    "minecraft:vine",
     "#minecraft:small_flowers",
     "minecraft:fern",
+    "minecraft:moss_carpet",
     "minecraft:short_grass",
-    "minecraft:moss_carpet"
+    "minecraft:vine"
   ]
 }

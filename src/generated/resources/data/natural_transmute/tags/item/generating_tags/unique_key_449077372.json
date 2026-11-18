@@ -1,9 +1,9 @@
 {
   "values": [
-    "minecraft:nether_brick_stairs",
-    "natural_transmute:blue_nether_brick_stairs",
-    "minecraft:red_nether_brick_stairs",
+    "minecraft:brick_stairs",
     "minecraft:mud_brick_stairs",
-    "minecraft:brick_stairs"
+    "minecraft:nether_brick_stairs",
+    "minecraft:red_nether_brick_stairs",
+    "natural_transmute:blue_nether_brick_stairs"
   ]
 }

@@ -1,8 +1,8 @@
 {
   "values": [
-    "natural_transmute:swamp_biome_catalyst",
     "natural_transmute:flower_forest_biome_catalyst",
+    "natural_transmute:forest_biome_catalyst",
     "natural_transmute:lush_caves_biome_catalyst",
-    "natural_transmute:forest_biome_catalyst"
+    "natural_transmute:swamp_biome_catalyst"
   ]
 }

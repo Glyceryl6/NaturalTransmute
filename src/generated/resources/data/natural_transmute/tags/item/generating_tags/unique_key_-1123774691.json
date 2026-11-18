@@ -1,10 +1,10 @@
 {
   "values": [
-    "minecraft:stone_brick_wall",
-    "minecraft:deepslate_tile_wall",
-    "minecraft:polished_blackstone_brick_wall",
     "minecraft:deepslate_brick_wall",
+    "minecraft:deepslate_tile_wall",
     "minecraft:end_stone_brick_wall",
+    "minecraft:polished_blackstone_brick_wall",
+    "minecraft:stone_brick_wall",
     "minecraft:tuff_brick_wall"
   ]
 }

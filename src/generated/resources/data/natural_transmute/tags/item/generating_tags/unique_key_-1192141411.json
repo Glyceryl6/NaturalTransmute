@@ -1,7 +1,7 @@
 {
   "values": [
+    "minecraft:deepslate_bricks",
     "minecraft:polished_blackstone_bricks",
-    "minecraft:tuff_bricks",
-    "minecraft:deepslate_bricks"
+    "minecraft:tuff_bricks"
   ]
 }

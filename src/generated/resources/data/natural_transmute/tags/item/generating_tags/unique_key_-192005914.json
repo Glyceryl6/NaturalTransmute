@@ -1,6 +1,6 @@
 {
   "values": [
-    "minecraft:white_banner",
-    "#minecraft:banners"
+    "#minecraft:banners",
+    "minecraft:white_banner"
   ]
 }

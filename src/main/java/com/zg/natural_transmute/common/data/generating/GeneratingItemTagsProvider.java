@@ -16,9 +16,9 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
@@ -37,7 +37,7 @@ public class GeneratingItemTagsProvider extends ItemTagsProvider {
     }
 
     private Set<Either<ResourceKey<Item>, TagKey<Item>>> ensureTag(TagKey<Item> key) {
-        return tags.computeIfAbsent(key, __ -> new HashSet<>());
+        return tags.computeIfAbsent(key, __ -> new TreeSet<>(IdUtils::compare));  // Location is key.
     }
 
     private void add(TagKey<Item> key, Either<ResourceKey<Item>, TagKey<Item>> value) {

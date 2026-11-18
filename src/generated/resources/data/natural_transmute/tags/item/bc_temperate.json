@@ -1,21 +1,21 @@
 {
   "values": [
-    "natural_transmute:dark_forest_biome_catalyst",
-    "natural_transmute:river_biome_catalyst",
-    "natural_transmute:birch_forest_biome_catalyst",
-    "natural_transmute:swamp_biome_catalyst",
-    "natural_transmute:cherry_grove_biome_catalyst",
-    "natural_transmute:windswept_biome_catalyst",
-    "natural_transmute:flower_forest_biome_catalyst",
     "natural_transmute:beach_biome_catalyst",
-    "natural_transmute:mangrove_swamp_biome_catalyst",
-    "natural_transmute:dripstone_caves_biome_catalyst",
-    "natural_transmute:stone_shore_biome_catalyst",
-    "natural_transmute:forest_biome_catalyst",
+    "natural_transmute:birch_forest_biome_catalyst",
+    "natural_transmute:cherry_grove_biome_catalyst",
+    "natural_transmute:dark_forest_biome_catalyst",
     "natural_transmute:deepslate_biome_catalyst",
+    "natural_transmute:dripstone_caves_biome_catalyst",
+    "natural_transmute:flower_forest_biome_catalyst",
+    "natural_transmute:forest_biome_catalyst",
+    "natural_transmute:lush_caves_biome_catalyst",
+    "natural_transmute:mangrove_swamp_biome_catalyst",
     "natural_transmute:mushroom_biome_catalyst",
     "natural_transmute:ocean_biome_catalyst",
     "natural_transmute:plains_biome_catalyst",
-    "natural_transmute:lush_caves_biome_catalyst"
+    "natural_transmute:river_biome_catalyst",
+    "natural_transmute:stone_shore_biome_catalyst",
+    "natural_transmute:swamp_biome_catalyst",
+    "natural_transmute:windswept_biome_catalyst"
   ]
 }

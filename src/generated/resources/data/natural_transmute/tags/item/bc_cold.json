@@ -1,6 +1,6 @@
 {
   "values": [
-    "natural_transmute:snowy_plains_biome_catalyst",
-    "#natural_transmute:bc_very_cold"
+    "#natural_transmute:bc_very_cold",
+    "natural_transmute:snowy_plains_biome_catalyst"
   ]
 }

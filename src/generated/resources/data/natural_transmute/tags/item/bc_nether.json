@@ -1,9 +1,9 @@
 {
   "values": [
-    "natural_transmute:soul_sand_valley_biome_catalyst",
-    "natural_transmute:warped_forest_biome_catalyst",
-    "natural_transmute:nether_biome_catalyst",
+    "natural_transmute:basalt_deltas_biome_catalyst",
     "natural_transmute:crimson_forest_biome_catalyst",
-    "natural_transmute:basalt_deltas_biome_catalyst"
+    "natural_transmute:nether_biome_catalyst",
+    "natural_transmute:soul_sand_valley_biome_catalyst",
+    "natural_transmute:warped_forest_biome_catalyst"
   ]
 }

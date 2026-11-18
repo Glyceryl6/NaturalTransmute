@@ -1,6 +1,6 @@
 {
   "values": [
-    "minecraft:exposed_copper",
-    "minecraft:copper_block"
+    "minecraft:copper_block",
+    "minecraft:exposed_copper"
   ]
 }
