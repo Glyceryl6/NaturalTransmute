@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:lush_caves_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:moss_block"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:golden_apple"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "natural_transmute:cave_earth"
+    }
+  ]
+}

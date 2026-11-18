@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:basalt_deltas_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:axolotl_bucket"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:magma_block"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "natural_transmute:lava_axolotl_bucket"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:desert_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:brewer_pottery_sherd"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:brick"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 2,
+      "id": "minecraft:brewer_pottery_sherd"
+    }
+  ]
+}

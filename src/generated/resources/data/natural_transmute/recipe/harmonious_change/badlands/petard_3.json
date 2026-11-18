@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:badlands_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:tnt"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:paper"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 3,
+      "id": "natural_transmute:petard"
+    }
+  ]
+}

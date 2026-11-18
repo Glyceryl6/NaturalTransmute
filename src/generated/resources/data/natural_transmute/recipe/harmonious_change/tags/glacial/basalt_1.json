@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "tag": "natural_transmute:bc_glacial"
+  },
+  "consume": false,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:lava_bucket"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:soul_soil"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:basalt"
+    }
+  ]
+}

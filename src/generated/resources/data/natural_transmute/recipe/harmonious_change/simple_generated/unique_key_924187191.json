@@ -1,0 +1,19 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:birch_forest_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "tag": "natural_transmute:generating_tags/unique_key_-2115574926"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:birch_slab"
+    }
+  ]
+}

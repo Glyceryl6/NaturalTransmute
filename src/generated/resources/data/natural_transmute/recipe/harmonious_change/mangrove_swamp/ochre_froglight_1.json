@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:mangrove_swamp_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:magma_cream"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:brown_mushroom"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:ochre_froglight"
+    }
+  ]
+}

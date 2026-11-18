@@ -1,0 +1,19 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:plains_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:cooked_chicken"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:cooked_porkchop"
+    }
+  ]
+}

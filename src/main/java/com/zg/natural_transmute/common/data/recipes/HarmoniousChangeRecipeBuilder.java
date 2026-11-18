@@ -55,40 +55,6 @@ public class HarmoniousChangeRecipeBuilder implements RecipeBuilder {
         return new HarmoniousChangeRecipeBuilder(biomeCatalyst);
     }
 
-    public HarmoniousChangeRecipeBuilder requires(TagKey<Item> tag) {
-        return this.requires(Ingredient.of(tag));
-    }
-
-    public HarmoniousChangeRecipeBuilder requires(ItemLike item) {
-        return this.requires(item, 1);
-    }
-
-    /**
-     * @param quantity the number of input slots to fill, each one requires a single item.
-     */
-    public HarmoniousChangeRecipeBuilder requires(ItemLike item, int quantity) {
-        return this.requires(Ingredient.of(item), quantity);
-    }
-
-    public HarmoniousChangeRecipeBuilder requires(Ingredient ingredient) {
-        return this.requires(ingredient, 1);
-    }
-
-    /**
-     * @param quantity the number of input slots to fill, each one requires a single item.
-     */
-    public HarmoniousChangeRecipeBuilder requires(Ingredient ingredient, int quantity) {
-        for (int i = 0; i < quantity; i++) {
-            this.requires(new SizedIngredient(ingredient, 1));
-        }
-
-        return this;
-    }
-
-    public HarmoniousChangeRecipeBuilder requires(SizedIngredient ingredient) {
-        return this.input(firstEmptySlot(this.inputs, Optional::isEmpty), ingredient);
-    }
-
     public HarmoniousChangeRecipeBuilder input(int slot, ItemLike item) {
         return this.input(slot, Ingredient.of(item));
     }

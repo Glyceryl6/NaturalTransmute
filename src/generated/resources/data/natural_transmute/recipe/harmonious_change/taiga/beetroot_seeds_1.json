@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:taiga_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:sugar"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:beetroot_seeds"
+    }
+  ]
+}

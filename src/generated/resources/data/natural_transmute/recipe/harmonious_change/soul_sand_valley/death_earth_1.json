@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:soul_sand_valley_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:soul_soil"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:golden_apple"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "natural_transmute:death_earth"
+    }
+  ]
+}

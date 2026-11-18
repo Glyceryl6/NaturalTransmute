@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:end_highlands_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:quartz"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:popped_chorus_fruit"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:ender_pearl"
+    }
+  ]
+}

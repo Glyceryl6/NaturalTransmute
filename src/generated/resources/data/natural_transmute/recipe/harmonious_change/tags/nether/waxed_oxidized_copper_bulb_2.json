@@ -1,0 +1,27 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "tag": "natural_transmute:bc_nether"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:waxed_oxidized_copper"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:torch"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:redstone"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 2,
+      "id": "minecraft:waxed_oxidized_copper_bulb"
+    }
+  ]
+}

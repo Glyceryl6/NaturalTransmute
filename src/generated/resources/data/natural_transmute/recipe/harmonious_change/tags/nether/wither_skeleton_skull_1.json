@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "tag": "natural_transmute:bc_nether"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:skeleton_skull"
+    },
+    {
+      "count": 1,
+      "item": "natural_transmute:wither_bone"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:wither_skeleton_skull"
+    }
+  ]
+}

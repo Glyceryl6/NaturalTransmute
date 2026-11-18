@@ -63,6 +63,8 @@ public class NTItemTagProvider extends ItemTagsProvider {
         tag(NTItemTags.HARMONIOUS_CHANGE_FUEL_BUCKET).add(NTItems.HARMONIOUS_CHANGE_LAVA_BUCKET.get(), NTItems.ETERNAL_HARMONIOUS_CHANGE_LAVA_BUCKET.get());
         tag(NTItemTags.HARMONIOUS_CHANGE_FUEL_COAL).add(NTItems.HARMONIOUS_CHANGE_FUEL.get());
         tag(NTItemTags.HARMONIOUS_CHANGE_ETERNAL_FUEL).add(NTItems.ETERNAL_HARMONIOUS_CHANGE_LAVA_BUCKET.get());
+
+        tag(NTItemTags.VANILLA_EGGS).add(Items.EGG);
     }
 
 }

@@ -88,6 +88,7 @@ dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
     compileOnly 'org.projectlombok:lombok:1.18.46'
     annotationProcessor 'org.projectlombok:lombok:1.18.46'
+    compileOnly 'org.jetbrains:annotations:26.1.0'
 
     // compile against the JEI API but do not include it at runtime
     compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")

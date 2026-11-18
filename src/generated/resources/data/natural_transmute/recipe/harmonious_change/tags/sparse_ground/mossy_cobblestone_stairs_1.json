@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "tag": "natural_transmute:bc_sparse_ground"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:cobblestone_stairs"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:short_grass"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:mossy_cobblestone_stairs"
+    }
+  ]
+}

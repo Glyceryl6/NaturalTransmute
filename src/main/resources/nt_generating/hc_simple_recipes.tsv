@@ -1,0 +1,200 @@
+   	"natural_transmute:forest_biome_catalyst,natural_transmute:flower_forest_biome_catalyst,natural_transmute:swamp_biome_catalyst"	"natural_transmute:forest_biome_catalyst,natural_transmute:flower_forest_biome_catalyst,natural_transmute:swamp_biome_catalyst,natural_transmute:lush_caves_biome_catalyst"	natural_transmute:birch_forest_biome_catalyst	"natural_transmute:taiga_biome_catalyst,natural_transmute:old_growth_taiga_biome_catalyst,natural_transmute:mountains_biome_catalyst"	natural_transmute:savanna_biome_catalyst	natural_transmute:jungle_biome_catalyst	natural_transmute:dark_forest_biome_catalyst	natural_transmute:wooded_badlands_biome_catalyst	natural_transmute:cherry_grove_biome_catalyst	natural_transmute:mangrove_swamp_biome_catalyst		natural_transmute:crimson_forest_biome_catalyst	natural_transmute:warped_forest_biome_catalyst		"#natural_transmute:bc_dry,#natural_transmute:bc_very_cold"	#natural_transmute:bc_dense	#natural_transmute:bc_caves	"#natural_transmute:bc_dry,#natural_transmute:bc_very_cold"	#natural_transmute:bc_caves	#natural_transmute:bc_nether	natural_transmute:windswept_biome_catalyst	#natural_transmute:bc_mountains	#natural_transmute:bc_the_end	"natural_transmute:crimson_forest_biome_catalyst,natural_transmute:warped_forest_biome_catalyst"	natural_transmute:crimson_forest_biome_catalyst	natural_transmute:warped_forest_biome_catalyst	#natural_transmute:bc_dense	#natural_transmute:bc_weathering	natural_transmute:swamp_biome_catalyst	natural_transmute:mangrove_swamp_biome_catalyst	natural_transmute:windswept_biome_catalyst	#natural_transmute:bc_moist	#natural_transmute:bc_flowered	#natural_transmute:bc_mountains	"natural_transmute:river_biome_catalyst,natural_transmute:stone_shore_biome_catalyst"																#natural_transmute:bc_desert	natural_transmute:warm_ocean_biome_catalyst	#natural_transmute:bc_dry
+azalea_leaves	oak_leaves	oak_leaves	birch_leaves	spruce_leaves	acacia_leaves	jungle_leaves	dark_oak_leaves		cherry_leaves	mangrove_leaves				dead_bush																																							
+azalea	oak_sapling	oak_sapling	birch_sapling	spruce_sapling	acacia_sapling	jungle_sapling	dark_oak_sapling		cherry_sapling	mangrove_propagule																																											
+		oak_log	birch_log	spruce_log	acacia_log	jungle_log	dark_oak_log		cherry_log	mangrove_log		crimson_stem	warped_stem																																								
+		oak_wood	birch_wood	spruce_wood	acacia_wood	jungle_wood	dark_oak_wood		cherry_wood	mangrove_wood		crimson_hyphae	warped_hyphae																																								
+		stripped_oak_log	stripped_birch_log	stripped_spruce_log	stripped_acacia_log	stripped_jungle_log	stripped_dark_oak_log		stripped_cherry_log	stripped_mangrove_log		stripped_crimson_stem	stripped_warped_stem																																								
+		stripped_oak_wood	stripped_birch_wood	stripped_spruce_wood	stripped_acacia_wood	stripped_jungle_wood	stripped_dark_oak_wood		stripped_cherry_wood	stripped_mangrove_wood		stripped_crimson_hyphae	stripped_warped_hyphae																																								
+		oak_planks	birch_planks	spruce_planks	acacia_planks	jungle_planks	dark_oak_planks		cherry_planks	mangrove_planks	bamboo_planks	crimson_planks	warped_planks																																								
+		oak_stairs	birch_stairs	spruce_stairs	acacia_stairs	jungle_stairs	dark_oak_stairs		cherry_stairs	mangrove_stairs	bamboo_stairs	crimson_stairs	warped_stairs																																								
+		oak_slab	birch_slab	spruce_slab	acacia_slab	jungle_slab	dark_oak_slab		cherry_slab	mangrove_slab	bamboo_slab	crimson_slab	warped_slab																																								
+		oak_fence	birch_fence	spruce_fence	acacia_fence	jungle_fence	dark_oak_fence		cherry_fence	mangrove_fence	bamboo_fence	crimson_fence	warped_fence																																								
+		oak_fence_gate	birch_fence_gate	spruce_fence_gate	acacia_fence_gate	jungle_fence_gate	dark_oak_fence_gate		cherry_fence_gate	mangrove_fence_gate	bamboo_fence_gate	crimson_fence_gate	warped_fence_gate																																								
+		oak_trapdoor	birch_trapdoor	spruce_trapdoor	acacia_trapdoor	jungle_trapdoor	dark_oak_trapdoor		cherry_trapdoor	mangrove_trapdoor	bamboo_trapdoor	crimson_trapdoor	warped_trapdoor																																								
+		oak_door	birch_door	spruce_door	acacia_door	jungle_door	dark_oak_door		cherry_door	mangrove_door	bamboo_door	crimson_door	warped_door																																								
+		oak_sign	birch_sign	spruce_sign	acacia_sign	jungle_sign	dark_oak_sign		cherry_sign	mangrove_sign	bamboo_sign	crimson_sign	warped_sign																																								
+		oak_pressure_plate	birch_pressure_plate	spruce_pressure_plate	acacia_pressure_plate	jungle_pressure_plate	dark_oak_pressure_plate		cherry_pressure_plate	mangrove_pressure_plate	bamboo_pressure_plate	crimson_pressure_plate	warped_pressure_plate																																								
+		oak_button	birch_button	spruce_button	acacia_button	jungle_button	dark_oak_button		cherry_button	mangrove_button	bamboo_button	crimson_button	warped_button																																								
+								dark_oak_log																												oak_log																	
+								dark_oak_wood																												oak_wood																	
+								stripped_dark_oak_log																												stripped_oak_log																	
+								stripped_dark_oak_wood																												stripped_oak_wood																	
+								dark_oak_planks																												oak_planks																	
+								dark_oak_stairs																												oak_stairs																	
+								dark_oak_slab																												oak_slab																	
+								dark_oak_fence																												oak_fence																	
+								dark_oak_fence_gate																												oak_fence_gate																	
+								dark_oak_trapdoor																												oak_trapdoor																	
+								dark_oak_door																												oak_door																	
+								dark_oak_sign																												oak_sign																	
+								dark_oak_pressure_plate																												oak_pressure_plate																	
+								dark_oak_button																												oak_button																	
+															cobblestone	mossy_cobblestone																																					
+															cobblestone_stairs	mossy_cobblestone_stairs																																					
+															cobblestone_slab	mossy_cobblestone_slab																																					
+															cobblestone_wall	mossy_cobblestone_wall																																					
+															cobblestone		cobbled_deepslate																																				
+															cobblestone_stairs		cobbled_deepslate_stairs																																				
+															cobblestone_slab		cobbled_deepslate_slab																																				
+															cobblestone_wall		cobbled_deepslate_wall																																				
+																			deepslate	blackstone	tuff															stone																	
+																				blackstone_stairs	tuff_stairs															stone_stairs																	
+																				blackstone_slab	tuff_slab															stone_slab																	
+																				blackstone_wall	tuff_wall																																
+																			polished_deepslate	polished_blackstone	polished_tuff																																
+																			polished_deepslate_stairs	polished_blackstone_stairs	polished_tuff_stairs																																
+																			polished_deepslate_slab	polished_blackstone_slab	polished_tuff_slab																																
+																			polished_deepslate_wall	polished_blackstone_wall	polished_tuff_wall																																
+																			chiseled_deepslate	chiseled_polished_blackstone	chiseled_tuff_bricks															chiseled_stone_bricks																	
+																			deepslate_bricks	polished_blackstone_bricks	tuff_bricks															stone_bricks																	
+																			deepslate_brick_stairs	polished_blackstone_brick_stairs	tuff_brick_stairs															stone_brick_stairs																	
+																			deepslate_brick_slab	polished_blackstone_brick_slab	tuff_brick_slab															stone_brick_slab																	
+																			deepslate_brick_wall	polished_blackstone_brick_wall	tuff_brick_wall															stone_brick_wall																	
+																		stone_bricks									mossy_stone_bricks	cracked_stone_bricks																									
+																		stone_brick_stairs									mossy_stone_brick_stairs																										
+																		stone_brick_slab									mossy_stone_brick_slab																										
+																		stone_brick_wall									mossy_stone_brick_wall																										
+																								nether_bricks	red_nether_bricks	natural_transmute:blue_nether_bricks			bricks	mud_bricks																							
+																								nether_brick_stairs	red_nether_brick_stairs	natural_transmute:blue_nether_brick_stairs			brick_stairs	mud_brick_stairs																							
+																								nether_brick_slab	red_nether_brick_slab	natural_transmute:blue_nether_brick_slab			brick_slab	mud_brick_slab																							
+																								nether_brick_wall	red_nether_brick_wall	natural_transmute:blue_nether_brick_wall			brick_wall	mud_brick_wall																							
+																						andesite														diorite																	
+																						andesite_stairs														diorite_stairs																	
+																						andesite_slab														diorite_slab																	
+																						andesite_wall														diorite_wall																	
+																						polished_andesite														polished_diorite																	
+																						polished_andesite_stairs														polished_diorite_stairs																	
+																						polished_andesite_slab														polished_diorite_slab																	
+																						diorite														granite																	
+																						diorite_stairs														granite_stairs																	
+																						diorite_slab														granite_slab																	
+																						diorite_wall														granite_wall																	
+																						polished_diorite														polished_granite																	
+																						polished_diorite_stairs														polished_granite_stairs																	
+																						polished_diorite_slab														polished_granite_slab																	
+																						granite														andesite																	
+																						granite_stairs														andesite_stairs																	
+																						granite_slab														andesite_slab																	
+																						granite_wall														andesite_wall																	
+																						polished_granite														polished_andesite																	
+																						polished_granite_stairs														polished_andesite_stairs																	
+																						polished_granite_slab														polished_andesite_slab																	
+																							end_stone													stone	deepslate		blackstone	tuff	andesite	diorite	granite										
+																							end_stone_bricks													stone_bricks	deepslate_bricks	deepslate_tiles	polished_blackstone_bricks	tuff_bricks													
+																							end_stone_brick_stairs													stone_brick_stairs	deepslate_brick_stairs	deepslate_tile_stairs	polished_blackstone_brick_stairs	tuff_brick_stairs													
+																							end_stone_brick_slab													stone_brick_slab	deepslate_brick_slab	deepslate_tile_slab	polished_blackstone_brick_slab	tuff_brick_slab													
+																							end_stone_brick_wall													stone_brick_wall	deepslate_brick_wall	deepslate_tile_wall	polished_blackstone_brick_wall	tuff_brick_wall													
+																															copper_block					copper_block	exposed_copper	weathered_copper	oxidized_copper	waxed_copper_block	waxed_exposed_copper	waxed_weathered_copper	waxed_oxidized_copper										
+																															chiseled_copper					chiseled_copper	exposed_chiseled_copper	weathered_chiseled_copper	oxidized_chiseled_copper	waxed_chiseled_copper	waxed_exposed_chiseled_copper	waxed_weathered_chiseled_copper	waxed_oxidized_chiseled_copper										
+																															cut_copper					cut_copper	exposed_cut_copper	weathered_cut_copper	oxidized_cut_copper	waxed_cut_copper	waxed_exposed_cut_copper	waxed_weathered_cut_copper	waxed_oxidized_cut_copper										
+																															cut_copper_stairs					cut_copper_stairs	exposed_cut_copper_stairs	weathered_cut_copper_stairs	oxidized_cut_copper_stairs	waxed_cut_copper_stairs	waxed_exposed_cut_copper_stairs	waxed_weathered_cut_copper_stairs	waxed_oxidized_cut_copper_stairs										
+																															cut_copper_slab					cut_copper_slab	exposed_cut_copper_slab	weathered_cut_copper_slab	oxidized_cut_copper_slab	waxed_cut_copper_slab	waxed_exposed_cut_copper_slab	waxed_weathered_cut_copper_slab	waxed_oxidized_cut_copper_slab										
+																															copper_grate					copper_grate	exposed_copper_grate	weathered_copper_grate	oxidized_copper_grate	waxed_copper_grate	waxed_exposed_copper_grate	waxed_weathered_copper_grate	waxed_oxidized_copper_grate										
+																															copper_bulb					copper_bulb	exposed_copper_bulb	weathered_copper_bulb	oxidized_copper_bulb	waxed_copper_bulb	waxed_exposed_copper_bulb	waxed_weathered_copper_bulb	waxed_oxidized_copper_bulb										
+																															copper_door					copper_door	exposed_copper_door	weathered_copper_door	oxidized_copper_door	waxed_copper_door	waxed_exposed_copper_door	waxed_weathered_copper_door	waxed_oxidized_copper_door										
+																															copper_trapdoor					copper_trapdoor	exposed_copper_trapdoor	weathered_copper_trapdoor	oxidized_copper_trapdoor	waxed_copper_trapdoor	waxed_exposed_copper_trapdoor	waxed_weathered_copper_trapdoor	waxed_oxidized_copper_trapdoor										
+																																	waxed_copper_block			copper_block																	
+																																	waxed_chiseled_copper			chiseled_copper																	
+																																	waxed_cut_copper			cut_copper																	
+																																	waxed_cut_copper_stairs			cut_copper_stairs																	
+																																	waxed_cut_copper_slab			cut_copper_slab																	
+																																	waxed_copper_grate			copper_grate																	
+																																	waxed_copper_bulb			copper_bulb																	
+																																	waxed_copper_door			copper_door																	
+																																	waxed_copper_trapdoor			copper_trapdoor																	
+																																	waxed_exposed_copper			exposed_copper																	
+																																	waxed_exposed_chiseled_copper			exposed_chiseled_copper																	
+																																	waxed_exposed_cut_copper			exposed_cut_copper																	
+																																	waxed_exposed_cut_copper_stairs			exposed_cut_copper_stairs																	
+																																	waxed_exposed_cut_copper_slab			exposed_cut_copper_slab																	
+																																	waxed_exposed_copper_grate			exposed_copper_grate																	
+																																	waxed_exposed_copper_bulb			exposed_copper_bulb																	
+																																	waxed_exposed_copper_door			exposed_copper_door																	
+																																	waxed_exposed_copper_trapdoor			exposed_copper_trapdoor																	
+																																	waxed_weathered_copper			weathered_copper																	
+																																	waxed_weathered_chiseled_copper			weathered_chiseled_copper																	
+																																	waxed_weathered_cut_copper			weathered_cut_copper																	
+																																	waxed_weathered_cut_copper_stairs			weathered_cut_copper_stairs																	
+																																	waxed_weathered_cut_copper_slab			weathered_cut_copper_slab																	
+																																	waxed_weathered_copper_grate			weathered_copper_grate																	
+																																	waxed_weathered_copper_bulb			weathered_copper_bulb																	
+																																	waxed_weathered_copper_door			weathered_copper_door																	
+																																	waxed_weathered_copper_trapdoor			weathered_copper_trapdoor																	
+																																	waxed_oxidized_copper			oxidized_copper																	
+																																	waxed_oxidized_chiseled_copper			oxidized_chiseled_copper																	
+																																	waxed_oxidized_cut_copper			oxidized_cut_copper																	
+																																	waxed_oxidized_cut_copper_stairs			oxidized_cut_copper_stairs																	
+																																	waxed_oxidized_cut_copper_slab			oxidized_cut_copper_slab																	
+																																	waxed_oxidized_copper_grate			oxidized_copper_grate																	
+																																	waxed_oxidized_copper_bulb			oxidized_copper_bulb																	
+																																	waxed_oxidized_copper_door			oxidized_copper_door																	
+																																	waxed_oxidized_copper_trapdoor			oxidized_copper_trapdoor																	
+																																exposed_copper				copper_block																	
+																																exposed_chiseled_copper				chiseled_copper																	
+																																exposed_cut_copper				cut_copper																	
+																																exposed_cut_copper_stairs				cut_copper_stairs																	
+																																exposed_cut_copper_slab				cut_copper_slab																	
+																																exposed_copper_grate				copper_grate																	
+																																exposed_copper_bulb				copper_bulb																	
+																																exposed_copper_door				copper_door																	
+																																exposed_copper_trapdoor				copper_trapdoor																	
+																																weathered_copper				exposed_copper																	
+																																weathered_chiseled_copper				exposed_chiseled_copper																	
+																																weathered_cut_copper				exposed_cut_copper																	
+																																weathered_cut_copper_stairs				exposed_cut_copper_stairs																	
+																																weathered_cut_copper_slab				exposed_cut_copper_slab																	
+																																weathered_copper_grate				exposed_copper_grate																	
+																																weathered_copper_bulb				exposed_copper_bulb																	
+																																weathered_copper_door				exposed_copper_door																	
+																																weathered_copper_trapdoor				exposed_copper_trapdoor																	
+																																oxidized_copper				weathered_copper																	
+																																oxidized_chiseled_copper				weathered_chiseled_copper																	
+																																oxidized_cut_copper				weathered_cut_copper																	
+																																oxidized_cut_copper_stairs				weathered_cut_copper_stairs																	
+																																oxidized_cut_copper_slab				weathered_cut_copper_slab																	
+																																oxidized_copper_grate				weathered_copper_grate																	
+																																oxidized_copper_bulb				weathered_copper_bulb																	
+																																oxidized_copper_door				weathered_copper_door																	
+																																oxidized_copper_trapdoor				weathered_copper_trapdoor																	
+																																		infested_cobblestone		cobblestone																	
+																																		infested_stone		stone																	
+																																		infested_stone_bricks		stone_bricks																	
+																																		infested_chiseled_stone_bricks		chiseled_stone_bricks																	
+																																		infested_mossy_stone_bricks		mossy_stone_bricks																	
+																																		infested_cracked_stone_bricks		cracked_stone_bricks																	
+																																		infested_deepslate		deepslate																	
+																																			white_wool	#wool																	
+																																			white_bed	#beds																	
+																																			white_carpet	#wool_carpets																	
+																																			white_banner	#banners																	
+																																				white_glazed_terracotta															white_terracotta		
+																																				light_gray_glazed_terracotta															light_gray_terracotta		
+																																				gray_glazed_terracotta															gray_terracotta		
+																																				black_glazed_terracotta															black_terracotta		
+																																				brown_glazed_terracotta															brown_terracotta		
+																																				red_glazed_terracotta															red_terracotta		
+																																				orange_glazed_terracotta															orange_terracotta		
+																																				yellow_glazed_terracotta															yellow_terracotta		
+																																				lime_glazed_terracotta															lime_terracotta		
+																																				green_glazed_terracotta															green_terracotta		
+																																				cyan_glazed_terracotta															cyan_terracotta		
+																																				light_blue_glazed_terracotta															light_blue_terracotta		
+																																				blue_glazed_terracotta															blue_terracotta		
+																																				purple_glazed_terracotta															purple_terracotta		
+																																				magenta_glazed_terracotta															magenta_terracotta		
+																																				pink_glazed_terracotta															pink_terracotta		
+																																																				tube_coral_block	dead_tube_coral_block
+																																																				brain_coral_block	dead_brain_coral_block
+																																																				bubble_coral_block	dead_bubble_coral_block
+																																																				fire_coral_block	dead_fire_coral_block
+																																																				horn_coral_block	dead_horn_coral_block
+																																																				tube_coral_fan	dead_tube_coral_fan
+																																																				brain_coral_fan	dead_brain_coral_fan
+																																																				bubble_coral_fan	dead_bubble_coral_fan
+																																																				fire_coral_fan	dead_fire_coral_fan
+																																																				horn_coral_fan	dead_horn_coral_fan
+																																																				tube_coral	dead_tube_coral
+																																																				brain_coral	dead_brain_coral
+																																																				bubble_coral	dead_bubble_coral
+																																																				fire_coral	dead_fire_coral
+																																																				horn_coral	dead_horn_coral

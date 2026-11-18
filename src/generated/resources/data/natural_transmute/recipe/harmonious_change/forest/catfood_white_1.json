@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:forest_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "tag": "c:foods/cooked_fish"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:white_dye"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "natural_transmute:catfood_white"
+    }
+  ]
+}

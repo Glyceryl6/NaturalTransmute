@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "tag": "natural_transmute:bc_ocean"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "tag": "c:raw_materials"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:lapis_lazuli"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 8,
+      "id": "minecraft:prismarine_crystals"
+    }
+  ]
+}

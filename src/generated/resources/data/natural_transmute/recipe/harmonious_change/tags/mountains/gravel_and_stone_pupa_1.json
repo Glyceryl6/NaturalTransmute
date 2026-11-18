@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "tag": "natural_transmute:bc_mountains"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "tag": "natural_transmute:infested_blocks"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:gravel"
+    },
+    {
+      "count": 1,
+      "id": "natural_transmute:silverfish_pupa"
+    }
+  ]
+}

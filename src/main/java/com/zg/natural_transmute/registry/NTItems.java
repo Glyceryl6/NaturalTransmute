@@ -11,6 +11,7 @@ import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.CatVariant;
+import net.minecraft.world.entity.animal.Parrot;
 import net.minecraft.world.entity.animal.WolfVariants;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.List;
@@ -29,7 +31,7 @@ import static com.zg.natural_transmute.utils.NTItemRegUtils.*;
 
 public class NTItems {
 
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.createItems(NaturalTransmute.MOD_ID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(NaturalTransmute.MOD_ID);
     public static final DeferredHolder<Item, Item> AMBER = normal("amber");
     public static final DeferredHolder<Item, Item> BERYL = normal("beryl");
     public static final DeferredHolder<Item, Item> CHLORITE = normal("chlorite");
@@ -68,7 +70,7 @@ public class NTItems {
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON).durability((5))
                     .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
     public static final DeferredHolder<Item, Item> PETARD = ITEMS.register("petard",
-            () -> new Petard(new Item.Properties().stacksTo(1)
+            () -> new Petard(new Item.Properties()
                     .component(NTDataComponents.PETARD_IGNITED, false)
                     .component(NTDataComponents.PETARD_FUSE, 100)));
     public static final DeferredHolder<Item, Item> MINE_WATER_BUCKET = ITEMS.register("mine_water_bucket",
@@ -151,7 +153,7 @@ public class NTItems {
     public static final DeferredHolder<Item, Item> CATFOOD_JELLIE = catFood("catfood_jellie", CatVariant.JELLIE);
     public static final DeferredHolder<Item, Item> CATFOOD_PERSIAN = catFood("catfood_persian", CatVariant.PERSIAN);
     public static final DeferredHolder<Item, Item> CATFOOD_RAGDOLL = catFood("catfood_ragdoll", CatVariant.RAGDOLL);
-    public static final DeferredHolder<Item, Item> CATFOOD_RED = catFood("catfood_red", CatVariant.RED);
+    public static final DeferredHolder<Item, Item> CATFOOD_TIGER = catFood("catfood_tiger", CatVariant.RED);
     public static final DeferredHolder<Item, Item> CATFOOD_SIAMESE = catFood("catfood_siamese", CatVariant.SIAMESE);
     public static final DeferredHolder<Item, Item> CATFOOD_TABBY = catFood("catfood_tabby", CatVariant.TABBY);
     public static final DeferredHolder<Item, Item> CATFOOD_TUXEDO = catFood("catfood_tuxedo", CatVariant.ALL_BLACK);
@@ -257,9 +259,23 @@ public class NTItems {
     public static final DeferredHolder<Item, Item> WARPED_FOREST = fx("warped_forest_biome_catalyst", List.of(Biomes.WARPED_FOREST));
     public static final DeferredHolder<Item, Item> WINDSWEPT = fx("windswept_biome_catalyst", List.of(Biomes.WINDSWEPT_FOREST, Biomes.WINDSWEPT_HILLS, Biomes.WINDSWEPT_SAVANNA, Biomes.WINDSWEPT_GRAVELLY_HILLS));
     public static final DeferredHolder<Item, Item> WOODED_BADLANDS = fx("wooded_badlands_biome_catalyst", List.of(Biomes.WOODED_BADLANDS));
+    public static final DeferredHolder<Item, Item> VOID = fx("void_biome_catalyst", List.of(Biomes.THE_VOID));
+    public static final DeferredHolder<Item, Item> END_ALSOPHILA_FOREST = fx("end_alsophila_forest_biome_catalyst", List.of());
     //刷怪蛋
     public static final DeferredHolder<Item, Item> LAVA_AXOLOTL_SPAWN_EGG = spawnEgg("lava_axolotl", NTEntityTypes.LAVA_AXOLOTL, 0x533a37, 0x7d2d00);
     public static final DeferredHolder<Item, Item> MOOBLOOM_SPAWN_EGG = spawnEgg("moobloom", NTEntityTypes.MOOBLOOM, 0xfaca00, 0xf7edc1);
     public static final DeferredHolder<Item, Item> DUCK_SPAWN_EGG = spawnEgg("duck", NTEntityTypes.DUCK, 0xa1a1a1, 0xe65626);
 
+    public static final DeferredItem<ParrotEgg> RED_PARROT_EGG = ITEMS.register("red_parrot_egg", () -> new ParrotEgg(new Item.Properties().stacksTo(16), Parrot.Variant.RED_BLUE));
+    public static final DeferredItem<ParrotEgg> GREEN_PARROT_EGG = ITEMS.register("green_parrot_egg", () -> new ParrotEgg(new Item.Properties().stacksTo(16), Parrot.Variant.GREEN));
+    public static final DeferredItem<ParrotEgg> BLUE_PARROT_EGG = ITEMS.register("blue_parrot_egg", () -> new ParrotEgg(new Item.Properties().stacksTo(16), Parrot.Variant.BLUE));
+    public static final DeferredItem<ParrotEgg> CYAN_PARROT_EGG = ITEMS.register("cyan_parrot_egg", () -> new ParrotEgg(new Item.Properties().stacksTo(16), Parrot.Variant.YELLOW_BLUE));
+    public static final DeferredItem<ParrotEgg> GRAY_PARROT_EGG = ITEMS.register("gray_parrot_egg", () -> new ParrotEgg(new Item.Properties().stacksTo(16), Parrot.Variant.GRAY));
+
+    public static final DeferredItem<Item> GLASS_BOTTLE_OF_TEA = ITEMS.registerItem("glass_bottle_of_tea", Item::new);
+    public static final DeferredItem<Item> JUNGLE_BUSH_SAPLING = ITEMS.registerItem("jungle_bush_sapling", Item::new);
+    public static final DeferredItem<Item> PING_SAPLING = ITEMS.registerItem("pine_sapling", Item::new);
+    public static final DeferredItem<Item> KEY_OF_COLLECTION = ITEMS.registerItem("key_of_collection", Item::new);
+    public static final DeferredItem<Item> ELTRA_WING = ITEMS.registerItem("eltra_wing", Item::new);
+    public static final DeferredItem<Item> DRAGONCAST_STEEL = ITEMS.registerItem("dragoncast_steel", Item::new);
 }

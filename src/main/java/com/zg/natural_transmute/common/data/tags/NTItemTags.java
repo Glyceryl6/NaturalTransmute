@@ -5,7 +5,10 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
+import static com.zg.natural_transmute.utils.IdUtils.mcLoc;
+
 public class NTItemTags {
+    public static final TagKey<Item> VANILLA_EGGS = ItemTags.create(mcLoc("eggs")); // Todo: added in 1.21.5
 
     public static final TagKey<Item> FRUIT = create("fruit");
     public static final TagKey<Item> GRASS = create("grass");

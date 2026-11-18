@@ -1,0 +1,27 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "tag": "natural_transmute:bc_cold"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:carved_pumpkin"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:snow_block"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:snow_block"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 6,
+      "id": "minecraft:snowball"
+    }
+  ]
+}

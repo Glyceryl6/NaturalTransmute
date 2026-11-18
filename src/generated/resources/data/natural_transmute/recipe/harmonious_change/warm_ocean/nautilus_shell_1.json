@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:warm_ocean_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:turtle_scute"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:bone"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:nautilus_shell"
+    }
+  ]
+}

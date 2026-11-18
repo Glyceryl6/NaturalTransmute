@@ -1,0 +1,10 @@
+{
+  "values": [
+    "natural_transmute:meadow_biome_catalyst",
+    "natural_transmute:swamp_biome_catalyst",
+    "natural_transmute:snowy_plains_biome_catalyst",
+    "#natural_transmute:bc_fields",
+    "natural_transmute:wooded_badlands_biome_catalyst",
+    "natural_transmute:mountains_biome_catalyst"
+  ]
+}

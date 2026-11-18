@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:jungle_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:grass_block"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:rotten_flesh"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:podzol"
+    }
+  ]
+}

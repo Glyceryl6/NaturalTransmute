@@ -1,0 +1,19 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "tag": "natural_transmute:bc_nether"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "tag": "natural_transmute:generating_tags/unique_key_2114563411"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:netherrack"
+    }
+  ]
+}

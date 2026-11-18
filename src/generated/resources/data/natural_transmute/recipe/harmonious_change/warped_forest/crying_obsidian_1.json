@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:warped_forest_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:obsidian"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:ender_pearl"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:crying_obsidian"
+    }
+  ]
+}

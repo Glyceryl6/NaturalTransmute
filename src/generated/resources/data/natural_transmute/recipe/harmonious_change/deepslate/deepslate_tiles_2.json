@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:deepslate_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "tag": "natural_transmute:generating_tags/unique_key_-1192141411"
+    },
+    {
+      "count": 1,
+      "tag": "natural_transmute:generating_tags/unique_key_-1192141411"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 2,
+      "id": "minecraft:deepslate_tiles"
+    }
+  ]
+}

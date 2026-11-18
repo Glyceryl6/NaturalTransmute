@@ -1,0 +1,32 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:lush_caves_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:axolotl_bucket"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:blue_dye"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:heart_of_the_sea"
+    }
+  ],
+  "outputs": [
+    {
+      "components": {
+        "minecraft:bucket_entity_data": {
+          "Variant": 4
+        }
+      },
+      "count": 1,
+      "id": "minecraft:axolotl_bucket"
+    }
+  ]
+}

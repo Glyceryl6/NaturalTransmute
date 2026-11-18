@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "tag": "natural_transmute:bc_trail_ruins"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:heartbreak_pottery_sherd"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:brick"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 2,
+      "id": "minecraft:heartbreak_pottery_sherd"
+    }
+  ]
+}

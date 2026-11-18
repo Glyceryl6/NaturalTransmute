@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:mangrove_swamp_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:mud"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:moss_carpet"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "natural_transmute:peat_moss"
+    }
+  ]
+}

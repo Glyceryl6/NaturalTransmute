@@ -1,11 +1,7 @@
 {
   "values": [
-    "minecraft:carrot",
-    "minecraft:potato",
-    "minecraft:poisonous_potato",
     "minecraft:beetroot",
-    "minecraft:pumpkin",
-    "minecraft:brown_mushroom",
-    "minecraft:brown_mushroom"
+    "minecraft:potato",
+    "minecraft:carrot"
   ]
 }

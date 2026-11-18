@@ -103,6 +103,7 @@ public class ModBusEventHandler {
         event.registerEntityRenderer(NTEntityTypes.MOOBLOOM.get(), MoobloomRenderer::new);
         event.registerEntityRenderer(NTEntityTypes.DUCK.get(), DuckRenderer::new);
         event.registerEntityRenderer(NTEntityTypes.DUCK_EGG.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(NTEntityTypes.PARROT_EGG.get(), ThrownItemRenderer::new);
     }
 
     @OnlyIn(Dist.CLIENT)

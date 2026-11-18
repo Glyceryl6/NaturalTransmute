@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:forest_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:oak_sign"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:birch_sapling"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:birch_sign"
+    }
+  ]
+}

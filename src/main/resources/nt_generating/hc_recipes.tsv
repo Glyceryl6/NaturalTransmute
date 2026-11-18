@@ -1,0 +1,380 @@
+natural_transmute:forest/birch_leaves_1	oak_leaves			birch_sapling						natural_transmute:forest_biome_catalyst	birch_leaves									TRUE
+natural_transmute:forest/birch_sapling_1	oak_sapling									natural_transmute:forest_biome_catalyst	birch_sapling									TRUE
+natural_transmute:forest/birch_log_1	oak_log			birch_sapling						natural_transmute:forest_biome_catalyst	birch_log									TRUE
+natural_transmute:forest/birch_wood_1	oak_wood			birch_sapling						natural_transmute:forest_biome_catalyst	birch_wood									TRUE
+natural_transmute:forest/stripped_birch_log_1	stripped_oak_log			birch_sapling						natural_transmute:forest_biome_catalyst	stripped_birch_log									TRUE
+natural_transmute:forest/stripped_birch_wood_1	stripped_oak_wood			birch_sapling						natural_transmute:forest_biome_catalyst	stripped_birch_wood									TRUE
+natural_transmute:forest/birch_planks_1	oak_planks			birch_sapling						natural_transmute:forest_biome_catalyst	birch_planks									TRUE
+natural_transmute:forest/birch_stairs_1	oak_stairs			birch_sapling						natural_transmute:forest_biome_catalyst	birch_stairs									TRUE
+natural_transmute:forest/birch_slab_1	oak_slab			birch_sapling						natural_transmute:forest_biome_catalyst	birch_slab									TRUE
+natural_transmute:forest/birch_fence_1	oak_fence			birch_sapling						natural_transmute:forest_biome_catalyst	birch_fence									TRUE
+natural_transmute:forest/birch_fence_gate_1	oak_fence_gate			birch_sapling						natural_transmute:forest_biome_catalyst	birch_fence_gate									TRUE
+natural_transmute:forest/birch_trapdoor_1	oak_trapdoor			birch_sapling						natural_transmute:forest_biome_catalyst	birch_trapdoor									TRUE
+natural_transmute:forest/birch_door_1	oak_door			birch_sapling						natural_transmute:forest_biome_catalyst	birch_door									TRUE
+natural_transmute:forest/birch_sign_1	oak_sign			birch_sapling						natural_transmute:forest_biome_catalyst	birch_sign									TRUE
+natural_transmute:forest/birch_pressure_plate_1	oak_pressure_plate			birch_sapling						natural_transmute:forest_biome_catalyst	birch_pressure_plate									TRUE
+natural_transmute:forest/birch_button_1	oak_button			birch_sapling						natural_transmute:forest_biome_catalyst	birch_button									TRUE
+natural_transmute:jungle/bamboo_planks_1	#planks			bamboo						natural_transmute:jungle_biome_catalyst	bamboo_planks									TRUE
+natural_transmute:jungle/bamboo_stairs_1	#wooden_stairs			bamboo						natural_transmute:jungle_biome_catalyst	bamboo_stairs									TRUE
+natural_transmute:jungle/bamboo_slab_1	#wooden_slabs			bamboo						natural_transmute:jungle_biome_catalyst	bamboo_slab									TRUE
+natural_transmute:jungle/bamboo_fence_1	#wooden_fences			bamboo						natural_transmute:jungle_biome_catalyst	bamboo_fence									TRUE
+natural_transmute:jungle/bamboo_fence_gate_1	#fence_gates			bamboo						natural_transmute:jungle_biome_catalyst	bamboo_fence_gate									TRUE
+natural_transmute:jungle/bamboo_trapdoor_1	#wooden_trapdoors			bamboo						natural_transmute:jungle_biome_catalyst	bamboo_trapdoor									TRUE
+natural_transmute:jungle/bamboo_door_1	#wooden_doors			bamboo						natural_transmute:jungle_biome_catalyst	bamboo_door									TRUE
+natural_transmute:jungle/bamboo_sign_1	#signs			bamboo						natural_transmute:jungle_biome_catalyst	bamboo_sign									TRUE
+natural_transmute:jungle/bamboo_pressure_plate_1	#wooden_pressure_plates			bamboo						natural_transmute:jungle_biome_catalyst	bamboo_pressure_plate									TRUE
+natural_transmute:jungle/bamboo_button_1	#wooden_buttons			bamboo						natural_transmute:jungle_biome_catalyst	bamboo_button									TRUE
+natural_transmute:tags/sparse_ground/mossy_cobblestone_1	cobblestone			short_grass						#natural_transmute:bc_sparse_ground	mossy_cobblestone									TRUE
+natural_transmute:tags/sparse_ground/mossy_cobblestone_stairs_1	cobblestone_stairs			short_grass						#natural_transmute:bc_sparse_ground	mossy_cobblestone_stairs									TRUE
+natural_transmute:tags/sparse_ground/mossy_cobblestone_slab_1	cobblestone_slab			short_grass						#natural_transmute:bc_sparse_ground	mossy_cobblestone_slab									TRUE
+natural_transmute:tags/sparse_ground/mossy_cobblestone_wall_1	cobblestone_wall			short_grass						#natural_transmute:bc_sparse_ground	mossy_cobblestone_wall									TRUE
+natural_transmute:tags/sparse_underwater/mossy_cobblestone_1	cobblestone			seagrass						#natural_transmute:bc_sparse_underwater	mossy_cobblestone									TRUE
+natural_transmute:tags/sparse_underwater/mossy_cobblestone_stairs_1	cobblestone_stairs			seagrass						#natural_transmute:bc_sparse_underwater	mossy_cobblestone_stairs									TRUE
+natural_transmute:tags/sparse_underwater/mossy_cobblestone_slab_1	cobblestone_slab			seagrass						#natural_transmute:bc_sparse_underwater	mossy_cobblestone_slab									TRUE
+natural_transmute:tags/sparse_underwater/mossy_cobblestone_wall_1	cobblestone_wall			seagrass						#natural_transmute:bc_sparse_underwater	mossy_cobblestone_wall									TRUE
+natural_transmute:tags/sparse_ground/mossy_stone_bricks_1	stone_bricks			short_grass						#natural_transmute:bc_sparse_ground	mossy_stone_bricks									TRUE
+natural_transmute:tags/sparse_ground/mossy_stone_brick_stairs_1	stone_brick_stairs			short_grass						#natural_transmute:bc_sparse_ground	mossy_stone_brick_stairs									TRUE
+natural_transmute:tags/sparse_ground/mossy_stone_brick_slab_1	stone_brick_slab			short_grass						#natural_transmute:bc_sparse_ground	mossy_stone_brick_slab									TRUE
+natural_transmute:tags/sparse_ground/mossy_stone_brick_wall_1	stone_brick_wall			short_grass						#natural_transmute:bc_sparse_ground	mossy_stone_brick_wall									TRUE
+natural_transmute:tags/sparse_underwater/mossy_stone_bricks_1	stone_bricks			seagrass						#natural_transmute:bc_sparse_underwater	mossy_stone_bricks									TRUE
+natural_transmute:tags/sparse_underwater/mossy_stone_brick_stairs_1	stone_brick_stairs			seagrass						#natural_transmute:bc_sparse_underwater	mossy_stone_brick_stairs									TRUE
+natural_transmute:tags/sparse_underwater/mossy_stone_brick_slab_1	stone_brick_slab			seagrass						#natural_transmute:bc_sparse_underwater	mossy_stone_brick_slab									TRUE
+natural_transmute:tags/sparse_underwater/mossy_stone_brick_wall_1	stone_brick_wall			seagrass						#natural_transmute:bc_sparse_underwater	mossy_stone_brick_wall									TRUE
+natural_transmute:tags/nether/copper_bulb_2	copper_block			torch			redstone			#natural_transmute:bc_nether	copper_bulb	2								TRUE
+natural_transmute:tags/nether/exposed_copper_bulb_2	exposed_copper			torch			redstone			#natural_transmute:bc_nether	exposed_copper_bulb	2								TRUE
+natural_transmute:tags/nether/weathered_copper_bulb_2	weathered_copper			torch			redstone			#natural_transmute:bc_nether	weathered_copper_bulb	2								TRUE
+natural_transmute:tags/nether/oxidized_copper_bulb_2	oxidized_copper			torch			redstone			#natural_transmute:bc_nether	oxidized_copper_bulb	2								TRUE
+natural_transmute:tags/nether/waxed_copper_bulb_2	waxed_copper_block			torch			redstone			#natural_transmute:bc_nether	waxed_copper_bulb	2								TRUE
+natural_transmute:tags/nether/waxed_exposed_copper_bulb_2	waxed_exposed_copper			torch			redstone			#natural_transmute:bc_nether	waxed_exposed_copper_bulb	2								TRUE
+natural_transmute:tags/nether/waxed_weathered_copper_bulb_2	waxed_weathered_copper			torch			redstone			#natural_transmute:bc_nether	waxed_weathered_copper_bulb	2								TRUE
+natural_transmute:tags/nether/waxed_oxidized_copper_bulb_2	waxed_oxidized_copper			torch			redstone			#natural_transmute:bc_nether	waxed_oxidized_copper_bulb	2								TRUE
+natural_transmute:desert/dune_armor_trim_smithing_template_2	dune_armor_trim_smithing_template			diamond			sandstone			natural_transmute:desert_biome_catalyst	dune_armor_trim_smithing_template	2								TRUE
+natural_transmute:desert/sandstone_1	"red_sandstone,stone,deepslate,cobblestone,cobbled_deepslate"									natural_transmute:desert_biome_catalyst	sandstone									TRUE
+natural_transmute:desert/sand_4	sandstone									natural_transmute:desert_biome_catalyst	sand	4								TRUE
+natural_transmute:desert/sand_1	"gravel,coarse_dirt,red_sand"									natural_transmute:desert_biome_catalyst	sand									TRUE
+natural_transmute:desert/quartz_1	sand			sand						natural_transmute:desert_biome_catalyst	quartz									TRUE
+natural_transmute:desert/brewer_pottery_sherd_2	brewer_pottery_sherd			brick						natural_transmute:desert_biome_catalyst	brewer_pottery_sherd	2								TRUE
+natural_transmute:desert/arms_up_pottery_sherd_2	arms_up_pottery_sherd			brick						natural_transmute:desert_biome_catalyst	arms_up_pottery_sherd	2								TRUE
+natural_transmute:desert/archer_pottery_sherd_2	archer_pottery_sherd			brick						natural_transmute:desert_biome_catalyst	archer_pottery_sherd	2								TRUE
+natural_transmute:desert/miner_pottery_sherd_2	miner_pottery_sherd			brick						natural_transmute:desert_biome_catalyst	miner_pottery_sherd	2								TRUE
+natural_transmute:desert/skull_pottery_sherd_2	skull_pottery_sherd			brick						natural_transmute:desert_biome_catalyst	skull_pottery_sherd	2								TRUE
+natural_transmute:desert/prize_pottery_sherd_2	prize_pottery_sherd			brick						natural_transmute:desert_biome_catalyst	prize_pottery_sherd	2								TRUE
+natural_transmute:desert/papyrus_1	sugar_cane									natural_transmute:desert_biome_catalyst	natural_transmute:papyrus									TRUE
+natural_transmute:desert/catfood_persian_1	#c:foods/cooked_fish									natural_transmute:desert_biome_catalyst	natural_transmute:catfood_persian									TRUE
+natural_transmute:badlands/red_sandstone_1	"sandstone,stone,deepslate,cobblestone,cobbled_deepslate"									natural_transmute:badlands_biome_catalyst	red_sandstone									TRUE
+natural_transmute:badlands/red_sand_4	red_sandstone									natural_transmute:badlands_biome_catalyst	red_sand	4								TRUE
+natural_transmute:badlands/red_sand_1	"gravel,coarse_dirt,red_sand"									natural_transmute:badlands_biome_catalyst	red_sand									TRUE
+natural_transmute:badlands/quartz_and_gold_nugget_1	red_sand			red_sand						natural_transmute:badlands_biome_catalyst	quartz			gold_nugget						TRUE
+natural_transmute:badlands/armadillo_scute_1	turtle_scute									natural_transmute:badlands_biome_catalyst	armadillo_scute									TRUE
+natural_transmute:badlands/petard_3	tnt			paper						natural_transmute:badlands_biome_catalyst	natural_transmute:petard 	3								TRUE
+natural_transmute:wooded_badlands/coarse_dirt_1	"sand,red_sand"									natural_transmute:wooded_badlands_biome_catalyst	coarse_dirt									TRUE
+natural_transmute:wooded_badlands/bone_1	rotten_flesh									natural_transmute:wooded_badlands_biome_catalyst	bone									TRUE
+natural_transmute:wooded_badlands/armadillo_scute_1	turtle_scute									natural_transmute:wooded_badlands_biome_catalyst	armadillo_scute									TRUE
+natural_transmute:wooded_badlands/carrot_1	wheat_seeds			wheat						natural_transmute:wooded_badlands_biome_catalyst	carrot									TRUE
+natural_transmute:wooded_badlands/potato_1	carrot									natural_transmute:wooded_badlands_biome_catalyst	potato									TRUE
+natural_transmute:wooded_badlands/pitaya_2	apple			cactus						natural_transmute:wooded_badlands_biome_catalyst	natural_transmute:pitaya	2								TRUE
+natural_transmute:wooded_badlands/dogfood_striped_1	#c:foods/cooked_meat									natural_transmute:wooded_badlands_biome_catalyst	natural_transmute:dogfood_striped									TRUE
+natural_transmute:wooded_badlands/catfood_ragdoll_1	#c:foods/cooked_fish									natural_transmute:wooded_badlands_biome_catalyst	natural_transmute:catfood_ragdoll									TRUE
+natural_transmute:snowy_plains/dryas_octopetala_1	#small_flowers									natural_transmute:snowy_plains_biome_catalyst	natural_transmute:dryas_octopetala									TRUE
+natural_transmute:ice_spikes/vodka_1	potion									natural_transmute:ice_spikes_biome_catalyst	natural_transmute:vodka									TRUE
+natural_transmute:mountains/gravel_1	"cobblestone,cobbled_deepslate"									natural_transmute:mountains_biome_catalyst	gravel									TRUE
+natural_transmute:snowy_slopes/ice_and_bucket_1	powder_snow_bucket									natural_transmute:snowy_slopes_biome_catalyst	ice			bucket						TRUE
+natural_transmute:snowy_slopes/powder_snow_bucket_1	bucket			snow_block						natural_transmute:snowy_slopes_biome_catalyst	powder_snow_bucket									TRUE
+natural_transmute:snowy_slopes/refrigerated_rocket_1	blue_ice			firework_rocket						natural_transmute:snowy_slopes_biome_catalyst	natural_transmute:refrigerated_rocket									TRUE
+natural_transmute:meadow/amethyst_shard_2	raw_iron			quartz						natural_transmute:meadow_biome_catalyst	amethyst_shard	2								TRUE
+natural_transmute:meadow/calcite_1	bone			stone						natural_transmute:meadow_biome_catalyst	calcite									TRUE
+natural_transmute:meadow/cornflower_2	short_grass			blue_dye						natural_transmute:meadow_biome_catalyst	cornflower	2								TRUE
+natural_transmute:meadow/azure_bluet_3	short_grass			light_gray_dye			light_gray_dye			natural_transmute:meadow_biome_catalyst	azure_bluet	3								TRUE
+natural_transmute:meadow/dandelion_2	short_grass			yellow_dye						natural_transmute:meadow_biome_catalyst	dandelion	2								TRUE
+natural_transmute:meadow/poppy_2	short_grass			red_dye						natural_transmute:meadow_biome_catalyst	poppy	2								TRUE
+natural_transmute:meadow/allium_2	short_grass			magenta_dye						natural_transmute:meadow_biome_catalyst	allium	2								TRUE
+natural_transmute:meadow/oxeye_daisy_2	short_grass			light_gray_dye						natural_transmute:meadow_biome_catalyst	oxeye_daisy	2								TRUE
+natural_transmute:forest/apple_1	"#natural_transmute:fruit,#natural_transmute:vegetable"									natural_transmute:forest_biome_catalyst	apple									TRUE
+natural_transmute:forest/dogfood_woods_1	#c:foods/cooked_meat									natural_transmute:forest_biome_catalyst	natural_transmute:dogfood_woods									TRUE
+natural_transmute:forest/catfood_white_1	#c:foods/cooked_fish			white_dye						natural_transmute:forest_biome_catalyst	natural_transmute:catfood_white									TRUE
+natural_transmute:forest/catfood_british_shorthair_1	#c:foods/cooked_fish									natural_transmute:forest_biome_catalyst	natural_transmute:catfood_british_shorthair									TRUE
+natural_transmute:forest/catfood_tuxedo_and_bucket_1	#c:foods/cooked_fish			milk_bucket						natural_transmute:forest_biome_catalyst	natural_transmute:catfood_tuxedo			bucket						TRUE
+natural_transmute:flower_forest/apple_1	"#natural_transmute:fruit,#natural_transmute:vegetable"									natural_transmute:flower_forest_biome_catalyst	apple									TRUE
+natural_transmute:flower_forest/poppy_2	short_grass			red_dye						natural_transmute:flower_forest_biome_catalyst	poppy	2								TRUE
+natural_transmute:flower_forest/cornflower_2	short_grass			blue_dye						natural_transmute:flower_forest_biome_catalyst	cornflower	2								TRUE
+natural_transmute:flower_forest/orange_tulip_3	short_grass			short_grass			orange_dye			natural_transmute:flower_forest_biome_catalyst	orange_tulip	3								TRUE
+natural_transmute:flower_forest/red_tulip_3	short_grass			short_grass			red_dye			natural_transmute:flower_forest_biome_catalyst	red_tulip	3								TRUE
+natural_transmute:flower_forest/white_tulip_3	short_grass			short_grass			light_gray_dye			natural_transmute:flower_forest_biome_catalyst	white_tulip	3								TRUE
+natural_transmute:flower_forest/pink_tulip_3	short_grass			short_grass			pink_dye			natural_transmute:flower_forest_biome_catalyst	pink_tulip	3								TRUE
+natural_transmute:flower_forest/allium_2	short_grass			magenta_dye						natural_transmute:flower_forest_biome_catalyst	allium	2								TRUE
+natural_transmute:flower_forest/dandelion_2	short_grass			yellow_dye						natural_transmute:flower_forest_biome_catalyst	dandelion	2								TRUE
+natural_transmute:flower_forest/lily_of_the_valley_2	short_grass			white_dye						natural_transmute:flower_forest_biome_catalyst	lily_of_the_valley	2								TRUE
+natural_transmute:flower_forest/oxeye_daisy_2	short_grass			light_gray_dye						natural_transmute:flower_forest_biome_catalyst	oxeye_daisy	2								TRUE
+natural_transmute:flower_forest/azure_bluet_3	short_grass			light_gray_dye			light_gray_dye			natural_transmute:flower_forest_biome_catalyst	azure_bluet	3								TRUE
+natural_transmute:flower_forest/lilac_1	#small_flowers			magenta_dye						natural_transmute:flower_forest_biome_catalyst	lilac									TRUE
+natural_transmute:flower_forest/rose_bush_1	#small_flowers			red_dye						natural_transmute:flower_forest_biome_catalyst	rose_bush									TRUE
+natural_transmute:flower_forest/peony_1	#small_flowers			pink_dye						natural_transmute:flower_forest_biome_catalyst	peony									TRUE
+natural_transmute:flower_forest/buttercup_1	dandelion									natural_transmute:flower_forest_biome_catalyst	natural_transmute:buttercup									TRUE
+natural_transmute:flower_forest/moobloom_strange_feed_1	dandelion			dandelion			wheat			natural_transmute:flower_forest_biome_catalyst	natural_transmute:moobloom_strange_feed									TRUE
+natural_transmute:dark_forest/vex_armor_trim_smithing_template_2	vex_armor_trim_smithing_template			diamond			stone			natural_transmute:dark_forest_biome_catalyst	vex_armor_trim_smithing_template	2								TRUE
+natural_transmute:dark_forest/sentry_armor_trim_smithing_template_2	sentry_armor_trim_smithing_template			diamond			stone			natural_transmute:dark_forest_biome_catalyst	sentry_armor_trim_smithing_template	2								TRUE
+natural_transmute:dark_forest/apple_1	"#natural_transmute:fruit,#natural_transmute:vegetable"									natural_transmute:dark_forest_biome_catalyst	apple									TRUE
+natural_transmute:dark_forest/ominous_glass_bottle_1	experience_bottle									natural_transmute:dark_forest_biome_catalyst	ominous_bottle									TRUE
+natural_transmute:dark_forest/ominous_banner_1	#banners									natural_transmute:dark_forest_biome_catalyst	white_banner		"{""minecraft:banner_patterns"":[{color:""cyan"",pattern:""minecraft:rhombus""},{color:""light_gray"",pattern:""minecraft:stripe_bottom""},{color:""gray"",pattern:""minecraft:stripe_center""},{color:""light_gray"",pattern:""minecraft:border""},{color:""black"",pattern:""minecraft:stripe_middle""},{color:""light_gray"",pattern:""minecraft:half_horizontal""},{color:""light_gray"",pattern:""minecraft:circle""},{color:""black"",pattern:""minecraft:border""}],""minecraft:hide_additional_tooltip"":{},""minecraft:item_name"":'{""color"":""gold"",""translate"":""block.minecraft.ominous_banner""}'}"							TRUE
+natural_transmute:dark_forest/totem_of_undying_1	lapis_lazuli			golden_apple			#skulls			natural_transmute:dark_forest_biome_catalyst	totem_of_undying									TRUE
+natural_transmute:dark_forest/red_mushroom_block_1	red_mushroom			#planks						natural_transmute:dark_forest_biome_catalyst	red_mushroom_block									TRUE
+natural_transmute:dark_forest/brown_mushroom_block_1	brown_mushroom			#planks						natural_transmute:dark_forest_biome_catalyst	brown_mushroom_block									TRUE
+natural_transmute:dark_forest/mushroom_stem_4	"red_mushroom,brown_mushroom"			#logs						natural_transmute:dark_forest_biome_catalyst	mushroom_stem	4								TRUE
+natural_transmute:dark_forest/fangs_1	emerald			bone						natural_transmute:dark_forest_biome_catalyst	natural_transmute:fangs									TRUE
+natural_transmute:birch_forest/catfood_tabby_1	#c:foods/cooked_fish									natural_transmute:birch_forest_biome_catalyst	natural_transmute:catfood_tabby									TRUE
+natural_transmute:birch_forest/catfood_tiger_1	#c:foods/cooked_fish			orange_dye						natural_transmute:birch_forest_biome_catalyst	natural_transmute:catfood_tiger									TRUE
+natural_transmute:birch_forest/glass_bottle_of_tea_1	#saplings			potion		"{""minecraft:potion_contents"":{potion:""minecraft:water""}}"				natural_transmute:birch_forest_biome_catalyst	natural_transmute:bottle_of_tea									TRUE
+natural_transmute:mushroom/red_mushroom_1	#small_flowers									natural_transmute:mushroom_biome_catalyst	red_mushroom									TRUE
+natural_transmute:mushroom/brown_mushroom_1	"short_grass,fern"									natural_transmute:mushroom_biome_catalyst	brown_mushroom									TRUE
+natural_transmute:mushroom/mycelium_1	grass_block									natural_transmute:mushroom_biome_catalyst	mycelium									TRUE
+natural_transmute:mushroom/mushroom_stew_1	bowl									natural_transmute:mushroom_biome_catalyst	mushroom_stew									TRUE
+natural_transmute:mushroom/glow_lichen_1	"vine,moss_carpet"									natural_transmute:mushroom_biome_catalyst	glow_lichen									TRUE
+natural_transmute:mushroom/red_mushroom_block_1	red_mushroom			#planks						natural_transmute:mushroom_biome_catalyst	red_mushroom_block									TRUE
+natural_transmute:mushroom/brown_mushroom_block_1	brown_mushroom			#planks						natural_transmute:mushroom_biome_catalyst	brown_mushroom_block									TRUE
+natural_transmute:mushroom/mushroom_stem_4	"red_mushroom,brown_mushroom"			#logs						natural_transmute:mushroom_biome_catalyst	mushroom_stem	4								TRUE
+natural_transmute:mushroom/ganoderma_lucidum_1	brown_mushroom			golden_apple						natural_transmute:mushroom_biome_catalyst	natural_transmute:ganoderma_lucidum									TRUE
+natural_transmute:mushroom/mooshroom_strange_feed_1	wheat			fermented_spider_eye			sugar			natural_transmute:mushroom_biome_catalyst	natural_transmute:mooshroom_strange_feed									TRUE
+natural_transmute:swamp/lily_pad_1	"big_dripleaf,small_dripleaf"									natural_transmute:swamp_biome_catalyst	lily_pad									TRUE
+natural_transmute:swamp/vine_1	"short_grass,fern"									natural_transmute:swamp_biome_catalyst	vine									TRUE
+natural_transmute:swamp/blue_orchid_1	#small_flowers									natural_transmute:swamp_biome_catalyst	blue_orchid									TRUE
+natural_transmute:swamp/slime_block_1	honey_block									natural_transmute:swamp_biome_catalyst	slime_block									TRUE
+natural_transmute:swamp/pineapple_1	apple			sugar_cane						natural_transmute:swamp_biome_catalyst	natural_transmute:pineapple									TRUE
+natural_transmute:mangrove_swamp/pearlescent_froglight_1	magma_cream			bamboo						natural_transmute:mangrove_swamp_biome_catalyst	pearlescent_froglight									TRUE
+natural_transmute:mangrove_swamp/ochre_froglight_1	magma_cream			brown_mushroom						natural_transmute:mangrove_swamp_biome_catalyst	ochre_froglight									TRUE
+natural_transmute:mangrove_swamp/verdant_froglight_1	magma_cream			snowball						natural_transmute:mangrove_swamp_biome_catalyst	verdant_froglight									TRUE
+natural_transmute:mangrove_swamp/tadpole_bucket_1	tropical_fish_bucket			slime_block						natural_transmute:mangrove_swamp_biome_catalyst	tadpole_bucket									TRUE
+natural_transmute:mangrove_swamp/mud_1	dirt									natural_transmute:mangrove_swamp_biome_catalyst	mud									TRUE
+natural_transmute:mangrove_swamp/moss_carpet_1	glow_lichen									natural_transmute:mangrove_swamp_biome_catalyst	moss_carpet									TRUE
+natural_transmute:mangrove_swamp/vine_1	"short_grass,fern"									natural_transmute:mangrove_swamp_biome_catalyst	vine									TRUE
+natural_transmute:mangrove_swamp/peat_moss_1	mud			moss_carpet						natural_transmute:mangrove_swamp_biome_catalyst	natural_transmute:peat_moss									TRUE
+natural_transmute:mangrove_swamp/azure_froglight_1	magma_cream									natural_transmute:mangrove_swamp_biome_catalyst	natural_transmute:azure_froglight									TRUE
+natural_transmute:plains/beef_1	porkchop									natural_transmute:plains_biome_catalyst	beef									TRUE
+natural_transmute:plains/chicken_1	beef									natural_transmute:plains_biome_catalyst	chicken									TRUE
+natural_transmute:plains/porkchop_1	chicken									natural_transmute:plains_biome_catalyst	porkchop									TRUE
+natural_transmute:plains/cooked_beef_1	cooked_porkchop									natural_transmute:plains_biome_catalyst	cooked_beef									TRUE
+natural_transmute:plains/cooked_chicken_1	cooked_beef									natural_transmute:plains_biome_catalyst	cooked_chicken									TRUE
+natural_transmute:plains/cooked_porkchop_1	cooked_chicken									natural_transmute:plains_biome_catalyst	cooked_porkchop									TRUE
+natural_transmute:plains/pumpkin_seeds_1	#c:seeds									natural_transmute:plains_biome_catalyst	pumpkin_seeds									TRUE
+natural_transmute:plains/carrot_1	wheat_seeds			wheat						natural_transmute:plains_biome_catalyst	carrot									TRUE
+natural_transmute:plains/potato_1	carrot									natural_transmute:plains_biome_catalyst	potato									TRUE
+natural_transmute:plains/sunflower_1	#tall_flowers			yellow_dye						natural_transmute:plains_biome_catalyst	sunflower									TRUE
+natural_transmute:plains/catfood_black_1	#c:foods/cooked_fish			black_dye						natural_transmute:plains_biome_catalyst	natural_transmute:catfood_black									TRUE
+natural_transmute:plains/catfood_calico_1	#c:foods/cooked_fish									natural_transmute:plains_biome_catalyst	natural_transmute:catfood_calico									TRUE
+natural_transmute:plains/catfood_jellie_1	#c:foods/cooked_fish			bone						natural_transmute:plains_biome_catalyst	natural_transmute:catfood_jellie									TRUE
+natural_transmute:jungle/podzol_1	grass_block			rotten_flesh						natural_transmute:jungle_biome_catalyst	podzol									TRUE
+natural_transmute:jungle/wild_armor_trim_smithing_template_2	wild_armor_trim_smithing_template			diamond			mossy_cobblestone			natural_transmute:jungle_biome_catalyst	wild_armor_trim_smithing_template	2								TRUE
+natural_transmute:jungle/vine_1	"short_grass,fern"									natural_transmute:jungle_biome_catalyst	vine									TRUE
+natural_transmute:jungle/bamboo_1	"short_grass,fern"			"short_grass,fern"						natural_transmute:jungle_biome_catalyst	bamboo									TRUE
+natural_transmute:jungle/cocoa_beans_1	#c:seeds			jungle_log						natural_transmute:jungle_biome_catalyst	cocoa_beans									TRUE
+natural_transmute:jungle/plantain_sapling_1	jungle_sapling									natural_transmute:jungle_biome_catalyst	natural_transmute:plantain_sapling									TRUE
+natural_transmute:jungle/catfood_siamese_1	#c:foods/cooked_fish									natural_transmute:jungle_biome_catalyst	natural_transmute:catfood_siamese									TRUE
+natural_transmute:jungle/catfood_ocelot_1	#c:foods/raw_fish									natural_transmute:jungle_biome_catalyst	natural_transmute:catfood_ocelot									TRUE
+natural_transmute:jungle/red_parrot_egg_1	"egg,#eggs"			red_dye						natural_transmute:jungle_biome_catalyst	natural_transmute:red_parrot_egg									TRUE
+natural_transmute:jungle/green_parrot_egg_1	"egg,#eggs"			green_dye						natural_transmute:jungle_biome_catalyst	natural_transmute:green_parrot_egg									TRUE
+natural_transmute:jungle/blue_parrot_egg_1	"egg,#eggs"			blue_dye						natural_transmute:jungle_biome_catalyst	natural_transmute:blue_parrot_egg									TRUE
+natural_transmute:jungle/cyan_parrot_egg_1	"egg,#eggs"			cyan_dye						natural_transmute:jungle_biome_catalyst	natural_transmute:cyan_parrot_egg									TRUE
+natural_transmute:jungle/gray_parrot_egg_1	"egg,#eggs"			gray_dye						natural_transmute:jungle_biome_catalyst	natural_transmute:gray_parrot_egg									TRUE
+natural_transmute:jungle/jungle_bush_sapling_4	oak_sapling			jungle_log						natural_transmute:jungle_biome_catalyst	natural_transmute:jungle_bush_sapling	4								TRUE
+natural_transmute:savanna/leather_1	#wool			beef						natural_transmute:savanna_biome_catalyst	leather									TRUE
+natural_transmute:savanna/milk_bucket_1	water_bucket			beef						natural_transmute:savanna_biome_catalyst	milk_bucket									TRUE
+natural_transmute:savanna/wheat_1	#small_flowers									natural_transmute:savanna_biome_catalyst	wheat									TRUE
+natural_transmute:savanna/grassland_earth_1	grass_block			leather			golden_apple			natural_transmute:savanna_biome_catalyst	natural_transmute:grassland_earth									TRUE
+natural_transmute:river/sand_1	gravel									natural_transmute:river_biome_catalyst	sand									TRUE
+natural_transmute:river/dirt_1	coarse_dirt									natural_transmute:river_biome_catalyst	dirt									TRUE
+natural_transmute:river/potato_1	poisonous_potato									natural_transmute:river_biome_catalyst	potato									TRUE
+natural_transmute:river/reed_1	lily_pad			short_grass						natural_transmute:river_biome_catalyst	natural_transmute:reed									TRUE
+natural_transmute:river/duck_egg_1	"egg,#eggs"									natural_transmute:river_biome_catalyst	natural_transmute:duck_egg									TRUE
+natural_transmute:river/duck_1	chicken									natural_transmute:river_biome_catalyst	natural_transmute:duck									TRUE
+natural_transmute:ocean/kelp_1	#leaves									natural_transmute:ocean_biome_catalyst	kelp									TRUE
+natural_transmute:ocean/mourner_pottery_sherd_2	mourner_pottery_sherd			brick						natural_transmute:ocean_biome_catalyst	mourner_pottery_sherd	2								TRUE
+natural_transmute:ocean/blade_pottery_sherd_2	blade_pottery_sherd			brick						natural_transmute:ocean_biome_catalyst	blade_pottery_sherd	2								TRUE
+natural_transmute:ocean/plenty_pottery_sherd_2	plenty_pottery_sherd			brick						natural_transmute:ocean_biome_catalyst	plenty_pottery_sherd	2								TRUE
+natural_transmute:ocean/explorer_pottery_sherd_2	explorer_pottery_sherd			brick						natural_transmute:ocean_biome_catalyst	explorer_pottery_sherd	2								TRUE
+natural_transmute:ocean/ocean_earth_1	heart_of_the_sea			dirt						natural_transmute:ocean_biome_catalyst	natural_transmute:ocean_earth									TRUE
+natural_transmute:frozen_ocean/cod_bucket_1	#c:buckets/entity_water									natural_transmute:frozen_ocean_biome_catalyst	cod_bucket									TRUE
+natural_transmute:frozen_ocean/ice_1	snow_block									natural_transmute:frozen_ocean_biome_catalyst	ice									TRUE
+natural_transmute:frozen_ocean/honey_wine_2	honey_bottle			potion						natural_transmute:frozen_ocean_biome_catalyst	natural_transmute:honey_wine	2								TRUE
+natural_transmute:frozen_ocean/whale_bone_1	bone			beef						natural_transmute:frozen_ocean_biome_catalyst	natural_transmute:whale_bone									TRUE
+natural_transmute:frozen_ocean/heroic_enchanted_book_and_glass_bottle_1	blue_ice			natural_transmute:honey_wine			enchanted_book			natural_transmute:frozen_ocean_biome_catalyst	enchanted_book		"{""minecraft:stored_enchantments"":{levels:{""natural_transmute:heroic"":1}}}"	glass_bottle						TRUE
+natural_transmute:beach/turtle_scute_1	armadillo_scute									natural_transmute:beach_biome_catalyst	turtle_scute									TRUE
+natural_transmute:beach/nautilus_shell_1	turtle_scute			bone						natural_transmute:beach_biome_catalyst	nautilus_shell									TRUE
+natural_transmute:beach/turtle_egg_1	"egg,#eggs"									natural_transmute:beach_biome_catalyst	turtle_egg									TRUE
+natural_transmute:beach/coconut_1	sugar_cane			#logs						natural_transmute:beach_biome_catalyst	natural_transmute:coconut									TRUE
+natural_transmute:beach/wet_sponge_2	yellow_wool			#natural_transmute:coral_blocks						natural_transmute:beach_biome_catalyst	wet_sponge	2								TRUE
+natural_transmute:stone_shore/gravel_1	"cobblestone,cobbled_deepslate"									natural_transmute:stone_shore_biome_catalyst	gravel									TRUE
+natural_transmute:stone_shore/cobblestone_1	stone									natural_transmute:stone_shore_biome_catalyst	cobblestone									TRUE
+natural_transmute:stone_shore/cobbled_deepslate_1	deepslate									natural_transmute:stone_shore_biome_catalyst	cobbled_deepslate									TRUE
+natural_transmute:stone_shore/goose_barnacle_1	nautilus_shell			spider_eye						natural_transmute:stone_shore_biome_catalyst	natural_transmute:goose_barnacle									TRUE
+natural_transmute:warm_ocean/turtle_scute_1	armadillo_scute									natural_transmute:warm_ocean_biome_catalyst	turtle_scute									TRUE
+natural_transmute:warm_ocean/nautilus_shell_1	turtle_scute			bone						natural_transmute:warm_ocean_biome_catalyst	nautilus_shell									TRUE
+natural_transmute:warm_ocean/sea_pickle_1	#small_flowers									natural_transmute:warm_ocean_biome_catalyst	sea_pickle									TRUE
+natural_transmute:warm_ocean/snort_pottery_sherd_2	snort_pottery_sherd			brick						natural_transmute:warm_ocean_biome_catalyst	snort_pottery_sherd	2								TRUE
+natural_transmute:warm_ocean/shelter_pottery_sherd_2	shelter_pottery_sherd			brick						natural_transmute:warm_ocean_biome_catalyst	shelter_pottery_sherd	2								TRUE
+natural_transmute:warm_ocean/angler_pottery_sherd_2	angler_pottery_sherd			brick						natural_transmute:warm_ocean_biome_catalyst	angler_pottery_sherd	2								TRUE
+natural_transmute:warm_ocean/cod_bucket_1	cod			bucket						natural_transmute:warm_ocean_biome_catalyst	cod_bucket									TRUE
+natural_transmute:warm_ocean/salmon_bucket_1	salmon			bucket						natural_transmute:warm_ocean_biome_catalyst	salmon_bucket									TRUE
+natural_transmute:warm_ocean/pufferfish_bucket_1	pufferfish			bucket						natural_transmute:warm_ocean_biome_catalyst	pufferfish_bucket									TRUE
+natural_transmute:warm_ocean/tropical_fish_bucket_1	tropical_fish			bucket						natural_transmute:warm_ocean_biome_catalyst	tropical_fish_bucket									TRUE
+natural_transmute:warm_ocean/wet_sponge_2	yellow_wool			#coral_blocks						natural_transmute:warm_ocean_biome_catalyst	wet_sponge	2								TRUE
+natural_transmute:warm_ocean/water_wax_1	honeycomb			pufferfish						natural_transmute:warm_ocean_biome_catalyst	natural_transmute:water_wax									TRUE
+natural_transmute:warm_ocean/gravel_1	cobbled_deepslate									natural_transmute:warm_ocean_biome_catalyst	gravel									TRUE
+natural_transmute:deepslate/tuff_1	gravel			gravel						natural_transmute:deepslate_biome_catalyst	tuff									TRUE
+natural_transmute:deepslate/glow_lichen_1	"moss_carpet,vine,short_grass,fern,#small_flowers"									natural_transmute:deepslate_biome_catalyst	glow_lichen									TRUE
+natural_transmute:deepslate/amber_1	#coals									natural_transmute:deepslate_biome_catalyst	natural_transmute:amber									TRUE
+natural_transmute:deepslate/deepslate_tiles_2	"deepslate_bricks,polished_blackstone_bricks,tuff_bricks"			"deepslate_bricks,polished_blackstone_bricks,tuff_bricks"						natural_transmute:deepslate_biome_catalyst	deepslate_tiles	2								
+natural_transmute:deepslate/deepslate_tile_stairs_2	"deepslate_brick_stairs,polished_blackstone_brick_stairs,tuff_brick_stairs"			"deepslate_brick_stairs,polished_blackstone_brick_stairs,tuff_brick_stairs"						natural_transmute:deepslate_biome_catalyst	deepslate_tile_stairs	2								
+natural_transmute:deepslate/deepslate_tile_slab_2	"deepslate_brick_slab,polished_blackstone_brick_slab,tuff_brick_slab"			"deepslate_brick_slab,polished_blackstone_brick_slab,tuff_brick_slab"						natural_transmute:deepslate_biome_catalyst	deepslate_tile_slab	2								
+natural_transmute:deepslatedeepslate_tile_wall_2	"deepslate_brick_wall,polished_blackstone_brick_wall,tuff_brick_wall"			"deepslate_brick_wall,polished_blackstone_brick_wall,tuff_brick_wall"						natural_transmute:deepslate_biome_catalyst	deepslate_tile_wall	2								
+natural_transmute:lush_caves/flowering_azalea_1	azalea			#small_flowers						natural_transmute:lush_caves_biome_catalyst	flowering_azalea									TRUE
+natural_transmute:lush_caves/flowering_azalea_leaves_1	azalea_leaves			#small_flowers						natural_transmute:lush_caves_biome_catalyst	flowering_azalea_leaves									TRUE
+natural_transmute:lush_caves/glow_berries_1	#c:foods/berry									natural_transmute:lush_caves_biome_catalyst	glow_berries									TRUE
+natural_transmute:lush_caves/small_dripleaf_1	"short_grass,fern"									natural_transmute:lush_caves_biome_catalyst	small_dripleaf									TRUE
+natural_transmute:lush_caves/moss_block_1	#dirt									natural_transmute:lush_caves_biome_catalyst	moss_block									TRUE
+natural_transmute:lush_caves/rooted_dirt_1	dirt			"short_grass,fern"						natural_transmute:lush_caves_biome_catalyst	rooted_dirt									TRUE
+natural_transmute:lush_caves/spore_blossom_1	#small_flowers									natural_transmute:lush_caves_biome_catalyst	spore_blossom									TRUE
+natural_transmute:lush_caves/yellow_axolotl_bucket_1	axolotl_bucket			yellow_dye						natural_transmute:lush_caves_biome_catalyst	axolotl_bucket		"{""minecraft:bucket_entity_data"":{Variant:2}}"							TRUE
+natural_transmute:lush_caves/pink_axolotl_bucket_1	axolotl_bucket			pink_dye						natural_transmute:lush_caves_biome_catalyst	axolotl_bucket		"{""minecraft:bucket_entity_data"":{Variant:0}}"							TRUE
+natural_transmute:lush_caves/brown_axolotl_bucket_1	axolotl_bucket			brown_dye						natural_transmute:lush_caves_biome_catalyst	axolotl_bucket		"{""minecraft:bucket_entity_data"":{Variant:1}}"							TRUE
+natural_transmute:lush_caves/cyan_axolotl_bucket_1	axolotl_bucket			cyan_dye						natural_transmute:lush_caves_biome_catalyst	axolotl_bucket		"{""minecraft:bucket_entity_data"":{Variant:3}}"							TRUE
+natural_transmute:lush_caves/blue_axolotl_bucket_1	axolotl_bucket			blue_dye			heart_of_the_sea			natural_transmute:lush_caves_biome_catalyst	axolotl_bucket		"{""minecraft:bucket_entity_data"":{Variant:4}}"							TRUE
+natural_transmute:lush_caves/amber_1	#coals									natural_transmute:lush_caves_biome_catalyst	natural_transmute:amber									TRUE
+natural_transmute:lush_caves/blue_taro_vine_2	vine			pitcher_plant						natural_transmute:lush_caves_biome_catalyst	natural_transmute:blue_taro_vine	2								TRUE
+natural_transmute:lush_caves/caves_earth_1	moss_block			golden_apple						natural_transmute:lush_caves_biome_catalyst	natural_transmute:cave_earth									TRUE
+natural_transmute:dripstone_caves/pointed_dripstone_4	"cobblestone,cobbled_deepslate"									natural_transmute:dripstone_caves_biome_catalyst	pointed_dripstone	4								TRUE
+natural_transmute:dripstone_caves/dripstone_block_1	"stone,deepslate"									natural_transmute:dripstone_caves_biome_catalyst	dripstone_block									TRUE
+natural_transmute:dripstone_caves/lava_bucket_2	lava_bucket			bucket						natural_transmute:dripstone_caves_biome_catalyst	lava_bucket	1		lava_bucket	1					TRUE
+natural_transmute:dripstone_caves/clay_block_1	mud									natural_transmute:dripstone_caves_biome_catalyst	clay									TRUE
+natural_transmute:deep_dark/sculk_1	#dirt									natural_transmute:deep_dark_biome_catalyst	sculk									TRUE
+natural_transmute:deep_dark/sculk_vein_1	"vine,glow_lichen"									natural_transmute:deep_dark_biome_catalyst	sculk_vein									TRUE
+natural_transmute:deep_dark/sculk_sensor_1	sculk			redstone						natural_transmute:deep_dark_biome_catalyst	sculk_sensor									TRUE
+natural_transmute:deep_dark/sculk_catalyst_1	sculk			#coral_blocks						natural_transmute:deep_dark_biome_catalyst	sculk_catalyst									TRUE
+natural_transmute:deep_dark/sculk_shrieker_1	sculk			goat_horn						natural_transmute:deep_dark_biome_catalyst	sculk_shrieker									TRUE
+natural_transmute:deep_dark/ward_armor_trim_smithing_template_2	ward_armor_trim_smithing_template			diamond			deepslate			natural_transmute:deep_dark_biome_catalyst	ward_armor_trim_smithing_template	2								TRUE
+natural_transmute:deep_dark/silence_armor_trim_smithing_template_2	silence_armor_trim_smithing_template			diamond			deepslate			natural_transmute:deep_dark_biome_catalyst	silence_armor_trim_smithing_template	2								TRUE
+natural_transmute:deep_dark/sculk_bone_1	bone									natural_transmute:deep_dark_biome_catalyst	natural_transmute:sculk_bone									TRUE
+natural_transmute:taiga/beetroot_seeds_1	wheat_seeds			sugar						natural_transmute:taiga_biome_catalyst	beetroot_seeds									TRUE
+natural_transmute:taiga/blue_berries_1	sweet_berries									natural_transmute:taiga_biome_catalyst	natural_transmute:blueberries									TRUE
+natural_transmute:taiga/pine_sapling_2	spruce_sapling			spruce_sapling						natural_transmute:taiga_biome_catalyst	natural_transmute:pine_sapling	2								TRUE
+natural_transmute:old_growth_taiga/podzol_1	grass_block			rotten_flesh						natural_transmute:old_growth_taiga_biome_catalyst	podzol									TRUE
+natural_transmute:old_growth_taiga/fermented_spider_eye_1	spider_eye									natural_transmute:old_growth_taiga_biome_catalyst	fermented_spider_eye									TRUE
+natural_transmute:old_growth_taiga/truffle_1	brown_mushroom									natural_transmute:old_growth_taiga_biome_catalyst	natural_transmute:truffle									TRUE
+natural_transmute:old_growth_taiga/pine_sapling_2	spruce_sapling			spruce_sapling						natural_transmute:old_growth_taiga_biome_catalyst	natural_transmute:pine_sapling	2								TRUE
+natural_transmute:cherry_grove/dried_kelp_1	short_grass									natural_transmute:cherry_grove_biome_catalyst	dried_kelp									TRUE
+natural_transmute:cherry_grove/katana_1	iron_sword			cherry_sapling						natural_transmute:cherry_grove_biome_catalyst	natural_transmute:katana									TRUE
+natural_transmute:cherry_grove/pink_petals_4	#small_flowers									natural_transmute:cherry_grove_biome_catalyst	pink_petals	4								TRUE
+natural_transmute:windswept/feather_1	string									natural_transmute:windswept_biome_catalyst	feather									TRUE
+natural_transmute:windswept/wind_charge_1	fire_charge									natural_transmute:windswept_biome_catalyst	wind_charge									TRUE
+natural_transmute:windswept/breeze_rod_1	blaze_rod									natural_transmute:windswept_biome_catalyst	breeze_rod									TRUE
+natural_transmute:windswept/flow_armor_trim_smithing_template_2	flow_armor_trim_smithing_template			diamond			breeze_rod			natural_transmute:windswept_biome_catalyst	flow_armor_trim_smithing_template	2								TRUE
+natural_transmute:windswept/bolt_armor_trim_smithing_template_2	bolt_armor_trim_smithing_template			diamond			"copper_block,waxed_copper_block"			natural_transmute:windswept_biome_catalyst	bolt_armor_trim_smithing_template	2								TRUE
+natural_transmute:windswept/flow_pottery_sherd_2	flow_pottery_sherd			brick						natural_transmute:windswept_biome_catalyst	flow_pottery_sherd	2								TRUE
+natural_transmute:windswept/guster_pottery_sherd_2	guster_pottery_sherd			brick						natural_transmute:windswept_biome_catalyst	guster_pottery_sherd	2								TRUE
+natural_transmute:windswept/scrape_pottery_sherd_2	scrape_pottery_sherd			brick						natural_transmute:windswept_biome_catalyst	scrape_pottery_sherd	2								TRUE
+natural_transmute:windswept/breeze_arrow_1	arrow									natural_transmute:windswept_biome_catalyst	natural_transmute:breeze_arrow									TRUE
+natural_transmute:windswept/key_of_collection_1	ominous_trial_key			totem_of_undying						natural_transmute:windswept_biome_catalyst	natural_transmute:key_of_collection									TRUE
+natural_transmute:crimson_forest/piglin_head_1	skeleton_skull			porkchop						natural_transmute:crimson_forest_biome_catalyst	piglin_head									TRUE
+natural_transmute:crimson_forest/shroomlight_1	"glowstone,magma_block"			weeping_vines						natural_transmute:crimson_forest_biome_catalyst	shroomlight									TRUE
+natural_transmute:crimson_forest/crimson_nylium_1	"netherrack,grass_block,warped_nylium"									natural_transmute:crimson_forest_biome_catalyst	crimson_nylium									TRUE
+natural_transmute:crimson_forest/weeping_vines_1	"vine,twisting_vines"									natural_transmute:crimson_forest_biome_catalyst	weeping_vines									TRUE
+natural_transmute:crimson_forest/crimson_fungus_1	"brown_mushroom,red_mushroom,warped_fungus"									natural_transmute:crimson_forest_biome_catalyst	crimson_fungus									TRUE
+natural_transmute:crimson_forest/crimson_roots_1	"short_grass,fern,warped_roots"									natural_transmute:crimson_forest_biome_catalyst	crimson_roots									TRUE
+natural_transmute:crimson_forest/simulated_rambler_1	#small_flowers			shroomlight						natural_transmute:crimson_forest_biome_catalyst	natural_transmute:simulated_rambler									TRUE
+natural_transmute:warped_forest/shroomlight_1	"glowstone,magma_block"			twisting_vines						natural_transmute:warped_forest_biome_catalyst	shroomlight									TRUE
+natural_transmute:warped_forest/warped_nylium_1	"netherrack,grass_block,crimson_nylium"									natural_transmute:warped_forest_biome_catalyst	warped_nylium									TRUE
+natural_transmute:warped_forest/twisting_vines_1	"vine,weeping_vines"									natural_transmute:warped_forest_biome_catalyst	twisting_vines									TRUE
+natural_transmute:warped_forest/warped_fungus_1	"brown_mushroom,red_mushroom,crimson_fungus"									natural_transmute:warped_forest_biome_catalyst	warped_fungus									TRUE
+natural_transmute:warped_forest/warped_roots_1	"short_grass,fern,crimson_roots"									natural_transmute:warped_forest_biome_catalyst	warped_roots									TRUE
+natural_transmute:warped_forest/crying_obsidian_1	obsidian			ender_pearl						natural_transmute:warped_forest_biome_catalyst	crying_obsidian									TRUE
+natural_transmute:warped_forest/warped_wart_1	nether_wart									natural_transmute:warped_forest_biome_catalyst	natural_transmute:warped_wart									TRUE
+natural_transmute:soul_sand_valley/soul_sand_1	"sand,red_sand,gravel"			bone_meal						natural_transmute:soul_sand_valley_biome_catalyst	soul_sand									TRUE
+natural_transmute:soul_sand_valley/soul_soil_1	"dirt,coarse_dirt,clay"									natural_transmute:soul_sand_valley_biome_catalyst	soul_soil									TRUE
+natural_transmute:soul_sand_valley/soul_torch_1	torch									natural_transmute:soul_sand_valley_biome_catalyst	soul_torch									TRUE
+natural_transmute:soul_sand_valley/soul_lantern_1	lantern									natural_transmute:soul_sand_valley_biome_catalyst	soul_lantern									TRUE
+natural_transmute:soul_sand_valley/soul_campfire_1	campfire									natural_transmute:soul_sand_valley_biome_catalyst	soul_campfire									TRUE
+natural_transmute:soul_sand_valley/basalt_1	blue_ice			lava_bucket						natural_transmute:soul_sand_valley_biome_catalyst	basalt									FALSE
+natural_transmute:soul_sand_valley/death_earth_1	soul_soil			golden_apple						natural_transmute:soul_sand_valley_biome_catalyst	natural_transmute:death_earth									TRUE
+natural_transmute:basalt_deltas/raw_gold_1	#c:raw_ores									natural_transmute:basalt_deltas_biome_catalyst	raw_gold									TRUE
+natural_transmute:basalt_deltas/magma_cream_5	slime_ball			magma_block						natural_transmute:basalt_deltas_biome_catalyst	magma_cream	5								TRUE
+natural_transmute:basalt_deltas/magma_block_1	"cobblestone,cobbled_deepslate"									natural_transmute:basalt_deltas_biome_catalyst	magma_block									TRUE
+natural_transmute:basalt_deltas/basalt_1_1	"stone,deepslate"									natural_transmute:basalt_deltas_biome_catalyst	basalt									TRUE
+natural_transmute:basalt_deltas/lava_bucket_1	bucket			"obsidian,crying_obsidian"						natural_transmute:basalt_deltas_biome_catalyst	lava_bucket									TRUE
+natural_transmute:basalt_deltas/basalt_1_2	blue_ice			soul_soil						natural_transmute:basalt_deltas_biome_catalyst	basalt									FALSE
+natural_transmute:basalt_deltas/lava_axolotl_bucket_1	axolotl_bucket			magma_block						natural_transmute:basalt_deltas_biome_catalyst	natural_transmute:lava_axolotl_bucket									TRUE
+natural_transmute:end_highlands/chorus_fruit_1	bamboo			ender_pearl						natural_transmute:end_highlands_biome_catalyst	chorus_fruit									TRUE
+natural_transmute:end_highlands/chorus_flower_1	spore_blossom			ender_pearl						natural_transmute:end_highlands_biome_catalyst	chorus_flower									TRUE
+natural_transmute:end_highlands/ender_pearl_1	quartz			popped_chorus_fruit						natural_transmute:end_highlands_biome_catalyst	ender_pearl									TRUE
+natural_transmute:end_highlands/purpur_block_1	#logs									natural_transmute:end_highlands_biome_catalyst	purpur_block									TRUE
+natural_transmute:end_highlands/end_rod_1	torch									natural_transmute:end_highlands_biome_catalyst	end_rod									TRUE
+natural_transmute:end_highlands/spire_armor_trim_smithing_template_2	spire_armor_trim_smithing_template			diamond			purpur_block			natural_transmute:end_highlands_biome_catalyst	spire_armor_trim_smithing_template	2								TRUE
+natural_transmute:end_highlands/eye_armor_trim_smithing_template_2	eye_armor_trim_smithing_template			diamond			end_stone			natural_transmute:end_highlands_biome_catalyst	eye_armor_trim_smithing_template	2								TRUE
+natural_transmute:end_highlands/elytra_1	natural_transmute:eltra_wing			natural_transmute:eltra_wing						natural_transmute:end_highlands_biome_catalyst	elytra									TRUE
+natural_transmute:end_highlands/eltra_wing_1	phantom_membrane			phantom_membrane			natural_transmute:dragoncast_steel_ingot			natural_transmute:end_highlands_biome_catalyst	natural_transmute:eltra_wing									TRUE
+natural_transmute:end_highlands/end_alsophila_sapling_1	jungle_sapling			ender_pearl						natural_transmute:end_highlands_biome_catalyst	natural_transmute:end_alsophila_sapling									TRUE
+natural_transmute:end/dragon_head_1	#skulls			end_crystal						natural_transmute:end_biome_catalyst	dragon_head									TRUE
+natural_transmute:end/dragon_breath_1	chorus_fruit			potion						natural_transmute:end_biome_catalyst	dragon_breath									TRUE
+natural_transmute:end/end_crystal_1	amethyst_block			ghast_tear						natural_transmute:end_biome_catalyst	end_crystal									TRUE
+natural_transmute:end/dragon_egg_and_glass_bottle_1	sniffer_egg			end_crystal			dragon_breath			natural_transmute:end_biome_catalyst	dragon_egg			glass_bottle						TRUE
+natural_transmute:end/dragoncast_steel_billet_and_glass_bottle_1	natural_transmute:corundum_iron_plate			ancient_debris			dragon_breath			natural_transmute:end_biome_catalyst	natural_transmute:dragoncast_steel_billet			glass_bottle						TRUE
+natural_transmute:void/heterogeneous_stone_1	#c:raw_materials									natural_transmute:void_biome_catalyst	natural_transmute:heterogeneous_stone									TRUE
+natural_transmute:void/annihilate_rod_1	nether_star			breeze_rod			end_crystal			natural_transmute:void_biome_catalyst	natural_transmute:annihilate_rod									TRUE
+natural_transmute:end_alsophila_forest/shulker_shell_1	nautilus_shell									natural_transmute:end_alsophila_forest_biome_catalyst	shulker_shell									TRUE
+natural_transmute:end_alsophila_forest/sniffer_egg_1	moss_block			"egg,#eggs"			dragon_breath			natural_transmute:end_alsophila_forest_biome_catalyst	sniffer_egg			glass_bottle						TRUE
+natural_transmute:end_alsophila_forest/pitcher_pod_1	moss_block			beetroot_seeds						natural_transmute:end_alsophila_forest_biome_catalyst	pitcher_pod									TRUE
+natural_transmute:end_alsophila_forest/torchflower_seeds_1	moss_block			"orange_tulip,red_tulip"						natural_transmute:end_alsophila_forest_biome_catalyst	torchflower_seeds									TRUE
+natural_transmute:end_alsophila_forest/eternal_harmonious_change_lava_bucket_1	natural_transmute:harmonious_change_lava_bucket			nether_star			dragon_egg			natural_transmute:end_alsophila_forest_biome_catalyst	natural_transmute:eternal_harmonious_change_lava_bucket									TRUE
+natural_transmute:tags/dry/sponge_1	wet_sponge									#natural_transmute:bc_dry	sponge									TRUE
+natural_transmute:tags/dry/dead_bush_1	#saplings									#natural_transmute:bc_dry	dead_bush									TRUE
+natural_transmute:tags/moist/wet_sponge_1	sponge									#natural_transmute:bc_moist	wet_sponge									TRUE
+natural_transmute:tags/sparse_ground/grass_block_1	dirt			short_grass						#natural_transmute:bc_sparse_ground	grass_block									TRUE
+natural_transmute:tags/dense/grass_block_1	dirt									#natural_transmute:bc_dense	grass_block									TRUE
+natural_transmute:tags/cold/ice_and_bucket_1	water_bucket									#natural_transmute:bc_cold	ice			bucket						TRUE
+natural_transmute:tags/cold/snowball_16	carved_pumpkin			snow_block			snow_block			#natural_transmute:bc_cold	snowball	6								TRUE
+natural_transmute:tags/cold/obsidian_1	magma_block									#natural_transmute:bc_cold	obsidian									TRUE
+natural_transmute:tags/very_cold/packed_ice_and_bucket_1	water_bucket			ice						#natural_transmute:bc_very_cold	packed_ice			bucket						TRUE
+natural_transmute:tags/glacial/blue_ice_and_bucket_1	water_bucket			packed_ice						#natural_transmute:bc_glacial	blue_ice			bucket						TRUE
+natural_transmute:tags/glacial/obsidian_1	lava_bucket									#natural_transmute:bc_glacial	obsidian									TRUE
+natural_transmute:tags/glacial/basalt_1	lava_bucket			soul_soil						#natural_transmute:bc_glacial	basalt									FALSE
+natural_transmute:tags/mountains/gravel_and_stone_pupa_1	#natural_transmute:infested_blocks									#natural_transmute:bc_mountains	gravel			natural_transmute:silverfish_pupa						TRUE
+natural_transmute:tags/ocean/coast_armor_trim_smithing_template_2	coast_armor_trim_smithing_template			diamond			stone			#natural_transmute:bc_ocean	coast_armor_trim_smithing_template	2								TRUE
+natural_transmute:tags/ocean/prismarine_shard_1	#c:raw_materials									#natural_transmute:bc_ocean	prismarine_shard	8								TRUE
+natural_transmute:tags/ocean/prismarine_crystals_8	#c:raw_materials			lapis_lazuli						#natural_transmute:bc_ocean	prismarine_crystals	8								TRUE
+natural_transmute:tags/caves/skeleton_skull_8	bone_block									#natural_transmute:bc_caves	skeleton_skull									TRUE
+natural_transmute:tags/caves/zombie_head_1	skeleton_skull			rotten_flesh						#natural_transmute:bc_caves	zombie_head									TRUE
+natural_transmute:tags/caves/creeper_head_1	skeleton_skull			gunpowder						#natural_transmute:bc_caves	creeper_head									TRUE
+natural_transmute:tags/caves/player_head_1	zombie_head			fermented_spider_eye			golden_apple			#natural_transmute:bc_caves	player_head									TRUE
+natural_transmute:tags/desert/coarse_dirt_1	"grass_block,podzol,mycelium"									#natural_transmute:bc_desert	coarse_dirt									TRUE
+natural_transmute:tags/nether/snout_armor_trim_smithing_template_2	snout_armor_trim_smithing_template			diamond			blackstone			#natural_transmute:bc_nether	snout_armor_trim_smithing_template	2								TRUE
+natural_transmute:tags/nether/rib_armor_trim_smithing_template_2	rib_armor_trim_smithing_template			diamond			nether_bricks			#natural_transmute:bc_nether	rib_armor_trim_smithing_template	2								TRUE
+natural_transmute:tags/nether/glowstone_2	amethyst_block			magma_block						#natural_transmute:bc_nether	glowstone	2								TRUE
+natural_transmute:tags/nether/netherrack_1	"cobblestone,cobbled_deepslate"									#natural_transmute:bc_nether	netherrack									TRUE
+natural_transmute:tags/nether/polished_blackstone_button_1	stone_button									#natural_transmute:bc_nether	polished_blackstone_button									TRUE
+natural_transmute:tags/nether/polished_blackstone_pressure_plate_1	stone_pressure_plate									#natural_transmute:bc_nether	polished_blackstone_pressure_plate									TRUE
+natural_transmute:tags/nether/nether_wart_1	#c:mushrooms			ghast_tear						#natural_transmute:bc_nether	nether_wart									TRUE
+natural_transmute:tags/nether/blaze_rod_1	breeze_rod									#natural_transmute:bc_nether	blaze_rod									TRUE
+natural_transmute:tags/nether/fire_charge_1	wind_charge									#natural_transmute:bc_nether	fire_charge									TRUE
+natural_transmute:tags/nether/quartz_1	glass									#natural_transmute:bc_nether	quartz									TRUE
+natural_transmute:tags/nether/harmonious_change_lava_bucket_1	natural_transmute:harmonious_change_fuel			lava_bucket			blaze_rod			#natural_transmute:bc_nether	natural_transmute:harmonious_change_lava_bucket									TRUE
+natural_transmute:tags/nether/wither_bone_3	wither_skeleton_skull									#natural_transmute:bc_nether	natural_transmute:wither_bone	3								TRUE
+natural_transmute:tags/nether/wither_skeleton_skull_1	skeleton_skull			natural_transmute:wither_bone						#natural_transmute:bc_nether	wither_skeleton_skull									TRUE
+natural_transmute:tags/weathering/cracked_deepslate_bricks_1	deepslate_bricks									#natural_transmute:bc_weathering	cracked_deepslate_bricks									TRUE
+natural_transmute:tags/weathering/cracked_deepslate_tiles_1	deepslate_tiles									#natural_transmute:bc_weathering	cracked_deepslate_tiles									TRUE
+natural_transmute:tags/weathering/cracked_nether_bricks_1	nether_bricks									#natural_transmute:bc_weathering	cracked_nether_bricks									TRUE
+natural_transmute:tags/flowered/honey_bottle_1	honeycomb			glass_bottle						#natural_transmute:bc_flowered	honey_bottle									TRUE
+natural_transmute:tags/flowered/honeycomb_and_glass_bottle_1	honey_bottle									#natural_transmute:bc_flowered	honeycomb			glass_bottle						TRUE
+natural_transmute:tags/flowered/honeycomb_block_1	honey_block									#natural_transmute:bc_flowered	honeycomb_block									TRUE
+natural_transmute:tags/flowered/honey_block_1	honeycomb_block									#natural_transmute:bc_flowered	honey_block									TRUE
+natural_transmute:tags/rich_in_gold/gold_ingot_1	#c:ingots									#natural_transmute:bc_rich_in_gold	gold_ingot									TRUE
+natural_transmute:tags/rich_in_gold/gold_nugget_1	#c:nuggets									#natural_transmute:bc_rich_in_gold	gold_nugget									TRUE
+natural_transmute:tags/rich_in_gold/glistering_melon_slice_1	melon_slice									#natural_transmute:bc_rich_in_gold	glistering_melon_slice									TRUE
+natural_transmute:tags/rich_in_gold/golden_carrot_2	carrot			carrot			gold_ingot			#natural_transmute:bc_rich_in_gold	golden_carrot	2								TRUE
+natural_transmute:tags/rich_in_gold/golden_apple_1	apple			gold_ingot	4					#natural_transmute:bc_rich_in_gold	golden_apple									TRUE
+natural_transmute:tags/rich_in_gold/gilded_blackstone_1	blackstone									#natural_transmute:bc_rich_in_gold	gilded_blackstone									TRUE
+natural_transmute:tags/trail_ruins/burn_pottery_sherd_2	burn_pottery_sherd			brick						#natural_transmute:bc_trail_ruins	burn_pottery_sherd	2								TRUE
+natural_transmute:tags/trail_ruins/sheaf_pottery_sherd_2	sheaf_pottery_sherd			brick						#natural_transmute:bc_trail_ruins	sheaf_pottery_sherd	2								TRUE
+natural_transmute:tags/trail_ruins/howl_pottery_sherd_2	howl_pottery_sherd			brick						#natural_transmute:bc_trail_ruins	howl_pottery_sherd	2								TRUE
+natural_transmute:tags/trail_ruins/heart_pottery_sherd_2	heart_pottery_sherd			brick						#natural_transmute:bc_trail_ruins	heart_pottery_sherd	2								TRUE
+natural_transmute:tags/trail_ruins/heartbreak_pottery_sherd_2	heartbreak_pottery_sherd			brick						#natural_transmute:bc_trail_ruins	heartbreak_pottery_sherd	2								TRUE
+natural_transmute:tags/trail_ruins/danger_pottery_sherd_2	danger_pottery_sherd			brick						#natural_transmute:bc_trail_ruins	danger_pottery_sherd	2								TRUE
+natural_transmute:tags/trail_ruins/friend_pottery_sherd_2	friend_pottery_sherd			brick						#natural_transmute:bc_trail_ruins	friend_pottery_sherd	2								TRUE
+																				
+																				

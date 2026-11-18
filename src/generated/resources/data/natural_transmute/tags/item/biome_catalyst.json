@@ -38,6 +38,8 @@
     "natural_transmute:warm_ocean_biome_catalyst",
     "natural_transmute:warped_forest_biome_catalyst",
     "natural_transmute:windswept_biome_catalyst",
-    "natural_transmute:wooded_badlands_biome_catalyst"
+    "natural_transmute:wooded_badlands_biome_catalyst",
+    "natural_transmute:void_biome_catalyst",
+    "natural_transmute:end_alsophila_forest_biome_catalyst"
   ]
 }

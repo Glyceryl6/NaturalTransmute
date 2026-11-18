@@ -1,0 +1,27 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:meadow_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:short_grass"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:light_gray_dye"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:light_gray_dye"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 3,
+      "id": "minecraft:azure_bluet"
+    }
+  ]
+}

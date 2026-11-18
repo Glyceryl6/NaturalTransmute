@@ -1,11 +1,16 @@
 package com.zg.natural_transmute.common.data;
 
 import com.zg.natural_transmute.NaturalTransmute;
+import com.zg.natural_transmute.common.data.generating.GeneratingHCSimpleRecipeProvider;
+import com.zg.natural_transmute.common.data.generating.GeneratingHCTabledRecipeProvider;
+import com.zg.natural_transmute.common.data.generating.GeneratingItemTagsProvider;
+import com.zg.natural_transmute.common.data.generating.format.TsvGeneratingTable;
 import com.zg.natural_transmute.common.data.models.NTModelProvider;
 import com.zg.natural_transmute.common.data.provider.*;
 import com.zg.natural_transmute.common.data.provider.tag.NTBlockTagsProvider;
 import com.zg.natural_transmute.common.data.provider.tag.NTEntityTagsProvider;
 import com.zg.natural_transmute.common.data.provider.tag.NTItemTagProvider;
+import lombok.SneakyThrows;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -20,6 +25,7 @@ import java.util.concurrent.CompletableFuture;
 @EventBusSubscriber(modid = NaturalTransmute.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class NTDataGenerator {
 
+    @SneakyThrows
     @SubscribeEvent
     public static void onGatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
@@ -30,8 +36,8 @@ public class NTDataGenerator {
         DatapackBuiltinEntriesProvider dataPackProvider = new RegistryDataGenerator(output, provider);
         CompletableFuture<HolderLookup.Provider> registryProvider = dataPackProvider.getRegistryProvider();
         generator.addProvider(event.includeServer(), blockTagsProvider);
-        generator.addProvider(event.includeServer(), new NTItemTagProvider(
-                output, provider, blockTagsProvider.contentsGetter(), existingFileHelper));
+        var itemTagsProvider = generator.addProvider(event.includeServer(), new NTItemTagProvider(
+            output, provider, blockTagsProvider.contentsGetter(), existingFileHelper));
         generator.addProvider(event.includeServer(), dataPackProvider);
         generator.addProvider(event.includeServer(), NTAdvancementProvider.create(output, provider));
         generator.addProvider(event.includeServer(), new NTEntityTagsProvider(output, provider, existingFileHelper));
@@ -43,6 +49,22 @@ public class NTDataGenerator {
         generator.addProvider(event.includeServer(), new NTDataMapProvider(output, provider));
         generator.addProvider(event.includeServer(), new NTRecipeProvider(output, registryProvider));
         generator.getVanillaPack(event.includeServer()).addProvider(NTModelProvider::new);
-    }
 
+        {
+            var generationTags = new GeneratingItemTagsProvider(output, registryProvider, itemTagsProvider.contentsGetter(), blockTagsProvider.contentsGetter(), NaturalTransmute.MOD_ID, existingFileHelper);
+            {
+                var table = TsvGeneratingTable.fromResource("/nt_generating/tags.tsv");
+                generationTags.fromTable(table);
+            }
+            {
+                var table = TsvGeneratingTable.fromResource("/nt_generating/hc_recipes.tsv");
+                event.addProvider(new GeneratingHCTabledRecipeProvider(output, registryProvider, NaturalTransmute.MOD_ID, table, generationTags));
+            }
+            {
+                var table = TsvGeneratingTable.fromResource("/nt_generating/hc_simple_recipes.tsv");
+                event.addProvider(new GeneratingHCSimpleRecipeProvider(output, registryProvider, NaturalTransmute.MOD_ID, table, generationTags));
+            }
+            event.addProvider(generationTags);
+        }
+    }
 }

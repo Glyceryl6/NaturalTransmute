@@ -1,0 +1,19 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:wooded_badlands_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "tag": "natural_transmute:generating_tags/unique_key_130355437"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:dark_oak_fence"
+    }
+  ]
+}

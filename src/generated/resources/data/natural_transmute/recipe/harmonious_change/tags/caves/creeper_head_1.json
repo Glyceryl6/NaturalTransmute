@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "tag": "natural_transmute:bc_caves"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:skeleton_skull"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:gunpowder"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:creeper_head"
+    }
+  ]
+}

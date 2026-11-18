@@ -1,0 +1,31 @@
+#natural_transmute:bc_dry	#natural_transmute:bc_nether	#natural_transmute:bc_desert															
+#natural_transmute:bc_moist	natural_transmute:dripstone_caves_biome_catalyst		#natural_transmute:bc_ocean	#natural_transmute:bc_mosit_ground													
+#natural_transmute:bc_mosit_ground	natural_transmute:river_biome_catalyst	natural_transmute:jungle_biome_catalyst	natural_transmute:mangrove_swamp_biome_catalyst	natural_transmute:swamp_biome_catalyst													
+#natural_transmute:bc_sparse_ground	natural_transmute:wooded_badlands_biome_catalyst	natural_transmute:snowy_plains_biome_catalyst	natural_transmute:mountains_biome_catalyst	natural_transmute:meadow_biome_catalyst	natural_transmute:swamp_biome_catalyst	#natural_transmute:bc_fields											
+#natural_transmute:bc_sparse_underwater	natural_transmute:river_biome_catalyst	natural_transmute:ocean_biome_catalyst	natural_transmute:beach_biome_catalyst	natural_transmute:stone_shore_biome_catalyst													
+#natural_transmute:bc_dense	natural_transmute:forest_biome_catalyst	natural_transmute:flower_forest_biome_catalyst	natural_transmute:dark_forest_biome_catalyst	natural_transmute:birch_forest_biome_catalyst	natural_transmute:jungle_biome_catalyst	natural_transmute:warm_ocean_biome_catalyst	natural_transmute:lush_caves_biome_catalyst	natural_transmute:taiga_biome_catalyst	natural_transmute:old_growth_taiga_biome_catalyst	natural_transmute:cherry_grove_biome_catalyst							
+#natural_transmute:bc_cool	#natural_transmute:bc_cold	natural_transmute:mountains_biome_catalyst	natural_transmute:meadow_biome_catalyst	natural_transmute:deep_dark_biome_catalyst	natural_transmute:taiga_biome_catalyst	natural_transmute:old_growth_taiga_biome_catalyst	#natural_transmute:bc_the_end										
+#natural_transmute:bc_cold	#natural_transmute:bc_very_cold	natural_transmute:snowy_plains_biome_catalyst															
+#natural_transmute:bc_very_cold	#natural_transmute:bc_glacial	natural_transmute:ice_spikes_biome_catalyst															
+#natural_transmute:bc_glacial	natural_transmute:snowy_slopes_biome_catalyst	natural_transmute:frozen_ocean_biome_catalyst															
+#natural_transmute:bc_temperate	natural_transmute:forest_biome_catalyst	natural_transmute:flower_forest_biome_catalyst	natural_transmute:dark_forest_biome_catalyst	natural_transmute:birch_forest_biome_catalyst	natural_transmute:mushroom_biome_catalyst	natural_transmute:swamp_biome_catalyst	natural_transmute:mangrove_swamp_biome_catalyst	natural_transmute:plains_biome_catalyst	natural_transmute:river_biome_catalyst	natural_transmute:ocean_biome_catalyst	natural_transmute:beach_biome_catalyst	natural_transmute:stone_shore_biome_catalyst	natural_transmute:deepslate_biome_catalyst	natural_transmute:lush_caves_biome_catalyst	natural_transmute:dripstone_caves_biome_catalyst	natural_transmute:cherry_grove_biome_catalyst	natural_transmute:windswept_biome_catalyst
+#natural_transmute:bc_tropical	#natural_transmute:bc_nether	#natural_transmute:bc_desert	natural_transmute:wooded_badlands_biome_catalyst	natural_transmute:jungle_biome_catalyst	natural_transmute:savanna_biome_catalyst												
+#natural_transmute:bc_mountains	natural_transmute:mountains_biome_catalyst	natural_transmute:snowy_slopes_biome_catalyst	natural_transmute:meadow_biome_catalyst	natural_transmute:cherry_grove_biome_catalyst	natural_transmute:windswept_biome_catalyst												
+#natural_transmute:bc_caves	natural_transmute:deepslate_biome_catalyst	natural_transmute:lush_caves_biome_catalyst	natural_transmute:dripstone_caves_biome_catalyst														
+#natural_transmute:bc_ocean	natural_transmute:ocean_biome_catalyst	natural_transmute:frozen_ocean_biome_catalyst	natural_transmute:beach_biome_catalyst	natural_transmute:stone_shore_biome_catalyst	natural_transmute:warm_ocean_biome_catalyst												
+#natural_transmute:bc_desert	natural_transmute:desert_biome_catalyst	natural_transmute:badlands_biome_catalyst															
+#natural_transmute:bc_nether	natural_transmute:nether_biome_catalyst	natural_transmute:crimson_forest_biome_catalyst	natural_transmute:warped_forest_biome_catalyst	natural_transmute:soul_sand_valley_biome_catalyst	natural_transmute:basalt_deltas_biome_catalyst												
+#natural_transmute:bc_the_end	natural_transmute:end_biome_catalyst	natural_transmute:end_highlands_biome_catalyst															
+#natural_transmute:bc_fields	natural_transmute:plains_biome_catalyst	natural_transmute:savanna_biome_catalyst															
+#natural_transmute:bc_weathering	#natural_transmute:bc_cold	#natural_transmute:bc_desert	natural_transmute:mountains_biome_catalyst	natural_transmute:stone_shore_biome_catalyst													
+#natural_transmute:bc_rich_in_gold	natural_transmute:badlands_biome_catalyst	natural_transmute:wooded_badlands_biome_catalyst															
+#natural_transmute:bc_flowered	natural_transmute:cherry_grove_biome_catalyst	natural_transmute:meadow_biome_catalyst	natural_transmute:flower_forest_biome_catalyst														
+#natural_transmute:bc_trail_ruins	natural_transmute:jungle_biome_catalyst	natural_transmute:taiga_biome_catalyst	natural_transmute:old_growth_taiga_biome_catalyst	natural_transmute:birch_forest_biome_catalyst													
+#natural_transmute:infested_blocks	infested_stone	infested_cobblestone	infested_cracked_stone_bricks	infested_mossy_stone_bricks	infested_stone_bricks	infested_chiseled_stone_bricks	infested_deepslate										
+#natural_transmute:vegetable	carrot	potato	beetroot														
+#natural_transmute:fruit	apple	melon_slice	natural_transmute:pitaya	natural_transmute:plantain	natural_transmute:pineapple												
+#natural_transmute:coral_blocks	tube_coral_block	brain_coral_block	bubble_coral_block	fire_coral_block	horn_coral_block												
+																	
+																	
+																	
+																	

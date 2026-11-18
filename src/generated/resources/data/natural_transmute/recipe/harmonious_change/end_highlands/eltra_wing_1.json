@@ -1,0 +1,27 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:end_highlands_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:phantom_membrane"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:phantom_membrane"
+    },
+    {
+      "count": 1,
+      "item": "natural_transmute:dragoncast_steel_ingot"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "natural_transmute:eltra_wing"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:end_alsophila_forest_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:nautilus_shell"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:shulker_shell"
+    }
+  ]
+}

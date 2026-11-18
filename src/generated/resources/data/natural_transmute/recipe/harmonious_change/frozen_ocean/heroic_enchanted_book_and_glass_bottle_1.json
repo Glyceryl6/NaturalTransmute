@@ -1,0 +1,38 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:frozen_ocean_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:blue_ice"
+    },
+    {
+      "count": 1,
+      "item": "natural_transmute:honey_wine"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:enchanted_book"
+    }
+  ],
+  "outputs": [
+    {
+      "components": {
+        "minecraft:stored_enchantments": {
+          "levels": {
+            "natural_transmute:heroic": 1
+          }
+        }
+      },
+      "count": 1,
+      "id": "minecraft:enchanted_book"
+    },
+    {
+      "count": 1,
+      "id": "minecraft:glass_bottle"
+    }
+  ]
+}

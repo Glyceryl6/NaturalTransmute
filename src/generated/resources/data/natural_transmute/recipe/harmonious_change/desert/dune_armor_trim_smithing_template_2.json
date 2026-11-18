@@ -1,0 +1,27 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:desert_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:dune_armor_trim_smithing_template"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:diamond"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:sandstone"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 2,
+      "id": "minecraft:dune_armor_trim_smithing_template"
+    }
+  ]
+}

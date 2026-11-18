@@ -1,0 +1,27 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:end_highlands_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:eye_armor_trim_smithing_template"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:diamond"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:end_stone"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 2,
+      "id": "minecraft:eye_armor_trim_smithing_template"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:meadow_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:bone"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:stone"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:calcite"
+    }
+  ]
+}

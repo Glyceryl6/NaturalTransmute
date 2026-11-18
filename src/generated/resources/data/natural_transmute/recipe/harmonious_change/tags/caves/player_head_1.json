@@ -1,0 +1,27 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "tag": "natural_transmute:bc_caves"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:zombie_head"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:fermented_spider_eye"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:golden_apple"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:player_head"
+    }
+  ]
+}

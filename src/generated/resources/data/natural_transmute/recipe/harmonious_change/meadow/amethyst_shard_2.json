@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:meadow_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:raw_iron"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:quartz"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 2,
+      "id": "minecraft:amethyst_shard"
+    }
+  ]
+}

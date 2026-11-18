@@ -1,0 +1,19 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:windswept_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "tag": "natural_transmute:generating_tags/unique_key_316840068"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:chiseled_tuff_bricks"
+    }
+  ]
+}

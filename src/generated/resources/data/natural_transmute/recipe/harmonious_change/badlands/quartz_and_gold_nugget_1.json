@@ -1,0 +1,27 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:badlands_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:red_sand"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:red_sand"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:quartz"
+    },
+    {
+      "count": 1,
+      "id": "minecraft:gold_nugget"
+    }
+  ]
+}

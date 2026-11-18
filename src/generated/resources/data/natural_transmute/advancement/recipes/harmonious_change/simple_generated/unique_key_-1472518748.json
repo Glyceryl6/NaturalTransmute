@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_natural_transmute_generating_tags/unique_key_-2120453778": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#natural_transmute:generating_tags/unique_key_-2120453778"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "natural_transmute:harmonious_change/simple_generated/unique_key_-1472518748"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "natural_transmute_simple_generated/unique_key_-1472518748_has_biome_catalyst": {
+      "conditions": {
+        "items": [
+          {
+            "items": "natural_transmute:jungle_biome_catalyst"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "natural_transmute_simple_generated/unique_key_-1472518748_has_biome_catalyst",
+      "has_natural_transmute_generating_tags/unique_key_-2120453778"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "natural_transmute:harmonious_change/simple_generated/unique_key_-1472518748"
+    ]
+  }
+}

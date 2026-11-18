@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:mangrove_swamp_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:tropical_fish_bucket"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:slime_block"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:tadpole_bucket"
+    }
+  ]
+}

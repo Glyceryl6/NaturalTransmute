@@ -1,0 +1,60 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "natural_transmute:harmonious_change/deepslate/deepslate_tiles_2"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "natural_transmute_deepslate/deepslate_tiles_2_has_biome_catalyst": {
+      "conditions": {
+        "items": [
+          {
+            "items": "natural_transmute:deepslate_biome_catalyst"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "natural_transmute_deepslate/deepslate_tiles_2_has_input_0": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "min": 1
+            },
+            "items": "#natural_transmute:generating_tags/unique_key_-1192141411"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "natural_transmute_deepslate/deepslate_tiles_2_has_input_1": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "min": 1
+            },
+            "items": "#natural_transmute:generating_tags/unique_key_-1192141411"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "natural_transmute_deepslate/deepslate_tiles_2_has_biome_catalyst",
+      "natural_transmute_deepslate/deepslate_tiles_2_has_input_0",
+      "natural_transmute_deepslate/deepslate_tiles_2_has_input_1"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "natural_transmute:harmonious_change/deepslate/deepslate_tiles_2"
+    ]
+  }
+}

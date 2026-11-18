@@ -1,0 +1,23 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:lush_caves_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:azalea_leaves"
+    },
+    {
+      "count": 1,
+      "tag": "minecraft:small_flowers"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:flowering_azalea_leaves"
+    }
+  ]
+}

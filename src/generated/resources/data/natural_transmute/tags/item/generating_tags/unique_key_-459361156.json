@@ -1,0 +1,9 @@
+{
+  "values": [
+    "minecraft:nether_brick_wall",
+    "minecraft:red_nether_brick_wall",
+    "minecraft:mud_brick_wall",
+    "minecraft:brick_wall",
+    "natural_transmute:blue_nether_brick_wall"
+  ]
+}

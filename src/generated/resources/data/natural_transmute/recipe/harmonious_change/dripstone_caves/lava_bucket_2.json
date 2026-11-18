@@ -1,0 +1,27 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:dripstone_caves_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:lava_bucket"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:bucket"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:lava_bucket"
+    },
+    {
+      "count": 1,
+      "id": "minecraft:lava_bucket"
+    }
+  ]
+}

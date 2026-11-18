@@ -174,7 +174,7 @@ public class NTLanguageProvider extends LanguageProvider {
         this.addItem(NTItems.CATFOOD_JELLIE, "Jellie奇异猫粮");
         this.addItem(NTItems.CATFOOD_PERSIAN, "波斯猫奇异猫粮");
         this.addItem(NTItems.CATFOOD_RAGDOLL, "布偶猫奇异猫粮");
-        this.addItem(NTItems.CATFOOD_RED, "红虎斑猫奇异猫粮");
+        this.addItem(NTItems.CATFOOD_TIGER, "红虎斑猫奇异猫粮");
         this.addItem(NTItems.CATFOOD_SIAMESE, "暹罗猫奇异猫粮");
         this.addItem(NTItems.CATFOOD_TABBY, "虎斑猫奇异猫粮");
         this.addItem(NTItems.CATFOOD_TUXEDO, "西服猫奇异猫粮");
@@ -243,6 +243,22 @@ public class NTLanguageProvider extends LanguageProvider {
         this.addItem(NTItems.WARPED_FOREST, "影染缚相");
         this.addItem(NTItems.WINDSWEPT, "浩风缚相");
         this.addItem(NTItems.WOODED_BADLANDS, "复苏缚相");
+        this.addItem(NTItems.VOID, "虚寂缚相");
+        this.addItem(NTItems.END_ALSOPHILA_FOREST, "宇生缚相");
+
+        this.addItem(NTItems.RED_PARROT_EGG, "红色鹦鹉蛋");
+        this.addItem(NTItems.GREEN_PARROT_EGG, "绿色鹦鹉蛋");
+        this.addItem(NTItems.BLUE_PARROT_EGG, "蓝色鹦鹉蛋");
+        this.addItem(NTItems.CYAN_PARROT_EGG, "青色鹦鹉蛋");
+        this.addItem(NTItems.GRAY_PARROT_EGG, "灰色鹦鹉蛋");
+
+        this.addItem(NTItems.GLASS_BOTTLE_OF_TEA, "茶瓶");
+        this.addItem(NTItems.JUNGLE_BUSH_SAPLING, "终末桫椤树苗");
+        this.addItem(NTItems.PING_SAPLING, "芭蕉树苗");
+        this.addItem(NTItems.KEY_OF_COLLECTION, "聚宝之匙");
+        this.addItem(NTItems.ELTRA_WING, "鞘翅翼");
+        this.addItem(NTItems.DRAGONCAST_STEEL, "龙铸钢锭");
+
         this.addEnchantment(NTEnchantments.HEROIC, "英勇");
         this.addEntityType(NTEntityTypes.DUCK, "鸭");
         this.addEntityType(NTEntityTypes.LAVA_AXOLOTL, "熔岩美西螈");

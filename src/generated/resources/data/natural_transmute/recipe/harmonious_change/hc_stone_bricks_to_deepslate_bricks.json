@@ -1,9 +1,0 @@
-{
-  "type": "natural_transmute:hc_block_family_transfer",
-  "biome_catalysts": {
-    "item": "natural_transmute:h_deepslate_biome_catalyst"
-  },
-  "ingredients": [],
-  "new": "minecraft:deepslate_bricks",
-  "old": "minecraft:stone_bricks"
-}

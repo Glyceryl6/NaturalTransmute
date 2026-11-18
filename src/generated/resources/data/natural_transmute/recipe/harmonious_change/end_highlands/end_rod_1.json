@@ -1,0 +1,19 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "item": "natural_transmute:end_highlands_biome_catalyst"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:torch"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:end_rod"
+    }
+  ]
+}

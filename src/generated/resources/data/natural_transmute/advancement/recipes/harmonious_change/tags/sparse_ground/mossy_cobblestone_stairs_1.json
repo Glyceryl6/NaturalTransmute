@@ -1,0 +1,60 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "natural_transmute:harmonious_change/tags/sparse_ground/mossy_cobblestone_stairs_1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "natural_transmute_tags/sparse_ground/mossy_cobblestone_stairs_1_has_biome_catalyst": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#natural_transmute:bc_sparse_ground"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "natural_transmute_tags/sparse_ground/mossy_cobblestone_stairs_1_has_input_0": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "min": 1
+            },
+            "items": "minecraft:cobblestone_stairs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "natural_transmute_tags/sparse_ground/mossy_cobblestone_stairs_1_has_input_1": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "min": 1
+            },
+            "items": "minecraft:short_grass"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "natural_transmute_tags/sparse_ground/mossy_cobblestone_stairs_1_has_biome_catalyst",
+      "natural_transmute_tags/sparse_ground/mossy_cobblestone_stairs_1_has_input_0",
+      "natural_transmute_tags/sparse_ground/mossy_cobblestone_stairs_1_has_input_1"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "natural_transmute:harmonious_change/tags/sparse_ground/mossy_cobblestone_stairs_1"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "tag": "natural_transmute:generating_tags/unique_key_1323366850"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "tag": "natural_transmute:generating_tags/unique_key_-762781536"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:stripped_spruce_wood"
+    }
+  ]
+}

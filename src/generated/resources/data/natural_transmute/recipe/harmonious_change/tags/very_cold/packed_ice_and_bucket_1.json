@@ -1,0 +1,27 @@
+{
+  "type": "natural_transmute:harmonious_change",
+  "biome_catalyst": {
+    "tag": "natural_transmute:bc_very_cold"
+  },
+  "consume": true,
+  "inputs": [
+    {
+      "count": 1,
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:ice"
+    }
+  ],
+  "outputs": [
+    {
+      "count": 1,
+      "id": "minecraft:packed_ice"
+    },
+    {
+      "count": 1,
+      "id": "minecraft:bucket"
+    }
+  ]
+}
