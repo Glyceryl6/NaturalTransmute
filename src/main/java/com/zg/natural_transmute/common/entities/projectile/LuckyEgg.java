@@ -21,7 +21,6 @@ public abstract class LuckyEgg extends ThrownEgg {
 
     @Override
     protected void onHit(HitResult result) {
-        super.onHit(result);
         if (!this.level().isClientSide) {
             if (isLucky(result)) {
                 onLucky(result);
