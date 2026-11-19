@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "natural_transmute:item/cyan_parrot_egg"
+  }
+}

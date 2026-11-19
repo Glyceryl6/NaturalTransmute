@@ -16,7 +16,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -107,6 +106,11 @@ public class NTLanguageProvider extends LanguageProvider {
         this.addBlock(NTBlocks.END_ALSOPHILA_FAMILY.get(5), "终末桫椤楼梯");
         this.addBlock(NTBlocks.END_ALSOPHILA_FAMILY.get(6), "终末桫椤栅栏");
         this.addBlock(NTBlocks.END_ALSOPHILA_FAMILY.getLast(), "终末桫椤台阶");
+        this.addBlock(NTBlocks.BLUEBERRY_BUSH, "蓝莓丛");
+        this.addBlock(NTBlocks.MINE_WATER, "矿质水");
+        this.addBlock(NTBlocks.POTTED_BUTTERCUP, "毛茛盆栽");
+        this.addBlock(NTBlocks.POTTED_END_ALSOPHILA_SAPLING, "终末桫椤树苗盆栽");
+        this.addBlock(NTBlocks.POTTED_PLANTAIN_SAPLING, "芭蕉树苗盆栽");
         this.addItem(NTItems.AMBER, "琥珀");
         this.addItem(NTItems.ANNIHILATE_ROD, "湮灭棒");
         this.addItem(NTItems.BERYL, "绿柱石");
@@ -252,12 +256,10 @@ public class NTLanguageProvider extends LanguageProvider {
         this.addItem(NTItems.CYAN_PARROT_EGG, "青色鹦鹉蛋");
         this.addItem(NTItems.GRAY_PARROT_EGG, "灰色鹦鹉蛋");
 
-        this.addItem(NTItems.GLASS_BOTTLE_OF_TEA, "茶瓶");
         this.addItem(NTItems.JUNGLE_BUSH_SAPLING, "终末桫椤树苗");
         this.addItem(NTItems.PING_SAPLING, "芭蕉树苗");
         this.addItem(NTItems.KEY_OF_COLLECTION, "聚宝之匙");
         this.addItem(NTItems.ELTRA_WING, "鞘翅翼");
-        this.addItem(NTItems.DRAGONCAST_STEEL, "龙铸钢锭");
 
         this.addEnchantment(NTEnchantments.HEROIC, "英勇");
         this.addEntityType(NTEntityTypes.DUCK, "鸭");
@@ -302,7 +304,8 @@ public class NTLanguageProvider extends LanguageProvider {
         this.add(key.get().getDescriptionId(), en, cn);
     }
 
-    private void addBlock(DeferredHolder<Block, Block> key, String cn) {
+    @Override
+    public void addBlock(Supplier<? extends Block> key, String cn) {
         String path = BuiltInRegistries.BLOCK.getKey(key.get()).getPath();
         this.add(key.get().getDescriptionId(), this.getEnglishName(path), cn);
     }
@@ -311,7 +314,8 @@ public class NTLanguageProvider extends LanguageProvider {
         this.add(key.get().getDescriptionId(), en, cn);
     }
 
-    private void addItem(DeferredHolder<Item, Item> key, String cn) {
+    @Override
+    public void addItem(Supplier<? extends Item> key, String cn) {
         String path = BuiltInRegistries.ITEM.getKey(key.get()).getPath();
         if (path.startsWith("h_")) {
             path = path.replaceFirst("h_", StringUtils.EMPTY);

@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "natural_transmute:item/petard_ignited",
+      "predicate": {
+        "natural_transmute:ignited": 1.0
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "natural_transmute:item/petard"
+  }
+}

@@ -272,10 +272,8 @@ public class NTItems {
     public static final DeferredItem<ParrotEgg> CYAN_PARROT_EGG = ITEMS.register("cyan_parrot_egg", () -> new ParrotEgg(new Item.Properties().stacksTo(16), Parrot.Variant.YELLOW_BLUE));
     public static final DeferredItem<ParrotEgg> GRAY_PARROT_EGG = ITEMS.register("gray_parrot_egg", () -> new ParrotEgg(new Item.Properties().stacksTo(16), Parrot.Variant.GRAY));
 
-    public static final DeferredItem<Item> GLASS_BOTTLE_OF_TEA = ITEMS.registerItem("glass_bottle_of_tea", Item::new);
     public static final DeferredItem<Item> JUNGLE_BUSH_SAPLING = ITEMS.registerItem("jungle_bush_sapling", Item::new);
     public static final DeferredItem<Item> PING_SAPLING = ITEMS.registerItem("pine_sapling", Item::new);
     public static final DeferredItem<Item> KEY_OF_COLLECTION = ITEMS.registerItem("key_of_collection", Item::new);
     public static final DeferredItem<Item> ELTRA_WING = ITEMS.registerItem("eltra_wing", Item::new);
-    public static final DeferredItem<Item> DRAGONCAST_STEEL = ITEMS.registerItem("dragoncast_steel", Item::new);
 }

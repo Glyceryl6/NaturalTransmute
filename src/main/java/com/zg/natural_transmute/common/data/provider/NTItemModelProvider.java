@@ -30,7 +30,17 @@ public class NTItemModelProvider extends ItemModelProvider {
         this.simpleItem(NTItems.PAPYRUS.get());
         this.simpleItem(NTItems.BLUEBERRIES.get());
         this.simpleItem(NTItems.WARPED_WART.get());
+        this.simpleItem(NTItems.RED_PARROT_EGG.get());
+        this.simpleItem(NTItems.GREEN_PARROT_EGG.get());
+        this.simpleItem(NTItems.BLUE_PARROT_EGG.get());
+        this.simpleItem(NTItems.CYAN_PARROT_EGG.get());
+        this.simpleItem(NTItems.GRAY_PARROT_EGG.get());
+        this.simpleItem(NTItems.ELTRA_WING.get());
+        this.simpleItem(NTItems.JUNGLE_BUSH_SAPLING.get());
+        this.simpleItem(NTItems.PING_SAPLING.get());
+        this.simpleItem(NTItems.KEY_OF_COLLECTION.get());
         this.bowItem(NTItems.WHALE_BONE_BOW.get());
+        this.petardItem(NTItems.PETARD.get());
         this.simpleBlockItem(NTBlocks.PLANTAIN_LEAVES.get());
         this.simpleBlockItem(NTBlocks.END_ALSOPHILA_LEAVES.get());
         this.simpleBlockItem(NTBlocks.END_ALSOPHILA_PLANKS.get());
@@ -75,6 +85,16 @@ public class NTItemModelProvider extends ItemModelProvider {
             String path = name + "_pulling_" + i;
             this.getBuilder(path).parent(bowModel).texture("layer0", this.modLoc("item/" + path));
         }
+    }
+
+    private void petardItem(Item item) {
+        String name = this.itemName(item);
+        this.withExistingParent(name, this.mcLoc("item/generated"))
+                .texture("layer0", this.modLoc("item/" + name))
+                .override().predicate(this.modLoc("ignited"), 1)
+                .model(new ModelFile.UncheckedModelFile(this.modLoc("item/" + name + "_ignited"))).end();
+        this.withExistingParent(name + "_ignited", this.mcLoc("item/generated"))
+                .texture("layer0", this.modLoc("item/" + name + "_ignited"));
     }
 
     private void simpleBlockItemWithParent(Block block) {
