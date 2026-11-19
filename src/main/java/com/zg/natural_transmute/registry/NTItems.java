@@ -59,93 +59,93 @@ public class NTItems {
     public static final DeferredHolder<Item, Item> WATER_WAX = ITEMS.register("water_wax", WaterWax::new);
     public static final DeferredHolder<Item, Item> BREEZE_ARROW = ITEMS.register("breeze_arrow", BreezeArrow::new);
     public static final DeferredHolder<Item, Item> SILVERFISH_PUPA =
-            ITEMS.register("silverfish_pupa", SilverfishPupa::new);
+        ITEMS.register("silverfish_pupa", SilverfishPupa::new);
     public static final DeferredHolder<Item, Item> REFRIGERATED_ROCKET =
-            ITEMS.register("refrigerated_rocket", RefrigeratedRocket::new);
+        ITEMS.register("refrigerated_rocket", RefrigeratedRocket::new);
     public static final DeferredHolder<Item, Item> MOOSHROOM_STRANGE_FEED =
-            ITEMS.register("mooshroom_strange_feed", MooshroomStrangeFeed::new);
+        ITEMS.register("mooshroom_strange_feed", MooshroomStrangeFeed::new);
     public static final DeferredHolder<Item, Item> MOOBLOOM_STRANGE_FEED =
-            ITEMS.register("moobloom_strange_feed", MoobloomStrangeFeed::new);
+        ITEMS.register("moobloom_strange_feed", MoobloomStrangeFeed::new);
     public static final DeferredHolder<Item, Item> ANNIHILATE_ROD = ITEMS.register("annihilate_rod",
-            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON).durability((5))
-                    .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
+        () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON).durability((5))
+            .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
     public static final DeferredHolder<Item, Item> PETARD = ITEMS.register("petard",
-            () -> new Petard(new Item.Properties()
-                    .component(NTDataComponents.PETARD_IGNITED, false)
-                    .component(NTDataComponents.PETARD_FUSE, 100)));
+        () -> new Petard(new Item.Properties()
+            .component(NTDataComponents.PETARD_IGNITED, false)
+            .component(NTDataComponents.PETARD_FUSE, 100)));
     public static final DeferredHolder<Item, Item> MINE_WATER_BUCKET = ITEMS.register("mine_water_bucket",
-            () -> new BucketItem(NTFluids.MINE_WATER_STILL.get(), new Item.Properties().stacksTo((1))
-                    .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
+        () -> new BucketItem(NTFluids.MINE_WATER_STILL.get(), new Item.Properties().stacksTo((1))
+            .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
     public static final DeferredHolder<Item, Item> MELODIOUS_DISC = ITEMS.register("melodious_disc",
-            () -> new Item(new Item.Properties().stacksTo((1))
-                    .rarity(Rarity.RARE).jukeboxPlayable(NTJukeboxSongs.EMPTY)
-                    .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
+        () -> new Item(new Item.Properties().stacksTo((1))
+            .rarity(Rarity.RARE).jukeboxPlayable(NTJukeboxSongs.EMPTY)
+            .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
     public static final DeferredHolder<Item, Item> LAVA_AXOLOTL_BUCKET = ITEMS.register("lava_axolotl_bucket",
-            () -> new MobBucketItem(NTEntityTypes.LAVA_AXOLOTL.get(), Fluids.LAVA, SoundEvents.BUCKET_EMPTY_AXOLOTL,
-                    new Item.Properties().stacksTo((1))
-                            .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
-                            .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
+        () -> new MobBucketItem(NTEntityTypes.LAVA_AXOLOTL.get(), Fluids.LAVA, SoundEvents.BUCKET_EMPTY_AXOLOTL,
+            new Item.Properties().stacksTo((1))
+                .component(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY)
+                .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
     public static final DeferredHolder<Item, Item> HARMONIOUS_CHANGE_LAVA_BUCKET =
-            ITEMS.register("harmonious_change_lava_bucket",
-                    () -> new Item(new Item.Properties().rarity(Rarity.RARE)
-                            .durability(100).craftRemainder(Items.BUCKET)
-                            .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
+        ITEMS.register("harmonious_change_lava_bucket",
+            () -> new Item(new Item.Properties().rarity(Rarity.RARE)
+                .durability(100).craftRemainder(Items.BUCKET)
+                .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
     public static final DeferredHolder<Item, Item> ETERNAL_HARMONIOUS_CHANGE_LAVA_BUCKET =
-            ITEMS.register("eternal_harmonious_change_lava_bucket",
-                    () -> new Item(new Item.Properties().rarity(Rarity.EPIC)
-                            .component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
-                            .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
+        ITEMS.register("eternal_harmonious_change_lava_bucket",
+            () -> new Item(new Item.Properties().rarity(Rarity.EPIC)
+                .component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
+                .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
     public static final DeferredHolder<Item, Item> DUCK_EGG = ITEMS.register("duck_egg", DuckEgg::new);
     public static final DeferredHolder<Item, Item> REED = alias("reed", NTBlocks.REED, new Item.Properties());
     public static final DeferredHolder<Item, Item> WARPED_WART = alias("warped_wart", NTBlocks.WARPED_WART, new Item.Properties());
     // 方块
     public static final DeferredHolder<Item, Item> PEAT_MOSS = ITEMS.register("peat_moss",
-            () -> new BlockItem(NTBlocks.PEAT_MOSS.get(), new Item.Properties()));
+        () -> new BlockItem(NTBlocks.PEAT_MOSS.get(), new Item.Properties()));
     public static final DeferredHolder<Item, Item> FLOWERING_BLUE_TARO_VINE = ITEMS.register("flowering_blue_taro_vine",
-            () -> new FloweringBlueTaroVineItem(NTBlocks.BLUE_TARO_VINE.get(), new Item.Properties()));
+        () -> new FloweringBlueTaroVineItem(NTBlocks.BLUE_TARO_VINE.get(), new Item.Properties()));
     // 食物
     public static final DeferredHolder<Item, Item> BLUEBERRIES = alias("blueberries",
-            NTBlocks.BLUEBERRY_BUSH, new Item.Properties().food(Foods.SWEET_BERRIES));
+        NTBlocks.BLUEBERRY_BUSH, new Item.Properties().food(Foods.SWEET_BERRIES));
     public static final DeferredHolder<Item, Item> PAPYRUS = alias("papyrus", NTBlocks.PAPYRUS, new Item.Properties());
     public static final DeferredHolder<Item, Item> BOTTLE_OF_TEA = ITEMS.register("bottle_of_tea",
-            () -> new BottleOfTea(new Item.Properties().stacksTo((1)).food(new FoodProperties.Builder()
-                            .nutrition((0)).saturationModifier((0.0F)).usingConvertsTo(Items.GLASS_BOTTLE)
-                            .effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 600), 1.0F)
-                            .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 600), 1.0F).build())
-                    .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
+        () -> new BottleOfTea(new Item.Properties().stacksTo((1)).food(new FoodProperties.Builder()
+                .nutrition((0)).saturationModifier((0.0F)).usingConvertsTo(Items.GLASS_BOTTLE)
+                .effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 600), 1.0F)
+                .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 600), 1.0F).build())
+            .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
     public static final DeferredHolder<Item, Item> COCONUT = ITEMS.register("coconut", () -> new Item(
-            new Item.Properties().component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE).food(new FoodProperties.Builder()
-                    .nutrition((2)).saturationModifier((0.5F)).usingConvertsTo(COCONUT_SHELL.get()).build())));
+        new Item.Properties().component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE).food(new FoodProperties.Builder()
+            .nutrition((2)).saturationModifier((0.5F)).usingConvertsTo(COCONUT_SHELL.get()).build())));
     public static final DeferredHolder<Item, Item> GOOSE_BARNACLE = ITEMS.register("goose_barnacle",
-            () -> new GooseBarnacle(new Item.Properties().food(new FoodProperties.Builder().nutrition((2)).saturationModifier((0.5F)).build())
-                    .component(DataComponents.SUSPICIOUS_STEW_EFFECTS, FlowerBlock.makeEffectList(MobEffects.WATER_BREATHING, 5.0F))
-                    .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)
-                    .attributes(ItemAttributeModifiers.builder().add(Attributes.ATTACK_DAMAGE, new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID,
-                            4.0F, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build())));
+        () -> new GooseBarnacle(new Item.Properties().food(new FoodProperties.Builder().nutrition((2)).saturationModifier((0.5F)).build())
+            .component(DataComponents.SUSPICIOUS_STEW_EFFECTS, FlowerBlock.makeEffectList(MobEffects.WATER_BREATHING, 5.0F))
+            .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)
+            .attributes(ItemAttributeModifiers.builder().add(Attributes.ATTACK_DAMAGE, new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID,
+                4.0F, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build())));
     public static final DeferredHolder<Item, Item> HONEY_WINE = ITEMS.register("honey_wine", HoneyWine::new);
     public static final DeferredHolder<Item, Item> TRUFFLE_SOUP = ITEMS.register("truffle_soup", () -> new Item(
-            new Item.Properties().component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE).food(
-                    new FoodProperties.Builder().nutrition((6)).saturationModifier((5.0F)).usingConvertsTo(Items.BOWL)
-                            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1200, 1), 1.0F).build())));
+        new Item.Properties().component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE).food(
+            new FoodProperties.Builder().nutrition((6)).saturationModifier((5.0F)).usingConvertsTo(Items.BOWL)
+                .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1200, 1), 1.0F).build())));
     public static final DeferredHolder<Item, Item> PITAYA = ITEMS.register("pitaya", () -> new ItemNameBlockItem(
-            NTBlocks.PITAYA.get(), new Item.Properties().component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)
-            .food(new FoodProperties.Builder().nutrition((4)).saturationModifier((0.2F)).build())));
+        NTBlocks.PITAYA.get(), new Item.Properties().component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)
+        .food(new FoodProperties.Builder().nutrition((4)).saturationModifier((0.2F)).build())));
     public static final DeferredHolder<Item, Item> PLANTAIN = ITEMS.register("plantain", () -> new ItemNameBlockItem(
-            NTBlocks.PLANTAIN.get(), new Item.Properties().component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)
-            .food(new FoodProperties.Builder().nutrition((4)).saturationModifier((0.6F)).build())));
+        NTBlocks.PLANTAIN.get(), new Item.Properties().component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)
+        .food(new FoodProperties.Builder().nutrition((4)).saturationModifier((0.6F)).build())));
     public static final DeferredHolder<Item, Item> PINEAPPLE = ITEMS.register("pineapple", () -> new ItemNameBlockItem(
-            NTBlocks.PINEAPPLE.get(), new Item.Properties().component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)
-            .food(new FoodProperties.Builder().nutrition((6)).saturationModifier((0.3F)).build())));
+        NTBlocks.PINEAPPLE.get(), new Item.Properties().component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)
+        .food(new FoodProperties.Builder().nutrition((6)).saturationModifier((0.3F)).build())));
     public static final DeferredHolder<Item, Item> DUCK = ITEMS.register("duck", () -> new Item(
-            new Item.Properties().component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE).food(Foods.CHICKEN)));
+        new Item.Properties().component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE).food(Foods.CHICKEN)));
     public static final DeferredHolder<Item, Item> COOKED_DUCK = ITEMS.register("cooked_duck", () -> new Item(
-            new Item.Properties().component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)
-                    .food(new FoodProperties.Builder().nutrition((6)).saturationModifier((0.6F))
-                    .effect(() -> new MobEffectInstance(MobEffects.HEAL), 1.0F).build())));
+        new Item.Properties().component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)
+            .food(new FoodProperties.Builder().nutrition((6)).saturationModifier((0.6F))
+                .effect(() -> new MobEffectInstance(MobEffects.HEAL), 1.0F).build())));
     public static final DeferredHolder<Item, Item> VODKA = ITEMS.register("vodka",
-            () -> new Vodka(new Item.Properties().component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE).food(new FoodProperties.Builder()
-                    .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1200, 1), 1.0F)
-                    .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 1200), 1.0F).build())));
+        () -> new Vodka(new Item.Properties().component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE).food(new FoodProperties.Builder()
+            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1200, 1), 1.0F)
+            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 1200), 1.0F).build())));
     // 猫粮
     public static final DeferredHolder<Item, Item> CATFOOD_BLACK = catFood("catfood_black", CatVariant.BLACK);
     public static final DeferredHolder<Item, Item> CATFOOD_BRITISH_SHORTHAIR = catFood("catfood_british_shorthair", CatVariant.BRITISH_SHORTHAIR);
@@ -180,45 +180,45 @@ public class NTItems {
     public static final DeferredHolder<Item, Item> TUFF_SLAG = normal("tuff_slag");
     // 工具和装备
     public static final DeferredHolder<Item, Item> SCULK_BONE_SWORD = ITEMS.register("sculk_bone_sword",
-            () -> new SwordItem(Tiers.IRON, new Item.Properties().component(NTDataComponents.SCULK_EQUIPMENT, Boolean.TRUE)
-                    .attributes(SwordItem.createAttributes(Tiers.IRON, (3.0F), (-2.4F)))));
+        () -> new SwordItem(Tiers.IRON, new Item.Properties().component(NTDataComponents.SCULK_EQUIPMENT, Boolean.TRUE)
+            .attributes(SwordItem.createAttributes(Tiers.IRON, (3.0F), (-2.4F)))));
     public static final DeferredHolder<Item, Item> SCULK_BONE_SHOVEL = ITEMS.register("sculk_bone_shovel",
-            () -> new ShovelItem(Tiers.IRON, new Item.Properties().component(NTDataComponents.SCULK_EQUIPMENT, Boolean.TRUE)
-                    .attributes(ShovelItem.createAttributes(Tiers.IRON, (1.5F), (-3.0F)))));
+        () -> new ShovelItem(Tiers.IRON, new Item.Properties().component(NTDataComponents.SCULK_EQUIPMENT, Boolean.TRUE)
+            .attributes(ShovelItem.createAttributes(Tiers.IRON, (1.5F), (-3.0F)))));
     public static final DeferredHolder<Item, Item> SCULK_BONE_PICKAXE = ITEMS.register("sculk_bone_pickaxe",
-            () -> new PickaxeItem(Tiers.IRON, new Item.Properties().component(NTDataComponents.SCULK_EQUIPMENT, Boolean.TRUE)
-                    .attributes(PickaxeItem.createAttributes(Tiers.IRON, (1.0F), (-2.8F)))));
+        () -> new PickaxeItem(Tiers.IRON, new Item.Properties().component(NTDataComponents.SCULK_EQUIPMENT, Boolean.TRUE)
+            .attributes(PickaxeItem.createAttributes(Tiers.IRON, (1.0F), (-2.8F)))));
     public static final DeferredHolder<Item, Item> SCULK_BONE_AXE = ITEMS.register("sculk_bone_axe",
-            () -> new AxeItem(Tiers.IRON, new Item.Properties().component(NTDataComponents.SCULK_EQUIPMENT, Boolean.TRUE)
-                    .attributes(AxeItem.createAttributes(Tiers.IRON, (6.0F), (-3.1F)))));
+        () -> new AxeItem(Tiers.IRON, new Item.Properties().component(NTDataComponents.SCULK_EQUIPMENT, Boolean.TRUE)
+            .attributes(AxeItem.createAttributes(Tiers.IRON, (6.0F), (-3.1F)))));
     public static final DeferredHolder<Item, Item> SCULK_BONE_HOE = ITEMS.register("sculk_bone_hoe",
-            () -> new HoeItem(Tiers.IRON, new Item.Properties().component(NTDataComponents.SCULK_EQUIPMENT, Boolean.TRUE)
-                    .attributes(HoeItem.createAttributes(Tiers.IRON, (-2.0F), (-1.0F)))));
+        () -> new HoeItem(Tiers.IRON, new Item.Properties().component(NTDataComponents.SCULK_EQUIPMENT, Boolean.TRUE)
+            .attributes(HoeItem.createAttributes(Tiers.IRON, (-2.0F), (-1.0F)))));
     public static final DeferredHolder<Item, Item> WHALE_BONE_BOW = ITEMS.register("whale_bone_bow",
-            () -> new BowItem(new Item.Properties().durability((500)).rarity(Rarity.UNCOMMON)));
+        () -> new BowItem(new Item.Properties().durability((500)).rarity(Rarity.UNCOMMON)));
     public static final DeferredHolder<Item, Item> KATANA = ITEMS.register("katana",
-            () -> new SwordItem(Tiers.IRON, new Item.Properties().durability(450)
-                    .attributes(SwordItem.createAttributes(Tiers.IRON, (7.0F), (-2.4F)))));
+        () -> new SwordItem(Tiers.IRON, new Item.Properties().durability(450)
+            .attributes(SwordItem.createAttributes(Tiers.IRON, (7.0F), (-2.4F)))));
     public static final DeferredHolder<Item, Item> DRAGONCAST_HELMET = ITEMS.register(
-            "dragoncast_steel_helmet", () -> new ArmorItem(ArmorMaterials.NETHERITE, ArmorItem.Type.HELMET,
-                    new Item.Properties().fireResistant().durability(ArmorItem.Type.HELMET.getDurability((37)))
-                            .component(NTDataComponents.CAN_SPAWN_DRAGON_BREATHE, Boolean.TRUE)
-                            .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
+        "dragoncast_steel_helmet", () -> new ArmorItem(ArmorMaterials.NETHERITE, ArmorItem.Type.HELMET,
+            new Item.Properties().fireResistant().durability(ArmorItem.Type.HELMET.getDurability((37)))
+                .component(NTDataComponents.CAN_SPAWN_DRAGON_BREATHE, Boolean.TRUE)
+                .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
     public static final DeferredHolder<Item, Item> DRAGONCAST_CHESTPLATE = ITEMS.register(
-            "dragoncast_steel_chestplate", () -> new ArmorItem(ArmorMaterials.NETHERITE, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability((37)))
-                            .component(NTDataComponents.CAN_SPAWN_DRAGON_BREATHE, Boolean.TRUE)
-                            .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
+        "dragoncast_steel_chestplate", () -> new ArmorItem(ArmorMaterials.NETHERITE, ArmorItem.Type.CHESTPLATE,
+            new Item.Properties().fireResistant().durability(ArmorItem.Type.CHESTPLATE.getDurability((37)))
+                .component(NTDataComponents.CAN_SPAWN_DRAGON_BREATHE, Boolean.TRUE)
+                .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
     public static final DeferredHolder<Item, Item> DRAGONCAST_LEGGINGS = ITEMS.register(
-            "dragoncast_steel_leggings", () -> new ArmorItem(ArmorMaterials.NETHERITE, ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability((37)))
-                            .component(NTDataComponents.CAN_SPAWN_DRAGON_BREATHE, Boolean.TRUE)
-                            .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
+        "dragoncast_steel_leggings", () -> new ArmorItem(ArmorMaterials.NETHERITE, ArmorItem.Type.LEGGINGS,
+            new Item.Properties().fireResistant().durability(ArmorItem.Type.LEGGINGS.getDurability((37)))
+                .component(NTDataComponents.CAN_SPAWN_DRAGON_BREATHE, Boolean.TRUE)
+                .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
     public static final DeferredHolder<Item, Item> DRAGONCAST_BOOTS = ITEMS.register(
-            "dragoncast_steel_boots", () ->  new ArmorItem(ArmorMaterials.NETHERITE, ArmorItem.Type.BOOTS,
-                    new Item.Properties().fireResistant().durability(ArmorItem.Type.BOOTS.getDurability((37)))
-                            .component(NTDataComponents.CAN_SPAWN_DRAGON_BREATHE, Boolean.TRUE)
-                            .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
+        "dragoncast_steel_boots", () -> new ArmorItem(ArmorMaterials.NETHERITE, ArmorItem.Type.BOOTS,
+            new Item.Properties().fireResistant().durability(ArmorItem.Type.BOOTS.getDurability((37)))
+                .component(NTDataComponents.CAN_SPAWN_DRAGON_BREATHE, Boolean.TRUE)
+                .component(NTDataComponents.SIMPLE_MODEL, Unit.INSTANCE)));
     // 缚相
     public static final DeferredHolder<Item, Item> BADLANDS = fx("badlands_biome_catalyst", List.of(Biomes.BADLANDS));
     public static final DeferredHolder<Item, Item> BASALT_DELTAS = fx("basalt_deltas_biome_catalyst", List.of(Biomes.BASALT_DELTAS));
@@ -274,6 +274,6 @@ public class NTItems {
 
     public static final DeferredItem<Item> JUNGLE_BUSH_SAPLING = ITEMS.registerItem("jungle_bush_sapling", Item::new);
     public static final DeferredItem<Item> PING_SAPLING = ITEMS.registerItem("pine_sapling", Item::new);
-    public static final DeferredItem<Item> KEY_OF_COLLECTION = ITEMS.registerItem("key_of_collection", Item::new);
+    public static final DeferredItem<Item> KEY_OF_COLLECTION = ITEMS.registerItem("key_of_collection", KeyOfCollection::new);
     public static final DeferredItem<Item> ELTRA_WING = ITEMS.registerItem("eltra_wing", Item::new);
 }
